@@ -1,0 +1,205 @@
+{
+    "metadata": {
+        "report_title": "Cross-Split Leakage Quarantine Count Reconciliation",
+        "project": "CodeMix Intelligence",
+        "dataset_dir": "data/processed/language_identification",
+        "status": "PASS"
+    },
+    "task1_actual_quarantine_counts": {
+        "total_quarantined_records": 4388,
+        "quarantine_reasons": {
+            "test_exact_duplicate_deduped": 45,
+            "test_label_conflict": 2,
+            "cross_split_test_leakage_prevented": 4258,
+            "train_label_conflict": 22,
+            "train_exact_duplicate_deduped": 61
+        },
+        "leakage_prevented_records": {
+            "total_records": 4258,
+            "total_unique_sentence_keys": 4175,
+            "by_source": {
+                "COMI-LINGUA": 4111,
+                "Telugu-English": 147
+            },
+            "by_subset": {
+                "COMI-LINGUA": 4111,
+                "Blog": 16,
+                "Twitter": 131
+            },
+            "by_original_split": {
+                "train": 4258
+            },
+            "unique_keys_by_subset": {
+                "COMI-LINGUA": 4110,
+                "Blog": 6,
+                "Twitter": 59
+            },
+            "matching_test_target_breakdown": {
+                "COMI-LINGUA -> COMI-LINGUA (COMI-LINGUA)": 4109,
+                "COMI-LINGUA -> Telugu-English (Twitter)": 2,
+                "Blog -> Telugu-English (Blog)": 60,
+                "Twitter -> Telugu-English (Twitter)": 352
+            }
+        }
+    },
+    "task2_one_to_many_reconciliation": {
+        "COMI-LINGUA": {
+            "unique_matching_keys": 4110,
+            "quarantined_train_records": 4111,
+            "distinct_matching_test_records": 4110,
+            "total_test_occurrences": 4110,
+            "additional_train_copies": 1,
+            "multi_record_keys_count": 1
+        },
+        "Blog": {
+            "unique_matching_keys": 6,
+            "quarantined_train_records": 16,
+            "distinct_matching_test_records": 10,
+            "total_test_occurrences": 10,
+            "additional_train_copies": 10,
+            "multi_record_keys_count": 1
+        },
+        "Twitter": {
+            "unique_matching_keys": 59,
+            "quarantined_train_records": 131,
+            "distinct_matching_test_records": 88,
+            "total_test_occurrences": 88,
+            "additional_train_copies": 72,
+            "multi_record_keys_count": 20
+        },
+        "Total": {
+            "unique_matching_keys": 4175,
+            "quarantined_train_records": 4258,
+            "distinct_matching_test_records": 4208,
+            "total_test_occurrences": 4208,
+            "additional_train_copies": 83,
+            "multi_record_keys_count": 22
+        }
+    },
+    "task3_discrepancy_resolutions": {
+        "comi_lingua": {
+            "reported_counts": {
+                "earlier": 4137,
+                "latest": 4111,
+                "actual_leakage_quarantined": 4111
+            },
+            "total_comi_quarantined_across_all_reasons": 4137,
+            "breakdown_of_4137": {
+                "cross_split_test_leakage_prevented": 4111,
+                "train_exact_duplicate_deduped": 4,
+                "train_label_conflict": 22
+            },
+            "explanation": "4,137 was the total number of COMI-LINGUA records across ALL quarantine reasons (4,111 leakage + 4 exact duplicates + 22 label conflicts). The actual number of COMI training records quarantined for test leakage is exactly 4,111 (4,110 unique keys).",
+            "cross_source_matches": {
+                "matched_comi_test": 4109,
+                "matched_telugu_english_twitter_test": 2,
+                "details": [
+                    {
+                        "token": "ok",
+                        "train_id": "comi_lid_train_022237",
+                        "matched_test_id": "tenglish_twitter_test_000865"
+                    },
+                    {
+                        "token": "lol",
+                        "train_id": "comi_lid_train_022241",
+                        "matched_test_id": "tenglish_twitter_test_006251"
+                    }
+                ]
+            }
+        },
+        "twitter": {
+            "reported_counts": {
+                "earlier": 102,
+                "latest": 131,
+                "actual_leakage_quarantined": 131
+            },
+            "unique_keys": 59,
+            "distinct_matching_test_records": 88,
+            "multiplicity_additional_copies": 72,
+            "explanation": "The actual count of Twitter training records quarantined for test leakage is 131. These 131 records stem from 59 unique sentence keys that matched 88 distinct test records. The number 102 in the earlier report was an arithmetic residual artifact: having mistakenly assigned 4,137 to COMI and 19 to Blog out of the known 4,258 total (4,258 - 4,137 - 19 = 102), 102 was erroneously reported for Twitter. It does not represent unique keys (59) or matching test records (88)."
+        },
+        "blog": {
+            "reported_counts": {
+                "earlier": 19,
+                "latest": 16,
+                "actual_leakage_quarantined": 16
+            },
+            "unique_keys": 6,
+            "distinct_matching_test_records": 10,
+            "multiplicity_additional_copies": 10,
+            "explanation": "The actual count of Blog training records quarantined for test leakage is 16, produced by 6 unique sentence keys matching 10 distinct test records. The number 19 represents the total records in tenglish_blog_train.jsonl that belonged to duplicate keys (5 duplicate keys totaling 19 records: 11 copies of 'jai jawan – jai kisan' plus 8 records from 4 non-leaking duplicate pairs). The 3 extra records (19 - 16 = 3) represent the net difference between non-leaking duplicate records (8) and the 5 single-copy leaking records."
+        }
+    },
+    "task4_comi_overlap_percentages": {
+        "comi_clean_test_records": 4944,
+        "comi_original_test_records": 5000,
+        "unique_comi_training_keys_quarantined": 4110,
+        "comi_training_records_removed": 4111,
+        "unique_comi_test_records_overlapped": 4108,
+        "unique_comi_test_records_not_overlapped": 836,
+        "cross_source_matches_to_twitter_test": [
+            "ok",
+            "lol"
+        ],
+        "pct_using_4944_clean_eval_denominator": {
+            "verified_value": 83.0906,
+            "formula": "4,108 / 4,944 * 100 = 83.0906%",
+            "if_using_4110_keys": 83.1311
+        },
+        "pct_using_5000_original_denominator": {
+            "verified_value": 82.16,
+            "formula": "4,108 / 5,000 * 100 = 82.16%",
+            "if_using_4110_keys": 82.2
+        }
+    },
+    "task5_total_accounting": {
+        "train": 43369,
+        "validation": 4820,
+        "test": 14855,
+        "excluded": 1647,
+        "quarantined": 4388,
+        "total_accounted": 69079,
+        "expected_total": 69079,
+        "difference": 0,
+        "quarantined_breakdown_by_reason": {
+            "test_exact_duplicate_deduped": 45,
+            "test_label_conflict": 2,
+            "cross_split_test_leakage_prevented": 4258,
+            "train_label_conflict": 22,
+            "train_exact_duplicate_deduped": 61
+        },
+        "leakage_in_quarantined": {
+            "leakage_records": 4258,
+            "non_leakage_quarantined_records": 130,
+            "included_within_4388": true
+        },
+        "single_quarantine_reason_per_record": true
+    },
+    "task6_prior_report_critique": [
+        {
+            "claim": "COMI-LINGUA = 4,137 training records removed for test leakage",
+            "verdict": "INACCURATE",
+            "correction": "4,137 is the total COMI records across ALL quarantine reasons; leakage records are exactly 4,111."
+        },
+        {
+            "claim": "Telugu-English Twitter = 102 training records removed for test leakage",
+            "verdict": "INACCURATE",
+            "correction": "Twitter leakage records are exactly 131 (produced by 59 unique keys). 102 was a residual calculation."
+        },
+        {
+            "claim": "Telugu-English Blog = 19 training records removed for test leakage",
+            "verdict": "INACCURATE",
+            "correction": "Blog leakage records are exactly 16 (produced by 6 unique keys). 19 was the total records in train duplicate groups."
+        },
+        {
+            "claim": "4,110 unique COMI-LINGUA test sentences overlap with training",
+            "verdict": "AMBIGUOUS / MISATTRIBUTED",
+            "correction": "4,110 is the number of unique COMI TRAINING keys quarantined. Exactly 4,108 unique COMI test sentences overlapped, while 2 training keys ('ok', 'lol') matched Telugu-English Twitter test sentences."
+        },
+        {
+            "claim": "COMI-LINGUA accounts for 97.16% (4,137 / 4,258) of all leakage-prevented training records",
+            "verdict": "INACCURATE",
+            "correction": "The correct percentage is 96.55% (4,111 / 4,258). The note in the earlier report mistakenly used 4,137."
+        }
+    ]
+}

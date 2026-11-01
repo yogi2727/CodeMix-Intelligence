@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Token-level language identification for English, Hindi, and Telugu code-mixed text using fine-tuned MuRIL.">
+  <title>CodeMix Intelligence — Token-Level Language Identification</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header class="top-nav">
+    <div class="nav-container">
+      <div class="wordmark" aria-label="CodeMix Intelligence">
+        CodeMix <em>Intelligence</em>
+      </div>
+      <div class="nav-actions">
+        <span class="nav-label" aria-current="page">Language Identification</span>
+        <div id="status-pill" class="status-pill" aria-live="polite">
+          <span class="status-dot status-loading" id="status-dot" aria-hidden="true"></span>
+          <span class="status-text" id="status-text">Model loading</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Application Container -->
+  <main class="page-container">
+    <!-- Hero Section -->
+    <section class="hero-section" aria-labelledby="hero-title">
+      <div class="caption">Token-level language identification</div>
+      <h1 id="hero-title" class="hero-title">
+        Understand your <em>code&#8209;mixed</em> text
+      </h1>
+      <p class="hero-desc">
+        Identify English, Hindi, Telugu and other language tokens using our fine-tuned MuRIL model. Understand every word in multilingual conversations.
+      </p>
+    </section>
+
+    <!-- Global Inline Notice Region -->
+    <div id="notice-container" class="notice-container" aria-live="polite"></div>
+
+    <!-- Main Content Grid -->
+    <section class="main-grid" aria-label="Input and model metadata">
+      <!-- Left Panel: Text Input -->
+      <div class="panel input-panel">
+        <div class="panel-header">
+          <label for="sentence-input" class="caption">Your sentence</label>
+        </div>
+        <textarea
+          id="sentence-input"
+          class="sentence-textarea"
+          placeholder="Naku meeting ki late avuthundi, tum start kar do please"
+          aria-label="Your sentence for language identification"
+          rows="4"
+          spellcheck="false"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+        ></textarea>
+
+        <div class="input-actions-bar">
+          <div class="char-count" id="char-count" aria-live="polite">0 characters</div>
+          <div class="action-buttons">
+            <button
+              type="button"
+              id="clear-btn"
+              class="btn btn-secondary"
+              aria-label="Clear input text"
+            >
+              Clear
+            </button>
+            <button
+              type="button"
+              id="detect-btn"
+              class="btn btn-primary"
+              disabled
+              aria-label="Detect languages in sentence"
+            >
+              <span class="btn-spinner" id="btn-spinner" aria-hidden="true"></span>
+              <span id="btn-text">Detect languages</span>
+            </button>
+          </div>
+        </div>
+
+        <hr class="panel-divider" aria-hidden="true">
+
+        <!-- Sample Inputs -->
+        <div class="samples-section">
+          <div class="caption">Try a sample</div>
+          <div class="sample-pills" role="group" aria-label="Sample sentences">
+            <button type="button" class="sample-pill" data-sample="te-en">Telugu + English</button>
+            <button type="button" class="sample-pill" data-sample="hi-en">Hindi + English</button>
+            <button type="button" class="sample-pill" data-sample="tri">Three languages</button>
+            <button type="button" class="sample-pill" data-sample="long">Long paragraph</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Panel: Model Information -->
+      <aside class="panel model-panel" aria-labelledby="model-info-heading">
+        <div class="caption" id="model-info-heading">System Information</div>
+        <dl class="info-list">
+          <div class="info-row">
+            <dt class="info-key">Model</dt>
+            <dd class="info-val font-mono">google/muril-base-cased</dd>
+          </div>
+          <div class="info-row">
+            <dt class="info-key">Task</dt>
+            <dd class="info-val">Token-level language identification</dd>
+          </div>
+          <div class="info-row">
+            <dt class="info-key">Labels</dt>
+            <dd class="info-val font-mono">EN · HI · TE · OTHER</dd>
+          </div>
+          <div class="info-row">
+            <dt class="info-key">Backend</dt>
+            <dd class="info-val font-sans">Local FastAPI</dd>
+          </div>
+          <div class="info-row">
+            <dt class="info-key">Device</dt>
+            <dd class="info-val font-mono" id="device-info">Checking...</dd>
+          </div>
+        </dl>
+      </aside>
+    </section>
+
+    <!-- Results Panel (Initially Hidden) -->
+    <section id="results-panel" class="panel results-panel" aria-labelledby="results-caption" hidden aria-live="polite">
+      <!-- Results Header -->
+      <div class="results-header">
+        <div class="results-header-left">
+          <span class="caption" id="results-caption">Result</span>
+        </div>
+        <div class="results-header-right">
+          <span class="chunking-info" id="chunking-info">Not chunked · 1 chunk processed</span>
+          <div class="view-toggle" role="tablist" aria-label="Result presentation mode">
+            <button
+              type="button"
+              id="view-annotated-btn"
+              class="view-toggle-btn active"
+              role="tab"
+              aria-selected="true"
+              aria-controls="annotated-container"
+            >
+              Annotated
+            </button>
+            <button
+              type="button"
+              id="view-table-btn"
+              class="view-toggle-btn"
+              role="tab"
+              aria-selected="false"
+              aria-controls="table-container"
+            >
+              Table
+            </button>
+          </div>
+          <button type="button" id="copy-btn" class="btn btn-secondary btn-sm" aria-label="Copy results to clipboard">
+            Copy results
+          </button>
+        </div>
+      </div>
+
+      <!-- Copy Success Feedback Notice -->
+      <div id="copy-notice" class="copy-notice" role="status" aria-live="polite" hidden></div>
+
+      <!-- View 1: Annotated Research Manuscript View -->
+      <div id="annotated-container" class="annotated-container" role="tabpanel" aria-labelledby="view-annotated-btn">
+        <div id="tokens-flow" class="tokens-flow" aria-label="Annotated tokens"></div>
+      </div>
+
+      <!-- View 2: Accessible Table View -->
+      <div id="table-container" class="table-container" role="tabpanel" aria-labelledby="view-table-btn" hidden>
+        <div class="table-wrapper">
+          <table class="results-table" aria-label="Token-level predictions table">
+            <caption class="sr-only">Detailed token-level language identification results</caption>
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Token</th>
+                <th scope="col">Label</th>
+                <th scope="col">Confidence</th>
+              </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <hr class="results-divider" aria-hidden="true">
+
+      <!-- Results Summary Section -->
+      <div class="results-summary">
+        <!-- 5 Statistical Blocks -->
+        <div class="stats-grid">
+          <div class="stat-block">
+            <div class="caption">Tokens</div>
+            <div class="stat-number" id="stat-total">0</div>
+          </div>
+          <div class="stat-block">
+            <div class="caption stat-caption-en">EN</div>
+            <div class="stat-number" id="stat-en">0</div>
+          </div>
+          <div class="stat-block">
+            <div class="caption stat-caption-hi">HI</div>
+            <div class="stat-number" id="stat-hi">0</div>
+          </div>
+          <div class="stat-block">
+            <div class="caption stat-caption-te">TE</div>
+            <div class="stat-number" id="stat-te">0</div>
+          </div>
+          <div class="stat-block">
+            <div class="caption stat-caption-other">Other</div>
+            <div class="stat-number" id="stat-other">0</div>
+          </div>
+        </div>
+
+        <!-- Language Distribution Bar -->
+        <div class="distribution-section">
+          <div
+            id="distribution-bar"
+            class="distribution-bar"
+            role="progressbar"
+            aria-label="Language distribution in sentence"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="100"
+          ></div>
+
+          <!-- Distribution Legend -->
+          <div class="distribution-legend" aria-hidden="true">
+            <div class="legend-item">
+              <span class="legend-line legend-line-en"></span>
+              <span class="legend-name">English</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-line legend-line-hi"></span>
+              <span class="legend-name">Hindi</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-line legend-line-te"></span>
+              <span class="legend-name">Telugu</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-line legend-line-other"></span>
+              <span class="legend-name">Other</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Confidence Sub-note -->
+        <div class="confidence-footer">
+          <div class="avg-confidence-text" id="avg-confidence-text">
+            Average model confidence: 0.0%
+          </div>
+          <p class="confidence-caveat">
+            Confidence is the model's own probability estimate, not a guarantee that a label is correct.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

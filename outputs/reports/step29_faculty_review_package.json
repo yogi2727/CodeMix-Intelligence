@@ -1,0 +1,143 @@
+{
+  "report_title": "CodeMix Intelligence Step 29: Faculty Review and Research Governance Submission Package Report",
+  "project": "CodeMix Intelligence",
+  "step": "Step 29",
+  "timestamp_utc": "2026-11-01T04:55:52.664139+00:00",
+  "status": "COMPLETED",
+  "submission_package_directory": "outputs/faculty_review/",
+  "directory_tree": {
+    "root": "outputs/faculty_review/",
+    "files": {
+      "CodeMix_Intelligence_Faculty_Review_Package.md": {
+        "path": "C:\\Users\\YOGESWAR\\OneDrive\\Apps\\CodeMix-Intelligence\\outputs\\faculty_review\\CodeMix_Intelligence_Faculty_Review_Package.md",
+        "size_bytes": 61732,
+        "line_count": 985,
+        "has_draft_header": true
+      },
+      "README.md": {
+        "path": "C:\\Users\\YOGESWAR\\OneDrive\\Apps\\CodeMix-Intelligence\\outputs\\faculty_review\\README.md",
+        "size_bytes": 4780,
+        "line_count": 48,
+        "has_draft_header": true
+      },
+      "annotation_quality_control.md": {
+        "path": "C:\\Users\\YOGESWAR\\OneDrive\\Apps\\CodeMix-Intelligence\\outputs\\faculty_review\\annotation_quality_control.md",
+        "size_bytes": 7905,
+        "line_count": 160,
+        "has_draft_header": true
+      },
+      "data_management_plan.md": {
+        "path": "C:\\Users\\YOGESWAR\\OneDrive\\Apps\\CodeMix-Intelligence\\outputs\\faculty_review\\data_management_plan.md",
+        "size_bytes": 7917,
+        "line_count": 117,
+        "has_draft_header": true
+      },
+      "dataset_split_policy.md": {
+        "path": "C:\\Users\\YOGESWAR\\OneDrive\\Apps\\CodeMix-Intelligence\\outputs\\faculty_review\\dataset_split_policy.md",
+        "size_bytes": 5672,
+        "line_count": 85,
+        "has_draft_header": true
+      },
+      "faculty_approval_checklist.md": {
+        "path": "C:\\Users\\YOGESWAR\\OneDrive\\Apps\\CodeMix-Intelligence\\outputs\\faculty_review\\faculty_approval_checklist.md",
+        "size_bytes": 5936,
+        "line_count": 91,
+        "has_draft_header": true
+      },
+      "human_participant_protocol.md": {
+        "path": "C:\\Users\\YOGESWAR\\OneDrive\\Apps\\CodeMix-Intelligence\\outputs\\faculty_review\\human_participant_protocol.md",
+        "size_bytes": 10668,
+        "line_count": 172,
+        "has_draft_header": true
+      },
+      "licensing_decision_sheet.md": {
+        "path": "C:\\Users\\YOGESWAR\\OneDrive\\Apps\\CodeMix-Intelligence\\outputs\\faculty_review\\licensing_decision_sheet.md",
+        "size_bytes": 5853,
+        "line_count": 87,
+        "has_draft_header": true
+      },
+      "project_summary.md": {
+        "path": "C:\\Users\\YOGESWAR\\OneDrive\\Apps\\CodeMix-Intelligence\\outputs\\faculty_review\\project_summary.md",
+        "size_bytes": 10272,
+        "line_count": 146,
+        "has_draft_header": true
+      }
+    }
+  },
+  "document_summaries": {
+    "README.md": "Package overview, index of all governance materials, navigational guide, and executive summary for reviewing faculty.",
+    "project_summary.md": "Comprehensive project problem statement, 4 supervised classes, MuRIL transformer backbone, unified benchmark baseline (69,079 records), critical gaps (zero native Telugu, zero Hindi-Telugu, zero trilingual), rationale for authentic human elicitation, 40-sentence pilot scope, and 400-sentence dataset plan.",
+    "human_participant_protocol.md": "Ethical safeguards, adult-only eligibility (>=18), minor protection, 4 linguistic categories, self-screening framework, pseudonymous identification (contrib_XX), voluntary participation, 6-domain communicative scenarios, two-stage independent review, and pre/post-freeze withdrawal procedures.",
+    "licensing_decision_sheet.md": "Contributor intellectual property analysis, CC BY 4.0 rights/obligations, commercial reuse permissibility, irrevocability, post-release realities, permissive vs non-commercial (CC BY-NC 4.0) comparison, and formal deferral as PENDING FACULTY APPROVAL.",
+    "data_management_plan.md": "Physical/logical separation of consent forms from dataset files, encrypted key custody, access control, data retention/destruction schedules, provenance taxonomy (licensed_corpus_extraction, naturally_occurring, human_elicited, parallel_reference; banned automatically_generated), per-record licensing, and rejection logging.",
+    "annotation_quality_control.md": "Two-stage independent review pipeline, Stage 1 screening/labeling, Stage 2 independent blind audit, adjudication, structural reviewer roles (annotator_01, annotator_02), fused-token (MIXED -100) and proper noun (NE -100) governance, 8-key closed language token statistics (Schema v1.3.0), sum parity law, and language switch calculation.",
+    "dataset_split_policy.md": "Target stratified 60/20/20 split (240 train / 80 val / 80 test across 400 sentences, seed 42), dedicated custom test split (custom_test.jsonl) isolated from benchmark test sets, group-aware atomicity, realities of leakage prevention, group sparsity handling, and pilot non-split governance.",
+    "faculty_approval_checklist.md": "Actionable 10-point decision checklist providing empty checkboxes for faculty determination on ethics review, eligibility, consent text, license type, commercial policy, secure storage, data retention, reviewer appointments, pilot launch, and release conditions.",
+    "CodeMix_Intelligence_Faculty_Review_Package.md": "Consolidated single-file submission document assembling all 8 modular sections with unified table of contents for holistic review."
+  },
+  "pending_faculty_decisions": [
+    "1. Formal determination whether institutional IRB / IEC review is required for adult linguistic elicitation.",
+    "2. Approval of adult-only (>= 18 years) contributor eligibility criteria and minor exclusion.",
+    "3. Approval of Informed Consent Document draft (draft_consent_form.md).",
+    "4. Formal determination on Contributor License (permissive CC BY 4.0 vs restrictive CC BY-NC 4.0).",
+    "5. Policy determination on commercial reuse of dataset and fine-tuned model artifacts.",
+    "6. Designation and authorization of an institutionally approved, encrypted storage repository for consent forms and pseudonym lookup keys.",
+    "7. Approval of contributor data retention period and pre-freeze deletion schedule.",
+    "8. Official appointment of two qualified multilingual reviewers for Stage 1 and Stage 2 review.",
+    "9. Authorization to recruit 3 adult contributors and elicit the 40-sentence feasibility pilot.",
+    "10. Specification of conditions and approvals required for future public dataset and model release."
+  ],
+  "verification_results": {
+    "all_documents_labeled_draft": true,
+    "no_faculty_approval_falsely_claimed": true,
+    "no_contributors_recruited": true,
+    "no_participant_records_exist": true,
+    "custom_candidate_sentences_bytes": 0,
+    "custom_reviewed_sentences_bytes": 0,
+    "custom_rejected_sentences_bytes": 0,
+    "custom_manifest_version": "1.3.0",
+    "custom_schema_version": "1.3.0",
+    "original_benchmark_files_untouched": true,
+    "original_files_verified": {
+      "train.jsonl": {
+        "size_bytes": 52692357,
+        "sha256": "879d8ca621c3063cec00cd498489f92dff32f8d9c359ede555e9688475244f2b",
+        "size_match": true,
+        "hash_match": true
+      },
+      "validation.jsonl": {
+        "size_bytes": 5900569,
+        "sha256": "3bc233527aac08cce37c28d53cf73c221e70b81a109c5e767ec249ef3960537b",
+        "size_match": true,
+        "hash_match": true
+      },
+      "test.jsonl": {
+        "size_bytes": 16230756,
+        "sha256": "58a222754ef1b293ae719fd0acc86f86b22fe3a504bbd31119d787361890daca",
+        "size_match": true,
+        "hash_match": true
+      },
+      "quarantined_duplicates.jsonl": {
+        "size_bytes": 7951036,
+        "sha256": "c3a715e737cf2775118226f2ced94e6cd20ef8eff4035fcbcda534de23f7af61",
+        "size_match": true,
+        "hash_match": true
+      },
+      "excluded_records.jsonl": {
+        "size_bytes": 1115199,
+        "sha256": "6f6b0ac82c9b8082e79ba94a1d98b9e0bc250b40f4ab77b8bf3884377f17a815",
+        "size_match": true,
+        "hash_match": true
+      },
+      "dataset_manifest.json": {
+        "size_bytes": 3224,
+        "sha256": "8502b021e0439e8af76cb445948fa3f4d9b7f456057149bd3fba8053d992e67d",
+        "size_match": true,
+        "hash_match": true
+      }
+    },
+    "model_training_executed": false,
+    "split_script_executed": false
+  },
+  "confirmation_statement": "The research team confirms that no human data collection, contributor recruitment, consent execution, or model training has occurred. All custom dataset JSONL files remain strictly empty (0 bytes), the original unified LID benchmark is 100% hash-identical, and human data collection remains on hold awaiting faculty review."
+}

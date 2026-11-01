@@ -1,0 +1,185 @@
+{
+  "report_title": "CodeMix Intelligence Step 28: Statistics Schema v1.3 and Pilot Governance Finalization Report",
+  "project": "CodeMix Intelligence",
+  "step": "Step 28",
+  "timestamp": "2026-10-31T18:45:00+05:30",
+  "status": "COMPLETED",
+  "schema_version": "1.3.0",
+  "manifest_version": "1.3.0",
+  "language_statistics_design": {
+    "version": "1.3.0",
+    "required_token_count_keys": [
+      "EN",
+      "HI",
+      "TE",
+      "OTHER",
+      "NE",
+      "MIXED",
+      "AMBIGUOUS",
+      "NULL"
+    ],
+    "key_count": 8,
+    "parity_rule": "sum(language_token_counts.values()) == len(tokens)",
+    "rules": {
+      "exact_one_to_one_accounting": "Every token in tokens must contribute to exactly one count key.",
+      "null_source_label": "JSON null source labels strictly increment NULL.",
+      "ambiguous_source_label": "AMBIGUOUS source labels strictly increment AMBIGUOUS.",
+      "provenance_isolation": "MIXED and NE are never classified as OTHER. AMBIGUOUS and NULL are never classified as OTHER.",
+      "total_count_equality": "Total sum across all eight count keys must strictly equal len(tokens).",
+      "missing_key_rejection": "Missing count keys are strictly rejected; cannot be silently assumed zero.",
+      "supervised_model_classes": {
+        "EN": 0,
+        "HI": 1,
+        "TE": 2,
+        "OTHER": 3
+      },
+      "non_supervised_annotations": {
+        "NE": -100,
+        "MIXED": -100,
+        "AMBIGUOUS": -100,
+        "null": -100
+      },
+      "language_switch_count_policy": "Considers only language-bearing classes (EN, HI, TE). Ignores OTHER, NE, MIXED, AMBIGUOUS, and null."
+    }
+  },
+  "validator_test_results": {
+    "total_tests": 30,
+    "tests_passed": 30,
+    "tests_failed": 0,
+    "status": "PASS",
+    "test_suite_breakdown": {
+      "original_step26_tests": 22,
+      "new_step28_tests": 8,
+      "new_tests": [
+        {
+          "test_id": 23,
+          "name": "AMBIGUOUS token counted correctly under AMBIGUOUS key",
+          "result": "PASS"
+        },
+        {
+          "test_id": 24,
+          "name": "JSON null token counted under NULL key",
+          "result": "PASS"
+        },
+        {
+          "test_id": 25,
+          "name": "Eight count keys sum exactly to token count",
+          "result": "PASS"
+        },
+        {
+          "test_id": 26,
+          "name": "Incorrect total count rejected",
+          "result": "PASS"
+        },
+        {
+          "test_id": 27,
+          "name": "Missing count keys strictly rejected for schema v1.3.0",
+          "result": "PASS"
+        },
+        {
+          "test_id": 28,
+          "name": "AMBIGUOUS strictly cannot receive any supervised class ID (0, 1, 2, 3)",
+          "result": "PASS"
+        },
+        {
+          "test_id": 29,
+          "name": "NULL strictly cannot receive any supervised class ID (0, 1, 2, 3)",
+          "result": "PASS"
+        },
+        {
+          "test_id": 30,
+          "name": "Language-switch count ignores AMBIGUOUS and NULL tokens",
+          "result": "PASS"
+        }
+      ]
+    }
+  },
+  "consent_wording_corrections": {
+    "target_file": "data/custom/trilingual_lid/pilot/draft_consent_form.md",
+    "cc_by_4_accurate_scope": {
+      "copying_redistribution_adaptation": "Permits copying, redistribution, and adaptation, including commercial reuse.",
+      "mandatory_requirements": "Requires proper attribution, link to license, and modification notice.",
+      "irrevocability": "License is legally irrevocable for recipients who comply with terms.",
+      "prohibition_of_misleading_claims": "CC BY 4.0 is not described as academic-only or non-commercial."
+    },
+    "commercial_reuse_status": "PENDING FACULTY REVIEW",
+    "commercial_reuse_notes": "If the project intends to restrict commercial reuse, that decision is marked PENDING FACULTY REVIEW; no alternative license was substituted automatically.",
+    "withdrawal_boundaries": {
+      "pre_freeze_withdrawal": "Permitted at any time prior to dataset freeze via pseudonymous ID notification.",
+      "post_distribution_realities": "Existing recipients may continue using material under license terms; project cannot promise complete removal of copies already distributed."
+    },
+    "legal_status_notice": "Draft consent form explicitly states it is a preliminary research draft, not legal advice or institutional approval."
+  },
+  "participant_distribution": {
+    "total_pilot_sentences": 40,
+    "category_targets": {
+      "Native_Telugu": 10,
+      "English_Telugu": 10,
+      "Hindi_Telugu": 10,
+      "English_Hindi_Telugu": 10
+    },
+    "allocation_model": "10 examples per category are distributed across 3 qualified adult contributors where feasible (~3-4 per contributor per category).",
+    "clarification": "Strictly NOT 10 examples per contributor per category (which would be 120 sentences).",
+    "qualification_gate": "Contributors may contribute to a category only if they meet its verified proficiency requirements.",
+    "identity_safeguard": "Contributor IDs are pseudonyms; no real or fabricated identities exist in records."
+  },
+  "source_group_governance": {
+    "policy": {
+      "authoring_groups": "Contributor IDs identify human authoring groups.",
+      "corpus_groups": "Document/work identifiers identify corpus source groups.",
+      "zero_leakage_claim_correction": "Assigning source_group_id does not automatically guarantee zero leakage; disjoint groups and sufficient group counts are strictly required.",
+      "insufficient_group_handling": "If independent groups are insufficient, report the limitation; never split a single group across partitions to force ratios.",
+      "pilot_isolation": "The 40-sentence pilot is for calibration and review testing only, not for model evaluation; pilot records are never automatically split.",
+      "approved_split_targets": {
+        "train": 240,
+        "validation": 80,
+        "test": 80,
+        "ratio": "60/20/20",
+        "random_seed": 42
+      }
+    }
+  },
+  "safeguards_and_privacy": {
+    "adult_only_safeguard": "Initial pilot and collection restricted strictly to adults (>= 18 years old).",
+    "pre_collection_approval": "Written faculty/institutional approval strictly required before recruitment or collection.",
+    "consent_storage_separation": "Signed physical/electronic consent forms stored separately from pseudonymous dataset records in institutionally approved secure storage.",
+    "pii_exclusion": "Zero PII collected or stored in dataset files.",
+    "participant_record_status": "Zero participant records or real contributor details exist in this step."
+  },
+  "reviewer_independence": {
+    "stage1_review": "Linguistic screening, script compliance, tokenization, initial labels by qualified fluent speaker.",
+    "stage2_review": "Independent second reviewer blindly annotates raw tokens without seeing Stage 1 labels.",
+    "adjudication": "Disagreements compared only after independent annotation; unresolved tokens assigned AMBIGUOUS (-100).",
+    "role_identifiers": "annotator_01 and annotator_02 represent structural roles, not appointed individuals."
+  },
+  "workspace_integrity_verification": {
+    "custom_candidate_sentences_count": 0,
+    "custom_reviewed_sentences_count": 0,
+    "custom_rejected_sentences_count": 0,
+    "custom_candidate_sentences_size_bytes": 0,
+    "custom_reviewed_sentences_size_bytes": 0,
+    "custom_rejected_sentences_size_bytes": 0,
+    "pilot_tracking_templates_status": "BLANK",
+    "original_unified_benchmark_status": {
+      "train_jsonl_bytes": 52692357,
+      "validation_jsonl_bytes": 5900569,
+      "test_jsonl_bytes": 16230756,
+      "test_comi_lingua_jsonl_bytes": 8435204,
+      "test_tenglish_blog_jsonl_bytes": 2700433,
+      "test_tenglish_twitter_jsonl_bytes": 5095119,
+      "quarantined_duplicates_jsonl_bytes": 7951036,
+      "excluded_records_jsonl_bytes": 1115199,
+      "state": "UNTOUCHED_AND_IDENTICAL"
+    },
+    "training_execution": "NONE",
+    "final_split_execution": "NONE"
+  },
+  "remaining_faculty_approvals": [
+    "Approval of Informed Consent Draft (draft_consent_form.md) and commercial reuse terms.",
+    "Formal decision on CC BY 4.0 commercial adaptation vs CC BY-NC 4.0 restriction.",
+    "Ethics clearance confirming whether institutional IRB review is required.",
+    "Approval of Contributor Eligibility Standards (contributor_eligibility.md) and adult-only protocol.",
+    "Authorization of secure, access-controlled storage for separate consent archives.",
+    "Appointment of two qualified independent multilingual reviewers for Stage 1 and Stage 2 review."
+  ]
+}

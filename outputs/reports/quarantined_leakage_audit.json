@@ -1,0 +1,676 @@
+{
+    "quarantine_audit": {
+        "reason_counts": {
+            "test_exact_duplicate_deduped": 45,
+            "test_label_conflict": 2,
+            "cross_split_test_leakage_prevented": 4258,
+            "train_label_conflict": 22,
+            "train_exact_duplicate_deduped": 61
+        },
+        "total_quarantined": 4388,
+        "leakage_quarantined": {
+            "total_records": 4258,
+            "records_by_subset": {
+                "COMI-LINGUA": 4111,
+                "Blog": 16,
+                "Twitter": 131
+            },
+            "unique_sentence_keys_by_subset": {
+                "COMI-LINGUA": 4110,
+                "Blog": 6,
+                "Twitter": 59
+            },
+            "quarantined_percentage_of_aligned_train": {
+                "COMI-LINGUA": 13.67,
+                "Blog": 0.24,
+                "Twitter": 0.77,
+                "Total": 7.93
+            }
+        }
+    },
+    "matching_methodology": {
+        "function": "normalize_comparison_key(tokens)",
+        "file": "scripts/build_unified_lid_dataset.py",
+        "lines": "58-60",
+        "logic": "return \" \".join(t.strip().casefold() for t in tokens)",
+        "applies_raw_exact": false,
+        "applies_whitespace_norm": true,
+        "applies_case_fold": true,
+        "applies_unicode_norm": false,
+        "applies_punctuation_removal": false,
+        "operates_on_tokens_array": true
+    },
+    "matching_levels_comparison": {
+        "COMI-LINGUA": {
+            "total_train_records": 30074,
+            "level_1_raw_exact": {
+                "matching_train_records": 4107,
+                "unique_matched_keys": 4107
+            },
+            "level_2_whitespace_normalized": {
+                "matching_train_records": 4107,
+                "unique_matched_keys": 4107
+            },
+            "level_3_case_whitespace_normalized": {
+                "matching_train_records": 4109,
+                "unique_matched_keys": 4109
+            },
+            "level_4_builder_token_normalization": {
+                "matching_train_records": 4111,
+                "unique_matched_keys": 4110
+            }
+        },
+        "Blog": {
+            "total_train_records": 6547,
+            "level_1_raw_exact": {
+                "matching_train_records": 16,
+                "unique_matched_keys": 6
+            },
+            "level_2_whitespace_normalized": {
+                "matching_train_records": 16,
+                "unique_matched_keys": 6
+            },
+            "level_3_case_whitespace_normalized": {
+                "matching_train_records": 16,
+                "unique_matched_keys": 6
+            },
+            "level_4_builder_token_normalization": {
+                "matching_train_records": 16,
+                "unique_matched_keys": 6
+            }
+        },
+        "Twitter": {
+            "total_train_records": 17082,
+            "level_1_raw_exact": {
+                "matching_train_records": 434,
+                "unique_matched_keys": 186
+            },
+            "level_2_whitespace_normalized": {
+                "matching_train_records": 434,
+                "unique_matched_keys": 186
+            },
+            "level_3_case_whitespace_normalized": {
+                "matching_train_records": 439,
+                "unique_matched_keys": 190
+            },
+            "level_4_builder_token_normalization": {
+                "matching_train_records": 439,
+                "unique_matched_keys": 190
+            }
+        },
+        "Total": {
+            "total_train_records": 53703,
+            "level_1_raw_exact": {
+                "matching_train_records": 4557,
+                "unique_matched_keys": 4299
+            },
+            "level_2_whitespace_normalized": {
+                "matching_train_records": 4557,
+                "unique_matched_keys": 4299
+            },
+            "level_3_case_whitespace_normalized": {
+                "matching_train_records": 4564,
+                "unique_matched_keys": 4305
+            },
+            "level_4_builder_token_normalization": {
+                "matching_train_records": 4566,
+                "unique_matched_keys": 4306
+            }
+        }
+    },
+    "short_common_sentences": {
+        "ok": {
+            "train_record_count": 1,
+            "test_record_count": 1,
+            "train_sources": [
+                "COMI-LINGUA"
+            ],
+            "test_sources": [
+                "Telugu-English"
+            ],
+            "train_matches": [
+                {
+                    "original_sentence_id": "comi_lid_train_022237",
+                    "source": "COMI-LINGUA",
+                    "subset": "COMI-LINGUA",
+                    "split": "train",
+                    "text": "ok ",
+                    "tokens": [
+                        "ok"
+                    ],
+                    "raw_exact_match": false
+                }
+            ],
+            "test_matches": [
+                {
+                    "original_sentence_id": "tenglish_twitter_test_000865",
+                    "source": "Telugu-English",
+                    "subset": "Twitter",
+                    "split": "test",
+                    "text": "Ok",
+                    "tokens": [
+                        "Ok"
+                    ],
+                    "raw_exact_match": false
+                }
+            ],
+            "included_in_reported_4258": true,
+            "quarantined_record_count": 1,
+            "quarantined_sentence_ids": [
+                "lid_quarantined_004157"
+            ]
+        },
+        "lol": {
+            "train_record_count": 1,
+            "test_record_count": 1,
+            "train_sources": [
+                "COMI-LINGUA"
+            ],
+            "test_sources": [
+                "Telugu-English"
+            ],
+            "train_matches": [
+                {
+                    "original_sentence_id": "comi_lid_train_022241",
+                    "source": "COMI-LINGUA",
+                    "subset": "COMI-LINGUA",
+                    "split": "train",
+                    "text": "LOL",
+                    "tokens": [
+                        "LOL"
+                    ],
+                    "raw_exact_match": false
+                }
+            ],
+            "test_matches": [
+                {
+                    "original_sentence_id": "tenglish_twitter_test_006251",
+                    "source": "Telugu-English",
+                    "subset": "Twitter",
+                    "split": "test",
+                    "text": "Lol",
+                    "tokens": [
+                        "Lol"
+                    ],
+                    "raw_exact_match": false
+                }
+            ],
+            "included_in_reported_4258": true,
+            "quarantined_record_count": 1,
+            "quarantined_sentence_ids": [
+                "lid_quarantined_004158"
+            ]
+        }
+    },
+    "frequent_short_leakage": [
+        {
+            "key": "🤣",
+            "token_count": 1,
+            "char_length": 1,
+            "quarantined_records": 15,
+            "sources": [
+                "Telugu-English"
+            ],
+            "sample_original_text": [
+                "🤣",
+                "🤣",
+                "🤣"
+            ]
+        },
+        {
+            "key": "😂 😂",
+            "token_count": 2,
+            "char_length": 3,
+            "quarantined_records": 15,
+            "sources": [
+                "Telugu-English"
+            ],
+            "sample_original_text": [
+                "😂 😂",
+                "😂 😂",
+                "😂 😂"
+            ]
+        },
+        {
+            "key": "😂",
+            "token_count": 1,
+            "char_length": 1,
+            "quarantined_records": 7,
+            "sources": [
+                "Telugu-English"
+            ],
+            "sample_original_text": [
+                "😂",
+                "😂",
+                "😂"
+            ]
+        },
+        {
+            "key": "😍",
+            "token_count": 1,
+            "char_length": 1,
+            "quarantined_records": 5,
+            "sources": [
+                "Telugu-English"
+            ],
+            "sample_original_text": [
+                "😍",
+                "😍",
+                "😍"
+            ]
+        },
+        {
+            "key": "🤣 🤣",
+            "token_count": 2,
+            "char_length": 3,
+            "quarantined_records": 4,
+            "sources": [
+                "Telugu-English"
+            ],
+            "sample_original_text": [
+                "🤣 🤣",
+                "🤣 🤣",
+                "🤣 🤣"
+            ]
+        },
+        {
+            "key": "🤩",
+            "token_count": 1,
+            "char_length": 1,
+            "quarantined_records": 3,
+            "sources": [
+                "Telugu-English"
+            ],
+            "sample_original_text": [
+                "🤩",
+                "🤩",
+                "🤩"
+            ]
+        },
+        {
+            "key": "🔥 🔥",
+            "token_count": 2,
+            "char_length": 3,
+            "quarantined_records": 2,
+            "sources": [
+                "Telugu-English"
+            ],
+            "sample_original_text": [
+                "🔥 🔥",
+                "🔥 🔥"
+            ]
+        },
+        {
+            "key": "@ilikya haha",
+            "token_count": 2,
+            "char_length": 12,
+            "quarantined_records": 2,
+            "sources": [
+                "Telugu-English"
+            ],
+            "sample_original_text": [
+                "@ilikya Haha",
+                "@ilikya Haha"
+            ]
+        },
+        {
+            "key": "@dcworldtelugu #zsjlwithdcwt",
+            "token_count": 2,
+            "char_length": 28,
+            "quarantined_records": 2,
+            "sources": [
+                "Telugu-English"
+            ],
+            "sample_original_text": [
+                "@DCWorldTelugu #ZSJLWithDCWT",
+                "@DCWorldTelugu #ZSJLWithDCWT"
+            ]
+        },
+        {
+            "key": "@ashwasmaran 😂",
+            "token_count": 2,
+            "char_length": 14,
+            "quarantined_records": 2,
+            "sources": [
+                "Telugu-English"
+            ],
+            "sample_original_text": [
+                "@Ashwasmaran 😂",
+                "@Ashwasmaran 😂"
+            ]
+        },
+        {
+            "key": "😔",
+            "token_count": 1,
+            "char_length": 1,
+            "quarantined_records": 2,
+            "sources": [
+                "Telugu-English"
+            ],
+            "sample_original_text": [
+                "😔",
+                "😔"
+            ]
+        },
+        {
+            "key": "#halffacetwitter",
+            "token_count": 1,
+            "char_length": 16,
+            "quarantined_records": 2,
+            "sources": [
+                "Telugu-English"
+            ],
+            "sample_original_text": [
+                "#HalfFaceTwitter",
+                "#HalfFaceTwitter"
+            ]
+        },
+        {
+            "key": ".",
+            "token_count": 1,
+            "char_length": 1,
+            "quarantined_records": 2,
+            "sources": [
+                "Telugu-English"
+            ],
+            "sample_original_text": [
+                ".",
+                "."
+            ]
+        },
+        {
+            "key": "haha",
+            "token_count": 1,
+            "char_length": 4,
+            "quarantined_records": 2,
+            "sources": [
+                "Telugu-English"
+            ],
+            "sample_original_text": [
+                "Haha",
+                "Haha"
+            ]
+        },
+        {
+            "key": "@ashwasmaran 🤣",
+            "token_count": 2,
+            "char_length": 14,
+            "quarantined_records": 2,
+            "sources": [
+                "Telugu-English"
+            ],
+            "sample_original_text": [
+                "@Ashwasmaran 🤣",
+                "@Ashwasmaran 🤣"
+            ]
+        }
+    ],
+    "leakage_verification": {
+        "train_records": 43369,
+        "val_records": 4820,
+        "test_records": 14855,
+        "train_vs_test": {
+            "exact_text_overlap": 0,
+            "normalized_overlap": 0,
+            "leakage_detected": false
+        },
+        "val_vs_test": {
+            "exact_text_overlap": 0,
+            "normalized_overlap": 0,
+            "leakage_detected": false
+        },
+        "train_vs_val": {
+            "exact_text_overlap": 0,
+            "normalized_overlap": 0,
+            "leakage_detected": false
+        }
+    },
+    "representative_provenance": [
+        {
+            "sentence_id": "lid_quarantined_004157",
+            "original_sentence_id": "comi_lid_train_022237",
+            "source": "COMI-LINGUA",
+            "subset": "COMI-LINGUA",
+            "quarantine_reason": "cross_split_test_leakage_prevented",
+            "original_text": "ok ",
+            "normalized_key": "ok",
+            "matching_test_ids": [
+                "tenglish_twitter_test_000865"
+            ],
+            "matching_test_samples": [
+                "Ok"
+            ],
+            "match_type": "Normalization Match (Tokens/Case-Fold)"
+        },
+        {
+            "sentence_id": "lid_quarantined_004158",
+            "original_sentence_id": "comi_lid_train_022241",
+            "source": "COMI-LINGUA",
+            "subset": "COMI-LINGUA",
+            "quarantine_reason": "cross_split_test_leakage_prevented",
+            "original_text": "LOL",
+            "normalized_key": "lol",
+            "matching_test_ids": [
+                "tenglish_twitter_test_006251"
+            ],
+            "matching_test_samples": [
+                "Lol"
+            ],
+            "match_type": "Normalization Match (Tokens/Case-Fold)"
+        },
+        {
+            "sentence_id": "lid_quarantined_004175",
+            "original_sentence_id": "tenglish_twitter_train_000159",
+            "source": "Telugu-English",
+            "subset": "Twitter",
+            "quarantine_reason": "cross_split_test_leakage_prevented",
+            "original_text": "😂 😂 😂",
+            "normalized_key": "😂 😂 😂",
+            "matching_test_ids": [
+                "tenglish_twitter_test_000825",
+                "tenglish_twitter_test_002181"
+            ],
+            "matching_test_samples": [
+                "😂 😂 😂",
+                "😂 😂 😂"
+            ],
+            "match_type": "Exact Text Match"
+        },
+        {
+            "sentence_id": "lid_quarantined_004176",
+            "original_sentence_id": "tenglish_twitter_train_000832",
+            "source": "Telugu-English",
+            "subset": "Twitter",
+            "quarantine_reason": "cross_split_test_leakage_prevented",
+            "original_text": "@GowthamOletii 😂 😂 😂",
+            "normalized_key": "@gowthamoletii 😂 😂 😂",
+            "matching_test_ids": [
+                "tenglish_twitter_test_002657"
+            ],
+            "matching_test_samples": [
+                "@GowthamOletii 😂 😂 😂"
+            ],
+            "match_type": "Exact Text Match"
+        },
+        {
+            "sentence_id": "lid_quarantined_004177",
+            "original_sentence_id": "tenglish_twitter_train_001098",
+            "source": "Telugu-English",
+            "subset": "Twitter",
+            "quarantine_reason": "cross_split_test_leakage_prevented",
+            "original_text": "🔥 🔥",
+            "normalized_key": "🔥 🔥",
+            "matching_test_ids": [
+                "tenglish_twitter_test_003855"
+            ],
+            "matching_test_samples": [
+                "🔥 🔥"
+            ],
+            "match_type": "Exact Text Match"
+        },
+        {
+            "sentence_id": "lid_quarantined_004159",
+            "original_sentence_id": "tenglish_blog_train_000053",
+            "source": "Telugu-English",
+            "subset": "Blog",
+            "quarantine_reason": "cross_split_test_leakage_prevented",
+            "original_text": "Cost ₹300 for two people",
+            "normalized_key": "cost ₹300 for two people",
+            "matching_test_ids": [
+                "tenglish_blog_test_001860"
+            ],
+            "matching_test_samples": [
+                "Cost ₹300 for two people"
+            ],
+            "match_type": "Exact Text Match"
+        },
+        {
+            "sentence_id": "lid_quarantined_004160",
+            "original_sentence_id": "tenglish_blog_train_000231",
+            "source": "Telugu-English",
+            "subset": "Blog",
+            "quarantine_reason": "cross_split_test_leakage_prevented",
+            "original_text": "Jai Jawan – Jai Kisan",
+            "normalized_key": "jai jawan – jai kisan",
+            "matching_test_ids": [
+                "tenglish_blog_test_000144",
+                "tenglish_blog_test_000160"
+            ],
+            "matching_test_samples": [
+                "Jai Jawan – Jai Kisan",
+                "Jai Jawan – Jai Kisan"
+            ],
+            "match_type": "Exact Text Match"
+        },
+        {
+            "sentence_id": "lid_quarantined_004161",
+            "original_sentence_id": "tenglish_blog_train_000350",
+            "source": "Telugu-English",
+            "subset": "Blog",
+            "quarantine_reason": "cross_split_test_leakage_prevented",
+            "original_text": "Jai Jawan – Jai Kisan",
+            "normalized_key": "jai jawan – jai kisan",
+            "matching_test_ids": [
+                "tenglish_blog_test_000144",
+                "tenglish_blog_test_000160"
+            ],
+            "matching_test_samples": [
+                "Jai Jawan – Jai Kisan",
+                "Jai Jawan – Jai Kisan"
+            ],
+            "match_type": "Exact Text Match"
+        },
+        {
+            "sentence_id": "lid_quarantined_000048",
+            "original_sentence_id": "comi_lid_train_000001",
+            "source": "COMI-LINGUA",
+            "subset": "COMI-LINGUA",
+            "quarantine_reason": "cross_split_test_leakage_prevented",
+            "original_text": "इस स्पोकन ट्यूटोरियल में हम usb driver संस्थापित करने के लिए कंप्यूटर और sbhs के बीच फिज़िकल कम्युनिकेशन सेटअप करना सीखे",
+            "normalized_key": "इस स्पोकन ट्यूटोरियल में हम usb driver संस्थापित करने के लिए",
+            "matching_test_ids": [
+                "comi_lid_test_003232"
+            ],
+            "matching_test_samples": [
+                "इस स्पोकन ट्यूटोरियल में हम usb driver संस्थापित करने के लिए कंप्यूटर और sbhs के"
+            ],
+            "match_type": "Exact Text Match"
+        },
+        {
+            "sentence_id": "lid_quarantined_000049",
+            "original_sentence_id": "comi_lid_train_000002",
+            "source": "COMI-LINGUA",
+            "subset": "COMI-LINGUA",
+            "quarantine_reason": "cross_split_test_leakage_prevented",
+            "original_text": "बाद के tutorials में हम अपने logos को बेहतर बनाने के लिए इसके size को बदलना सीखेंगे|",
+            "normalized_key": "बाद के tutorials में हम अपने logos को बेहतर बनाने के लिए इसक",
+            "matching_test_ids": [
+                "comi_lid_test_003037"
+            ],
+            "matching_test_samples": [
+                "बाद के tutorials में हम अपने logos को बेहतर बनाने के लिए इसके size को बदलना सीखे"
+            ],
+            "match_type": "Exact Text Match"
+        },
+        {
+            "sentence_id": "lid_quarantined_000050",
+            "original_sentence_id": "comi_lid_train_000013",
+            "source": "COMI-LINGUA",
+            "subset": "COMI-LINGUA",
+            "quarantine_reason": "cross_split_test_leakage_prevented",
+            "original_text": "Bollywood की मशहूर एक्ट्रेस नीना गुप्‍ता (Neena Gupta) को हमेशा से उनके बिंदास अंदाज के लिए जाना जाता है।",
+            "normalized_key": "bollywood की मशहूर एक्ट्रेस नीना गुप्‍ता (neena gupta) को हम",
+            "matching_test_ids": [
+                "comi_lid_test_001747"
+            ],
+            "matching_test_samples": [
+                "Bollywood की मशहूर एक्ट्रेस नीना गुप्‍ता (Neena Gupta) को हमेशा से उनके बिंदास अ"
+            ],
+            "match_type": "Exact Text Match"
+        },
+        {
+            "sentence_id": "lid_quarantined_000051",
+            "original_sentence_id": "comi_lid_train_000027",
+            "source": "COMI-LINGUA",
+            "subset": "COMI-LINGUA",
+            "quarantine_reason": "cross_split_test_leakage_prevented",
+            "original_text": "सिकंदर कंपू निवासी विजय कुमार जैन (Vijay Kumar Jain) (53) को रविवार की रात को चूहे ने काट (Mice cut) लिया था।",
+            "normalized_key": "सिकंदर कंपू निवासी विजय कुमार जैन (vijay kumar jain) (53) को",
+            "matching_test_ids": [
+                "comi_lid_test_003078"
+            ],
+            "matching_test_samples": [
+                "सिकंदर कंपू निवासी विजय कुमार जैन (Vijay Kumar Jain) (53) को रविवार की रात को चू"
+            ],
+            "match_type": "Exact Text Match"
+        },
+        {
+            "sentence_id": "lid_quarantined_000023",
+            "original_sentence_id": "tenglish_twitter_test_000670",
+            "source": "Telugu-English",
+            "subset": "Twitter",
+            "quarantine_reason": "test_label_conflict",
+            "original_text": "Arrey hooooooo",
+            "normalized_key": "arrey hooooooo",
+            "matching_test_ids": [
+                "tenglish_twitter_test_000670",
+                "tenglish_twitter_test_006928"
+            ],
+            "matching_test_samples": [
+                "Arrey hooooooo",
+                "arrey hooooooo"
+            ],
+            "match_type": "Exact Text Match"
+        },
+        {
+            "sentence_id": "lid_quarantined_000024",
+            "original_sentence_id": "tenglish_twitter_test_006928",
+            "source": "Telugu-English",
+            "subset": "Twitter",
+            "quarantine_reason": "test_label_conflict",
+            "original_text": "arrey hooooooo",
+            "normalized_key": "arrey hooooooo",
+            "matching_test_ids": [
+                "tenglish_twitter_test_000670",
+                "tenglish_twitter_test_006928"
+            ],
+            "matching_test_samples": [
+                "Arrey hooooooo",
+                "arrey hooooooo"
+            ],
+            "match_type": "Exact Text Match"
+        },
+        {
+            "sentence_id": "lid_quarantined_004306",
+            "original_sentence_id": "comi_lid_train_005512",
+            "source": "COMI-LINGUA",
+            "subset": "COMI-LINGUA",
+            "quarantine_reason": "train_label_conflict",
+            "original_text": "Published:  Feb 01, 2025, 02:17 PM IST Share Budget 2025 Tech Announcment : वित्त मंत्री निर्मला सीतारमण ने आज केंद्रीय ",
+            "normalized_key": "published : feb 01 , 2025 , 02 : 17 pm ist share budget 2025",
+            "matching_test_ids": [],
+            "matching_test_samples": [],
+            "match_type": "Normalization Match (Tokens/Case-Fold)"
+        }
+    ]
+}

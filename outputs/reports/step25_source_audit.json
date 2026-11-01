@@ -1,0 +1,359 @@
+{
+  "audit_metadata": {
+    "step": "25C",
+    "title": "External Dataset Source Audit and Local Integrity Verification",
+    "timestamp_utc": "2026-10-31T12:17:33.174298+00:00",
+    "max_sample_inspection_cap": 20,
+    "samples_actually_inspected_bht25": 20,
+    "inspection_guarantees": [
+      "Zero complete datasets downloaded",
+      "Zero gated repositories accessed or bypassed",
+      "Zero authentication credentials or API tokens used",
+      "Zero candidate sentences created or copied",
+      "Zero modifications to existing unified or custom datasets"
+    ]
+  },
+  "pre_audit_integrity": {
+    "custom_files": {
+      "candidate_sentences.jsonl": {
+        "exists": true,
+        "size_bytes": 0,
+        "line_count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "reviewed_sentences.jsonl": {
+        "exists": true,
+        "size_bytes": 0,
+        "line_count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "rejected_sentences.jsonl": {
+        "exists": true,
+        "size_bytes": 0,
+        "line_count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "dataset_manifest.json": {
+        "exists": true,
+        "size_bytes": 4946,
+        "line_count": 0,
+        "sha256": "8293c191cc28f9148542decd6ce88ba37a253753d3a09d0c49ff4437b4378bd1"
+      }
+    },
+    "all_custom_jsonl_empty": true,
+    "processed_dir_exists": true
+  },
+  "audited_sources": {
+    "ai4bharat_indiclid": {
+      "source_name": "AI4Bharat IndicLID & Bhasha-Abhijnaanam Benchmark",
+      "public_url": "https://github.com/AI4Bharat/IndicLID",
+      "secondary_url": "https://huggingface.co/datasets/ai4bharat/Bhasha-Abhijnaanam",
+      "access_status": "Public direct access (GitHub release zips and Hugging Face dataset card)",
+      "metadata_observed": {
+        "repository": "https://github.com/AI4Bharat/IndicLID",
+        "paper": "Bhasha-Abhijnaanam: Native-script and romanized Language Identification for 22 Indic languages (arXiv:2305.15814)",
+        "classes_supported": 47,
+        "bhasha_abhijnaanam_test_examples": {
+          "native_telugu": 5751,
+          "romanized_telugu": 4767,
+          "native_hindi": 5617,
+          "romanized_hindi": 4606
+        },
+        "record_fields": [
+          "unique_identifier",
+          "native sentence",
+          "romanized sentence",
+          "language",
+          "script",
+          "source"
+        ],
+        "training_resources": [
+          "native_script_train_valid_data.zip",
+          "roman_script_train_valid_data.zip",
+          "parallel_romanized_train_data.zip"
+        ]
+      },
+      "licence_observed": {
+        "code_and_models": "MIT License (covers repo code and trained models)",
+        "training_archives": "Aggregated from crawled web corpora (IndicCorp, Dakshina, IndicXlit, Samanantar); separate open research terms apply; MIT does not automatically cover underlying training archives",
+        "bhasha_abhijnaanam_benchmark": "CC0-1.0 (Declared on dataset card for manually collected data)"
+      },
+      "language_and_script": "22 Indic languages in native scripts and Romanized transliteration; native Telugu (Telugu script), Roman Telugu (Latin script), Hindi (Devanagari and Latin)",
+      "sample_count_actually_inspected": 0,
+      "sample_inspection_method": "Public repository README, release manifests, and Hugging Face dataset card metadata inspection (zero rows downloaded to avoid benchmark contamination)",
+      "suitability_classifications": {
+        "category_A_native_telugu": "REFERENCE ONLY (Bhasha-Abhijnaanam is an evaluation benchmark; must NOT be used for candidate training curation to avoid leakage. Training data is FastText sentence-level)",
+        "category_B_english_telugu": "NOT SUITABLE (Sentence-level monolingual/transliterated buckets; no token-level code-mixing)",
+        "category_C_hindi_telugu": "NOT SUITABLE (No intra-sentential code-mixed sentences)",
+        "category_D_english_hindi_telugu": "NOT SUITABLE (Completely absent)"
+      },
+      "limitations": [
+        "Data is sentence-level only (FastText format '__label__<code_script> <sentence>') without token-level LID boundaries.",
+        "Bhasha-Abhijnaanam test set must remain strictly an external out-of-distribution evaluation benchmark; copying sentences into candidate_sentences.jsonl is barred."
+      ]
+    },
+    "sudeshna84_bht25": {
+      "source_name": "BHT25: Bengali-Hindi-Telugu Parallel Corpus for Literary Machine Translation",
+      "public_url": "https://huggingface.co/datasets/sudeshna84/BHT25",
+      "secondary_url": "https://doi.org/10.1016/j.dib.2026.112775",
+      "access_status": "Public direct access (Apache Parquet on Hugging Face; no gating)",
+      "metadata_observed": {
+        "reported_row_count": 27149,
+        "splits": [
+          "train"
+        ],
+        "fields": [
+          "id",
+          "bn",
+          "hi",
+          "te"
+        ],
+        "doi": "10.1016/j.dib.2026.112775",
+        "publisher": "Sudeshna Sani, Suryakanth V. Gangashetty, Samudravijaya K, Anik Nandi, Aruna Priya, Vineeth Kumar, Akhilesh Kumar Dubey (Data in Brief 2026)",
+        "reported_quality": {
+          "human_validation_sample_size": 500,
+          "semantic_alignment_accuracy": "75.8% (sample-based, not individual verification of all 27,149 rows)",
+          "suboptimal_alignment_triplets": "5.8% (sample-based)",
+          "estimated_ocr_error_rate": "<0.5%",
+          "domain_bias": "Literary domain (Rabindranath Tagore and Sarat Chandra Chattopadhyay)"
+        }
+      },
+      "licence_observed": {
+        "licence": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+        "spdx_id": "CC-BY-4.0",
+        "commercial_allowed": true,
+        "derivatives_allowed": true,
+        "share_alike_clause": false,
+        "attribution_obligations": "Must cite Sani et al. (Data in Brief 2026), provide link to CC BY 4.0, and indicate if changes were made."
+      },
+      "language_and_script": "Bengali (Bengali script), Hindi (Devanagari script), Telugu (Telugu script)",
+      "sample_count_actually_inspected": 20,
+      "sample_inspection_method": "Public Hugging Face datasets-server REST API streaming (inspected 20 sample triplets without downloading full dataset)",
+      "sample_records_summary": [
+        {
+          "id": "BHT25_00001",
+          "hi_snippet": "हुगली जिले का सप्तग्राम-उसमें दो भाई नील...",
+          "te_snippet": "హుగ్లీ జిల్లాలోని సప్తగ్రామ్-దీనికి ఇద్ద..."
+        },
+        {
+          "id": "BHT25_00002",
+          "hi_snippet": "नीलाम्बर मुर्दे जलाने, कीर्तन करने, ढोल ...",
+          "te_snippet": "మృతదేహాలను దహనం చేయడంలో, కీర్తనలు చేయడంల..."
+        },
+        {
+          "id": "BHT25_00003",
+          "hi_snippet": "उसका कद लम्बा, बदन गोरा, बहुत ही चुस्त, ...",
+          "te_snippet": "అతను పొడవైనవాడు, తెల్లని చర్మం గలవాడు, చ..."
+        },
+        {
+          "id": "BHT25_00004",
+          "hi_snippet": "दूसरों के उपकार के मामले में उसकी ख्याति...",
+          "te_snippet": "ఇతరులకు సహాయం చేయడంలో అతనికి గొప్ప పేరు ..."
+        },
+        {
+          "id": "BHT25_00005",
+          "hi_snippet": "गंवारपन में भी वह गाँव-भर में बदनाम था...",
+          "te_snippet": "అతను తన గ్రామీణ స్వభావానికి మొత్తం గ్రామ..."
+        }
+      ],
+      "suitability_classifications": {
+        "category_A_native_telugu": "SUITABLE WITH CONDITIONS (Telugu text is human-translated under CC BY 4.0; requires 100% human review of all selected sentences for length, OCR, and alignment)",
+        "category_B_english_telugu": "NOT SUITABLE (Contains no English text; is not code-mixed)",
+        "category_C_hindi_telugu": "REFERENCE ONLY (Parallel sentences; must NOT be concatenated to manufacture artificial code-mixing)",
+        "category_D_english_hindi_telugu": "NOT SUITABLE (No trilingual code-mixing)"
+      },
+      "limitations": [
+        "Parallel corpus, NOT a code-mixed dataset. Combining Hindi and Telugu parallel sentences is strictly forbidden by project guidelines.",
+        "Literary domain bias; lacks conversational and modern digital colloquial phrasing.",
+        "5.8% suboptimal alignment rate requires human spot-checking when sampling."
+      ]
+    },
+    "ltrc_hindi_telugu": {
+      "source_name": "The LTRC Hindi-Telugu Parallel Corpus",
+      "public_url": "https://huggingface.co/datasets/ltrciiith/The-LTRC-Hindi-Telugu-Parallel-Corpus",
+      "access_status": "Gated access (Requires agreement to share account information with repository authors; NOT bypassed)",
+      "metadata_observed": {
+        "current_hf_listing_sentences": 506178,
+        "publication_corpus_descriptions": "Publication describes a 700K qualitative corpus and a 535K developed corpus across domains: Chemistry, Law, News, Healthcare, Education, Open education books",
+        "schema_fields": [
+          "domain",
+          "source_language",
+          "target_language",
+          "source_text",
+          "target_text"
+        ],
+        "publisher": "Language Technologies Research Centre (LTRC), IIIT Hyderabad"
+      },
+      "licence_observed": {
+        "licence": "Creative Commons Attribution Non-Commercial 4.0 International (CC-BY-NC-4.0)",
+        "spdx_id": "CC-BY-NC-4.0",
+        "commercial_allowed": false,
+        "share_alike_clause": false,
+        "gated_condition": "Access requires agreement to share account details with authors."
+      },
+      "language_and_script": "Hindi (Devanagari script), Telugu (Telugu script)",
+      "sample_count_actually_inspected": 0,
+      "sample_inspection_method": "Public Hugging Face repository metadata inspection only (zero records fetched; no gate agreement submitted)",
+      "suitability_classifications": {
+        "category_A_native_telugu": "REFERENCE ONLY (Gated access; BHT25 provides sufficient ungated CC BY 4.0 native Telugu)",
+        "category_B_english_telugu": "NOT SUITABLE (No English tokens)",
+        "category_C_hindi_telugu": "REFERENCE ONLY (Parallel sentences; cannot be combined to manufacture code-mixing)",
+        "category_D_english_hindi_telugu": "NOT SUITABLE (No trilingual data)"
+      },
+      "limitations": [
+        "Gated access requires agreement to share user account info; strictly barred from automated download by project rules.",
+        "Parallel corpus, not code-mixed."
+      ]
+    },
+    "mozilla_telugu_text": {
+      "source_name": "Telugu Text Corpus (Mozilla Data Collective)",
+      "public_url": "https://mozilladatacollective.com/datasets/cmq82aqqv0110l207drh50nw4",
+      "access_status": "Public catalog access on Mozilla Data Collective",
+      "metadata_observed": {
+        "dataset_id": "cmq82aqqv0110l207drh50nw4",
+        "size": "19.87 MB",
+        "format": "TXT format",
+        "steward": "MirasAI",
+        "legal_owner": "Jnana Yoga Sadhana",
+        "authorship": "Four authors across multiple writing domains (news, blogs, literature, spiritual essays)"
+      },
+      "licence_observed": {
+        "licence": "Creative Commons Attribution Non Commercial Share Alike 4.0 International (CC-BY-NC-SA-4.0)",
+        "spdx_id": "CC-BY-NC-SA-4.0",
+        "commercial_allowed": false,
+        "share_alike_clause": true,
+        "share_alike_warning": "Viral copyleft: Any derivative dataset publicly distributed must be licensed under the identical CC-BY-NC-SA-4.0 license."
+      },
+      "language_and_script": "Telugu (Telugu script)",
+      "sample_count_actually_inspected": 0,
+      "sample_inspection_method": "Mozilla Data Collective metadata and dataset card inspection (no bulk file download)",
+      "suitability_classifications": {
+        "category_A_native_telugu": "SUITABLE WITH CONDITIONS (High-quality native Telugu, but derivative dataset must comply with CC-BY-NC-SA-4.0 Share-Alike terms if redistributed)",
+        "category_B_english_telugu": "NOT SUITABLE (Monolingual Telugu only)",
+        "category_C_hindi_telugu": "NOT SUITABLE (Monolingual Telugu only)",
+        "category_D_english_hindi_telugu": "NOT SUITABLE (Monolingual Telugu only)"
+      },
+      "limitations": [
+        "Share-Alike clause forces downstream works under CC-BY-NC-SA-4.0.",
+        "Requires institutional/faculty review before redistributing derived datasets."
+      ]
+    },
+    "mozilla_common_voice_telugu": {
+      "source_name": "Mozilla Common Voice Telugu 27.0 (Text Prompts)",
+      "public_url": "https://mozilladatacollective.com/datasets/cmu617jv900jfo107hpm9aj8d",
+      "access_status": "Public catalog access on Mozilla Data Collective",
+      "metadata_observed": {
+        "dataset_id": "cmu617jv900jfo107hpm9aj8d",
+        "total_sentences": 20072,
+        "validated_sentences": 372,
+        "unvalidated_sentences": 19700,
+        "rehosting_clause": "The dataset page explicitly prohibits rehosting or resharing the dataset."
+      },
+      "licence_observed": {
+        "licence": "Creative Commons Zero v1.0 Universal (CC0-1.0)",
+        "spdx_id": "CC0-1.0",
+        "rehosting_restriction": "Explicit terms prohibit rehosting or resharing the corpus."
+      },
+      "language_and_script": "Telugu (Telugu script)",
+      "sample_count_actually_inspected": 0,
+      "sample_inspection_method": "Dataset card metadata inspection only (zero sentences copied into project)",
+      "suitability_classifications": {
+        "category_A_native_telugu": "REFERENCE ONLY (Use as external reference only until redistribution condition is clarified; do not copy sentences into candidate dataset)",
+        "category_B_english_telugu": "NOT SUITABLE (Monolingual speech prompts)",
+        "category_C_hindi_telugu": "NOT SUITABLE (Monolingual Telugu only)",
+        "category_D_english_hindi_telugu": "NOT SUITABLE (Monolingual Telugu only)"
+      },
+      "limitations": [
+        "Rehosting/resharing prohibition contradicts typical CC0-1.0 terms; redistribution condition is legally ambiguous.",
+        "High proportion of unvalidated sentences (19,700 out of 20,072)."
+      ]
+    },
+    "ai4bharat_indiccorp_telugu": {
+      "source_name": "AI4Bharat IndicCorp Telugu",
+      "public_url": "https://indicnlp.ai4bharat.org/corpora/",
+      "access_status": "Public download links from AI4Bharat servers",
+      "metadata_observed": {
+        "reported_sentences": "47.9 million sentences",
+        "reported_tokens": "674 million tokens",
+        "format": "One sentence per line, plain text",
+        "provenance": "Scraped from diverse web sources and news portals"
+      },
+      "licence_observed": {
+        "licence": "No clear data licence found on public page",
+        "status": "LICENCE UNCLEAR",
+        "note": "Web-scraped corpus without an explicit open-source data license or copyright declaration on the corpora index page."
+      },
+      "language_and_script": "Telugu (Telugu script)",
+      "sample_count_actually_inspected": 0,
+      "sample_inspection_method": "Public index metadata inspection (no data downloaded)",
+      "suitability_classifications": {
+        "category_A_native_telugu": "LICENCE UNCLEAR (Massive sentence volume, but unclear data licensing makes it unsuitable for redistribution without legal clarification)",
+        "category_B_english_telugu": "NOT SUITABLE (Monolingual Telugu crawl)",
+        "category_C_hindi_telugu": "NOT SUITABLE (Monolingual Telugu only)",
+        "category_D_english_hindi_telugu": "NOT SUITABLE (Monolingual Telugu only)"
+      },
+      "limitations": [
+        "Lack of clear licensing terms poses redistribution risks.",
+        "Classified strictly as LICENCE UNCLEAR per project mandate."
+      ]
+    }
+  },
+  "suitability_matrix": {
+    "BHT25": {
+      "category_A_native_telugu": "SUITABLE WITH CONDITIONS",
+      "category_B_english_telugu": "NOT SUITABLE",
+      "category_C_hindi_telugu": "REFERENCE ONLY",
+      "category_D_english_hindi_telugu": "NOT SUITABLE",
+      "rationale": "CC BY 4.0; 27,149 triplets (sample validation 75.8%); requires 100% human review; parallel sentences must NOT be concatenated."
+    },
+    "Mozilla_Telugu_Text": {
+      "category_A_native_telugu": "SUITABLE WITH CONDITIONS",
+      "category_B_english_telugu": "NOT SUITABLE",
+      "category_C_hindi_telugu": "NOT SUITABLE",
+      "category_D_english_hindi_telugu": "NOT SUITABLE",
+      "rationale": "CC-BY-NC-SA-4.0 requires downstream derivative redistribution to also carry Share-Alike license."
+    },
+    "Mozilla_Common_Voice_Telugu": {
+      "category_A_native_telugu": "REFERENCE ONLY",
+      "category_B_english_telugu": "NOT SUITABLE",
+      "category_C_hindi_telugu": "NOT SUITABLE",
+      "category_D_english_hindi_telugu": "NOT SUITABLE",
+      "rationale": "Page explicitly prohibits rehosting/resharing despite CC0 tag; use as reference only until clarified."
+    },
+    "LTRC_Hindi_Telugu": {
+      "category_A_native_telugu": "REFERENCE ONLY",
+      "category_B_english_telugu": "NOT SUITABLE",
+      "category_C_hindi_telugu": "REFERENCE ONLY",
+      "category_D_english_hindi_telugu": "NOT SUITABLE",
+      "rationale": "Gated access requiring account agreement; not downloaded. Parallel corpus, not code-mixed."
+    },
+    "AI4Bharat_IndicLID_Training": {
+      "category_A_native_telugu": "REFERENCE ONLY",
+      "category_B_english_telugu": "NOT SUITABLE",
+      "category_C_hindi_telugu": "NOT SUITABLE",
+      "category_D_english_hindi_telugu": "NOT SUITABLE",
+      "rationale": "Sentence-level FastText format; underlying web crawl licensing unclear; no token boundaries."
+    },
+    "AI4Bharat_Bhasha_Abhijnaanam": {
+      "category_A_native_telugu": "REFERENCE ONLY",
+      "category_B_english_telugu": "NOT SUITABLE",
+      "category_C_hindi_telugu": "NOT SUITABLE",
+      "category_D_english_hindi_telugu": "NOT SUITABLE",
+      "rationale": "Evaluation benchmark test set. Barred from candidate/training curation to prevent leakage."
+    },
+    "AI4Bharat_IndicCorp_Telugu": {
+      "category_A_native_telugu": "LICENCE UNCLEAR",
+      "category_B_english_telugu": "NOT SUITABLE",
+      "category_C_hindi_telugu": "NOT SUITABLE",
+      "category_D_english_hindi_telugu": "NOT SUITABLE",
+      "rationale": "Web-scraped corpus with no clear data license declared on public page."
+    },
+    "Human_Authored_Elicitation": {
+      "category_A_native_telugu": "N/A (Abundant public data)",
+      "category_B_english_telugu": "SUITABLE (Primary Path)",
+      "category_C_hindi_telugu": "SUITABLE (Primary Path)",
+      "category_D_english_hindi_telugu": "SUITABLE (Primary Path)",
+      "rationale": "Token-level native Telugu code-mixed sentences are completely absent from public corpora."
+    }
+  }
+}

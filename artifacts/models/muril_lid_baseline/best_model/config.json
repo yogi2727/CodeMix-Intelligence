@@ -1,0 +1,38 @@
+{
+  "_name_or_path": "google/muril-base-cased",
+  "architectures": [
+    "BertForTokenClassification"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "embedding_size": 768,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "EN",
+    "1": "HI",
+    "2": "TE",
+    "3": "OTHER"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "EN": 0,
+    "HI": 1,
+    "OTHER": 3,
+    "TE": 2
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "torch_dtype": "float32",
+  "transformers_version": "4.46.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 197285
+}

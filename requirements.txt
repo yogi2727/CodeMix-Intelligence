@@ -1,0 +1,43 @@
+# ==============================================================================
+# CodeMix Intelligence: Dependencies & Environment Requirements
+# ==============================================================================
+
+# Core Deep Learning Framework
+torch>=2.1.0
+torchvision
+torchaudio
+
+# Hugging Face NLP Ecosystem
+transformers>=4.36.0
+datasets>=2.16.0
+tokenizers>=0.15.0
+accelerate>=0.26.0
+evaluate>=0.4.1
+seqeval>=1.2.2
+
+# Data Processing & Scientific Computing
+numpy>=1.24.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+scipy>=1.11.0
+
+# Visualization & Metrics Tracking
+matplotlib>=3.8.0
+seaborn>=0.13.0
+tensorboard>=2.15.0
+
+# Backend Web API
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+pydantic>=2.5.0
+python-multipart>=0.0.6
+
+# Configuration & Utilities
+pyyaml>=6.0.1
+python-dotenv>=1.0.0
+tqdm>=4.66.0
+requests>=2.31.0
+
+# Testing & Code Quality
+pytest>=7.4.0
+flake8>=7.0.0

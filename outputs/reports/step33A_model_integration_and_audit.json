@@ -1,0 +1,320 @@
+{
+  "meta": {
+    "project": "CodeMix Intelligence",
+    "step": "Step 33A - Integrate and Verify Trained Model Artifacts Locally",
+    "timestamp_utc": "2026-11-01T06:45:48.252989+00:00",
+    "status": "ARTIFACTS_INTEGRATED_AND_VERIFIED"
+  },
+  "zip_archives_audit": {
+    "model_archive": {
+      "filename": "muril_lid_best_model.zip",
+      "size_bytes": 881225333,
+      "sha256": "a5439181f02fece996bf526629c70da20166a53450fb615a44f343d8cbf8a827",
+      "identified_by": [
+        "config.json",
+        "model.safetensors",
+        "vocab.txt",
+        "tokenizer_config.json",
+        "special_tokens_map.json"
+      ]
+    },
+    "evaluation_archive": {
+      "filename": "muril_lid_evaluation_results.zip",
+      "size_bytes": 3823,
+      "sha256": "bbe1585281070b78baa98b0d4e6ae5e64ae9fe07c1c9ed31abb7cd08677cc876",
+      "identified_by": [
+        "locked_test_results.json",
+        "source_wise_results.json",
+        "source_subset_metrics_posthoc.json",
+        "confusion_matrix.csv",
+        "LOCKED_TEST_EVALUATION_COMPLETE.json"
+      ]
+    }
+  },
+  "extracted_model_artifacts": {
+    "canonical_directory": "C:\\Users\\YOGESWAR\\OneDrive\\Apps\\CodeMix-Intelligence\\artifacts\\models\\muril_lid_baseline\\best_model",
+    "files": {
+      "config.json": {
+        "size_bytes": 830,
+        "sha256": "357621e8db6207b6c67d5f6e0f7e25289f1ba02ceebb46943c7906c36b46b43c"
+      },
+      "model.safetensors": {
+        "size_bytes": 947898192,
+        "sha256": "714defc6f90659ebc25e5e011a9101579d36cf9f3b4c57165c0614f1bc744bae"
+      },
+      "special_tokens_map.json": {
+        "size_bytes": 125,
+        "sha256": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3"
+      },
+      "tokenizer_config.json": {
+        "size_bytes": 1266,
+        "sha256": "9b05d6704f088aeb70b3c474f20200f36fa731a72bdf49484af4130b32d99b42"
+      },
+      "training_args.bin": {
+        "size_bytes": 5777,
+        "sha256": "e9225752e88d0b0120476d21d6f2dc57efbcadb3a1a86ec6cf61f4476c833f7e"
+      },
+      "vocab.txt": {
+        "size_bytes": 3162999,
+        "sha256": "b96cc938b4009d063a605930cb82aef2c91ee52a94e94e6fcb78510d4ee5310b"
+      }
+    },
+    "safetensors_size_bytes": 947898192,
+    "safetensors_sha256": "714defc6f90659ebc25e5e011a9101579d36cf9f3b4c57165c0614f1bc744bae",
+    "all_required_files_present": true
+  },
+  "extracted_evaluation_artifacts": {
+    "canonical_directory": "C:\\Users\\YOGESWAR\\OneDrive\\Apps\\CodeMix-Intelligence\\artifacts\\evaluation\\muril_lid_baseline",
+    "files": {
+      "confusion_matrix.csv": {
+        "size_bytes": 82,
+        "sha256": "afe9ba847f091b5ae17c0359ddb0492e5e8db20faf577a3950ed395fa4898254"
+      },
+      "LOCKED_TEST_EVALUATION_COMPLETE.json": {
+        "size_bytes": 345,
+        "sha256": "84577929f71adbbb2956bd1fca996d6ce271feca3c9662705dfa733fd04318ab"
+      },
+      "locked_test_results.json": {
+        "size_bytes": 5409,
+        "sha256": "83c9109806ceba62bf36269174ff7739076bf7bab635024aee2eee1677f6ce6a"
+      },
+      "source_subset_metrics_posthoc.json": {
+        "size_bytes": 2597,
+        "sha256": "e097ccd83c0cc62d223c9e9f3c17fdda64ad295085bfc20d8dad25853421eaab"
+      },
+      "source_wise_results.json": {
+        "size_bytes": 1710,
+        "sha256": "07038111317446e555deff1359c4a1eb4ce7f40ce2279b4e21d251d02aeff41e"
+      }
+    },
+    "all_required_files_present": true,
+    "completion_receipt": {
+      "status": "COMPLETED",
+      "checkpoint": "checkpoint-5000",
+      "test_sha256": "58a222754ef1b293ae719fd0acc86f86b22fe3a504bbd31119d787361890daca",
+      "test_records": 14855,
+      "evaluated_supervised_tokens": 199219,
+      "results_file": "/content/drive/MyDrive/CodeMix_Intelligence/muril_lid_baseline/locked_test_evaluation/locked_test_results.json"
+    },
+    "overall_test_metrics": {
+      "accuracy": 0.9817437091843649,
+      "macro_precision": 0.9810943178244103,
+      "macro_recall": 0.9791060911164766,
+      "macro_f1": 0.9800920995833442,
+      "per_class": {
+        "EN": {
+          "precision": 0.9746925958743335,
+          "recall": 0.9763317294965821,
+          "f1": 0.975511474134578,
+          "support": 64221
+        },
+        "HI": {
+          "precision": 0.9859240243445153,
+          "recall": 0.9888904961666426,
+          "f1": 0.987405032209608,
+          "support": 69130
+        },
+        "TE": {
+          "precision": 0.9881305637982196,
+          "recall": 0.9860779634049324,
+          "f1": 0.9871031965490543,
+          "support": 45252
+        },
+        "OTHER": {
+          "precision": 0.9756300872805728,
+          "recall": 0.9651241753977493,
+          "f1": 0.9703486954401366,
+          "support": 20616
+        }
+      },
+      "confusion_matrix": [
+        [
+          62701,
+          704,
+          449,
+          367
+        ],
+        [
+          678,
+          68362,
+          1,
+          89
+        ],
+        [
+          427,
+          162,
+          44622,
+          41
+        ],
+        [
+          523,
+          110,
+          86,
+          19897
+        ]
+      ],
+      "classification_report": {
+        "EN": {
+          "precision": 0.9746925958743335,
+          "recall": 0.9763317294965821,
+          "f1-score": 0.975511474134578,
+          "support": 64221.0
+        },
+        "HI": {
+          "precision": 0.9859240243445153,
+          "recall": 0.9888904961666426,
+          "f1-score": 0.987405032209608,
+          "support": 69130.0
+        },
+        "TE": {
+          "precision": 0.9881305637982196,
+          "recall": 0.9860779634049324,
+          "f1-score": 0.9871031965490543,
+          "support": 45252.0
+        },
+        "OTHER": {
+          "precision": 0.9756300872805728,
+          "recall": 0.9651241753977493,
+          "f1-score": 0.9703486954401366,
+          "support": 20616.0
+        },
+        "accuracy": 0.9817437091843649,
+        "macro avg": {
+          "precision": 0.9810943178244103,
+          "recall": 0.9791060911164766,
+          "f1-score": 0.9800920995833442,
+          "support": 199219.0
+        },
+        "weighted avg": {
+          "precision": 0.981739368006843,
+          "recall": 0.9817437091843649,
+          "f1-score": 0.981737358447129,
+          "support": 199219.0
+        }
+      }
+    },
+    "validation_comparison": {
+      "validation_accuracy": 0.978195,
+      "test_accuracy": 0.9817437091843649,
+      "accuracy_difference_percentage_points": 0.35487091843648955,
+      "validation_macro_f1": 0.9749040372711093,
+      "test_macro_f1": 0.9800920995833442,
+      "macro_f1_difference_percentage_points": 0.5188062312234898
+    },
+    "source_subset_metrics": {
+      "COMI-LINGUA": {
+        "records": 4944,
+        "supervised_tokens": 105588,
+        "accuracy": 0.9811152782513164,
+        "present_classes": [
+          "EN",
+          "HI",
+          "OTHER"
+        ],
+        "macro_precision_present_classes": 0.9763292910089335,
+        "macro_recall_present_classes": 0.9691777905144329,
+        "macro_f1_present_classes": 0.9726550537483093,
+        "per_class": {
+          "EN": {
+            "precision": 0.962150753049762,
+            "recall": 0.9729759062296506,
+            "f1": 0.9675330515334113,
+            "support": 27642
+          },
+          "HI": {
+            "precision": 0.9892339304836049,
+            "recall": 0.9888904961666426,
+            "f1": 0.9890621835122544,
+            "support": 69130
+          },
+          "OTHER": {
+            "precision": 0.9776031894934334,
+            "recall": 0.9456669691470054,
+            "f1": 0.961369926199262,
+            "support": 8816
+          }
+        }
+      },
+      "Telugu-English Blog": {
+        "records": 3105,
+        "supervised_tokens": 40775,
+        "accuracy": 0.9864132434089515,
+        "present_classes": [
+          "EN",
+          "TE",
+          "OTHER"
+        ],
+        "macro_precision_present_classes": 0.9757007248217833,
+        "macro_recall_present_classes": 0.9697766663211832,
+        "macro_f1_present_classes": 0.9727147249441122,
+        "per_class": {
+          "EN": {
+            "precision": 0.9846738442051931,
+            "recall": 0.9840506329113924,
+            "f1": 0.9843621399176955,
+            "support": 15800
+          },
+          "TE": {
+            "precision": 0.9904939809049398,
+            "recall": 0.9897954950844153,
+            "f1": 0.9901446148100504,
+            "support": 24107
+          },
+          "OTHER": {
+            "precision": 0.9519343493552169,
+            "recall": 0.9354838709677419,
+            "f1": 0.9436374201045904,
+            "support": 868
+          }
+        }
+      },
+      "Telugu-English Twitter": {
+        "records": 6806,
+        "supervised_tokens": 52856,
+        "accuracy": 0.9793968518238232,
+        "present_classes": [
+          "EN",
+          "TE",
+          "OTHER"
+        ],
+        "macro_precision_present_classes": 0.9818264277633254,
+        "macro_recall_present_classes": 0.9799783220377988,
+        "macro_f1_present_classes": 0.9808896992219923,
+        "per_class": {
+          "EN": {
+            "precision": 0.9840668415427961,
+            "recall": 0.9749266085952163,
+            "f1": 0.9794754019098272,
+            "support": 20779
+          },
+          "TE": {
+            "precision": 0.9854749133716239,
+            "recall": 0.9818396784109719,
+            "f1": 0.9836539372690231,
+            "support": 21145
+          },
+          "OTHER": {
+            "precision": 0.9759375283755561,
+            "recall": 0.9831686791072082,
+            "f1": 0.9795397584871269,
+            "support": 10932
+          }
+        }
+      }
+    }
+  },
+  "artifacts_readme": {
+    "path": "C:\\Users\\YOGESWAR\\OneDrive\\Apps\\CodeMix-Intelligence\\artifacts\\README.md",
+    "created": true,
+    "size_bytes": 5793
+  },
+  "application_stack_inspection": {
+    "backend_framework": "FastAPI (planned in requirements.txt, backend/ currently empty stub with __init__.py)",
+    "frontend_framework": "Modern Vanilla HTML5 / CSS / JavaScript (planned in README.md, frontend/ currently empty with .gitkeep)",
+    "existing_api_endpoints": [],
+    "existing_model_inference_services": "Stubs in src/models/ and src/inference/ (__init__.py only)",
+    "python_environment": "Python 3.14.3 virtual environment with PyTorch 2.15.0+cpu and Transformers 5.22.1",
+    "cleanest_integration_architecture": "1. Implement MuRILLIDPredictor in src/inference/predictor.py loading model from artifacts/models/muril_lid_baseline/best_model/.\n2. Create FastAPI REST API in backend/main.py with endpoints /api/health and /api/predict.\n3. Create responsive Vanilla HTML5/CSS/JS client in frontend/ interacting with backend API.\n4. Adheres 100% to repository architecture without creating duplicate backends or conflicting services."
+  },
+  "conflicts_or_missing_files": []
+}

@@ -1,0 +1,72 @@
+{
+  "release": {
+    "name": "CodeMix Intelligence V1.0.0 — MuRIL Language Identification Baseline",
+    "version": "1.0.0",
+    "status": "STABLE_RELEASE_FROZEN",
+    "created_at_utc": "2026-11-01T12:05:00Z"
+  },
+  "model_specification": {
+    "model_identity": "google/muril-base-cased",
+    "task": "token_level_language_identification",
+    "best_checkpoint": "checkpoint-5000",
+    "epochs_trained": 4,
+    "completed_training_steps": 5420,
+    "label_schema": {
+      "EN": 0,
+      "HI": 1,
+      "TE": 2,
+      "OTHER": 3
+    }
+  },
+  "weights_and_archives": {
+    "extracted_model_weights": {
+      "path": "artifacts/models/muril_lid_baseline/best_model/model.safetensors",
+      "size_bytes": 947898192,
+      "sha256": "714defc6f90659ebc25e5e011a9101579d36cf9f3b4c57165c0614f1bc744bae"
+    },
+    "original_model_zip": {
+      "filename": "muril_lid_best_model.zip",
+      "size_bytes": 881225333,
+      "sha256": "a5439181f02fece996bf526629c70da20166a53450fb615a44f343d8cbf8a827"
+    },
+    "original_evaluation_zip": {
+      "filename": "muril_lid_evaluation_results.zip",
+      "size_bytes": 3823,
+      "sha256": "bbe1585281070b78baa98b0d4e6ae5e64ae9fe07c1c9ed31abb7cd08677cc876"
+    }
+  },
+  "evaluation_metrics": {
+    "validation_set": {
+      "accuracy": 0.978195,
+      "macro_f1": 0.974904,
+      "supervised_tokens": 24902
+    },
+    "locked_test_set": {
+      "accuracy": 0.981744,
+      "macro_f1": 0.980092,
+      "supervised_tokens": 199219,
+      "per_class_f1": {
+        "EN": 0.975511,
+        "HI": 0.987405,
+        "TE": 0.987103,
+        "OTHER": 0.970349
+      }
+    }
+  },
+  "evaluation_result_files": [
+    "artifacts/evaluation/muril_lid_baseline/locked_test_results.json",
+    "artifacts/evaluation/muril_lid_baseline/source_wise_results.json",
+    "artifacts/evaluation/muril_lid_baseline/source_subset_metrics_posthoc.json",
+    "artifacts/evaluation/muril_lid_baseline/confusion_matrix.csv",
+    "artifacts/evaluation/muril_lid_baseline/LOCKED_TEST_EVALUATION_COMPLETE.json"
+  ],
+  "configuration_and_metadata_files": [
+    "configs/label_mapping.json",
+    "artifacts/models/muril_lid_baseline/best_model/config.json",
+    "artifacts/models/muril_lid_baseline/best_model/tokenizer_config.json",
+    "artifacts/models/muril_lid_baseline/best_model/special_tokens_map.json",
+    "artifacts/models/muril_lid_baseline/best_model/vocab.txt",
+    "artifacts/README.md"
+  ],
+  "checksum_audit_note": "outputs/reports/step33A_checksum_correction.md"
+}

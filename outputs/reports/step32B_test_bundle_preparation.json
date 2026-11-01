@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "project": "CodeMix Intelligence",
+    "task": "STEP 32B - Prepare Locked MuRIL Test-Evaluation Bundle",
+    "timestamp_utc": "2026-11-01T06:13:22.750480+00:00",
+    "status": "TEST_BUNDLE_CREATED_AND_VERIFIED",
+    "warnings_or_failures": []
+  },
+  "original_test_file": {
+    "location": "C:\\Users\\YOGESWAR\\OneDrive\\Apps\\CodeMix-Intelligence\\data\\processed\\language_identification\\test.jsonl",
+    "filename": "test.jsonl",
+    "size_bytes": 16230756,
+    "sha256": "58a222754ef1b293ae719fd0acc86f86b22fe3a504bbd31119d787361890daca",
+    "expected_sha256": "58a222754ef1b293ae719fd0acc86f86b22fe3a504bbd31119d787361890daca",
+    "sha256_match": true,
+    "record_count": 14855,
+    "expected_record_count": 14855,
+    "record_count_match": true,
+    "total_token_count": 211576,
+    "expected_token_count": 211576,
+    "token_count_match": true,
+    "source_wise_counts": {
+      "COMI-LINGUA": 4944,
+      "Telugu-English Blog": 3105,
+      "Telugu-English Twitter": 6806
+    },
+    "id_preservation": {
+      "sentence_id_present": true,
+      "original_sentence_id_present": true,
+      "source_record_id_present": true,
+      "source_field_present": true,
+      "subset_field_present": true
+    }
+  },
+  "test_bundle_archive": {
+    "location": "C:\\Users\\YOGESWAR\\OneDrive\\Apps\\CodeMix-Intelligence\\artifacts\\colab\\muril_lid_test_bundle.zip",
+    "size_bytes": 2213548,
+    "sha256": "7969f24f238e57e2b3245245149820742c31f1c1d63a552811a09f61a00e4956",
+    "archive_members": [
+      "test.jsonl",
+      "test_manifest.json"
+    ],
+    "exact_member_count": 2,
+    "extracted_test_sha256": "58a222754ef1b293ae719fd0acc86f86b22fe3a504bbd31119d787361890daca",
+    "extracted_test_sha256_match": true,
+    "train_jsonl_present": false,
+    "validation_jsonl_present": false,
+    "test_isolation_guaranteed": true
+  },
+  "test_manifest": {
+    "manifest_name": "MuRIL Baseline Locked Test-Evaluation Bundle Manifest",
+    "dataset_name": "CodeMix Intelligence Unified LID Dataset",
+    "task": "Token-Level Trilingual Language Identification",
+    "version": "1.0.0",
+    "creation_date_utc": "2026-11-01T06:13:22.510671+00:00",
+    "purpose": "Locked test evaluation only",
+    "governance_policy": "CRITICAL GOVERNANCE MANDATE: This locked test evaluation dataset must NOT be used for training, fine-tuning, hyperparameter tuning, feature selection, or checkpoint selection. It is reserved exclusively for the final empirical evaluation of the frozen MuRIL baseline model.",
+    "target_model": "google/muril-base-cased",
+    "label_mapping": {
+      "EN": 0,
+      "HI": 1,
+      "TE": 2,
+      "OTHER": 3
+    },
+    "ignore_label_id": -100,
+    "test_file_metadata": {
+      "original_filename": "test.jsonl",
+      "file_size_bytes": 16230756,
+      "sha256": "58a222754ef1b293ae719fd0acc86f86b22fe3a504bbd31119d787361890daca",
+      "record_count": 14855,
+      "total_token_count": 211576,
+      "source_wise_record_counts": {
+        "COMI-LINGUA": 4944,
+        "Telugu-English Blog": 3105,
+        "Telugu-English Twitter": 6806
+      }
+    },
+    "archive_members": [
+      "test.jsonl",
+      "test_manifest.json"
+    ],
+    "test_data_only": true,
+    "train_data_included": false,
+    "validation_data_included": false
+  }
+}

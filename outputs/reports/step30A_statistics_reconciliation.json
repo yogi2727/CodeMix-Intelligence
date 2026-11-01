@@ -1,0 +1,311 @@
+{
+  "meta": {
+    "project": "CodeMix Intelligence",
+    "step": "Step 30A - Validation Statistics Reconciliation and MuRIL Configuration Finalization",
+    "timestamp_utc": "2026-11-01T05:17:46.300746+00:00",
+    "status": "RECONCILED_AND_VERIFIED",
+    "local_environment_cpu_only": true
+  },
+  "discrepancy_reconciliation": {
+    "chat_reported_supervised": 70792,
+    "chat_reported_ignored": 3165,
+    "actual_supervised": 70992,
+    "actual_ignored": 2965,
+    "difference": 200,
+    "explanation": "The 200-token discrepancy originated exclusively as a clerical subtraction/transcription error in the conversational markdown summary table of Step 30 (which stated 70,792 supervised tokens instead of 70,992, and consequently stated 3,165 ignored tokens instead of 2,965). The underlying dataset validation.jsonl, the dataset manifest, the Step 30 JSON report artifact (step30_lid_training_readiness.json), and the Step 30 Markdown report table (line 51) already contained the correct value: 70,992 supervised tokens (95.99%) and 2,965 ignored tokens (4.01%), summing exactly to 73,957 total tokens. No underlying dataset record or label was ever incorrect or altered."
+  },
+  "validation_statistics": {
+    "split": "validation",
+    "records": 4820,
+    "total_tokens": 73957,
+    "supervised_tokens": 70992,
+    "ignored_tokens": 2965,
+    "length_mismatches": 0,
+    "source_label_counts": {
+      "EN": 19135,
+      "HI": 34316,
+      "TE": 10380,
+      "OTHER": 7161,
+      "NE": 2804,
+      "MIXED": 0,
+      "AMBIGUOUS": 0,
+      "NULL": 161
+    },
+    "model_label_counts": {
+      "EN_0": 19135,
+      "HI_1": 34316,
+      "TE_2": 10380,
+      "OTHER_3": 7161,
+      "IGNORED_minus100": 2965
+    },
+    "percentages_of_supervised": {
+      "EN": 26.9537,
+      "HI": 48.3378,
+      "TE": 14.6214,
+      "OTHER": 10.0871
+    },
+    "percentages_of_total": {
+      "EN": 25.8731,
+      "HI": 46.3999,
+      "TE": 14.0352,
+      "OTHER": 9.6827,
+      "NE": 3.7914,
+      "MIXED": 0.0,
+      "AMBIGUOUS": 0.0,
+      "NULL": 0.2177,
+      "supervised_total": 95.9909,
+      "ignored_total": 4.0091
+    },
+    "all_8_sum": 73957,
+    "sum_equals_total": true
+  },
+  "training_statistics": {
+    "split": "train",
+    "records": 43369,
+    "total_tokens": 665313,
+    "supervised_tokens": 638926,
+    "ignored_tokens": 26387,
+    "length_mismatches": 0,
+    "source_label_counts": {
+      "EN": 174059,
+      "HI": 310887,
+      "TE": 91036,
+      "OTHER": 62944,
+      "NE": 24878,
+      "MIXED": 0,
+      "AMBIGUOUS": 0,
+      "NULL": 1509
+    },
+    "model_label_counts": {
+      "EN_0": 174059,
+      "HI_1": 310887,
+      "TE_2": 91036,
+      "OTHER_3": 62944,
+      "IGNORED_minus100": 26387
+    },
+    "percentages_of_supervised": {
+      "EN": 27.2424,
+      "HI": 48.6577,
+      "TE": 14.2483,
+      "OTHER": 9.8515
+    },
+    "percentages_of_total": {
+      "EN": 26.162,
+      "HI": 46.7279,
+      "TE": 13.6832,
+      "OTHER": 9.4608,
+      "NE": 3.7393,
+      "MIXED": 0.0,
+      "AMBIGUOUS": 0.0,
+      "NULL": 0.2268,
+      "supervised_total": 96.0339,
+      "ignored_total": 3.9661
+    },
+    "all_8_sum": 665313,
+    "sum_equals_total": true
+  },
+  "sequence_length_audit": {
+    "train": {
+      "records": 43369,
+      "words": {
+        "min": 1,
+        "mean": 15.34,
+        "median": 15.0,
+        "p90": 26.0,
+        "p95": 29.0,
+        "p99": 40.0,
+        "max": 105
+      },
+      "subwords_with_special": {
+        "min": 3,
+        "mean": 25.92,
+        "median": 25.0,
+        "p90": 40.0,
+        "p95": 46.0,
+        "p99": 67.0,
+        "max": 188,
+        "count_gt_128": 5,
+        "pct_gt_128": 0.0115,
+        "count_gt_256": 0,
+        "pct_gt_256": 0.0,
+        "count_gt_512": 0,
+        "pct_gt_512": 0.0
+      },
+      "subwords_without_special": {
+        "min": 1,
+        "mean": 23.92,
+        "median": 23.0,
+        "p90": 38.0,
+        "p95": 44.0,
+        "p99": 65.0,
+        "max": 186
+      }
+    },
+    "validation": {
+      "records": 4820,
+      "words": {
+        "min": 1,
+        "mean": 15.34,
+        "median": 15.0,
+        "p90": 26.0,
+        "p95": 29.0,
+        "p99": 41.0,
+        "max": 124
+      },
+      "subwords_with_special": {
+        "min": 3,
+        "mean": 25.99,
+        "median": 24.0,
+        "p90": 40.0,
+        "p95": 46.05000000000018,
+        "p99": 71.0,
+        "max": 217,
+        "count_gt_128": 5,
+        "pct_gt_128": 0.1037,
+        "count_gt_256": 0,
+        "pct_gt_256": 0.0,
+        "count_gt_512": 0,
+        "pct_gt_512": 0.0
+      },
+      "subwords_without_special": {
+        "min": 1,
+        "mean": 23.99,
+        "median": 22.0,
+        "p90": 38.0,
+        "p95": 44.05000000000018,
+        "p99": 69.0,
+        "max": 215
+      }
+    }
+  },
+  "max_length_evaluation": {
+    "candidate_128": {
+      "train_truncated_count": 5,
+      "train_truncated_pct": 0.0115,
+      "val_truncated_count": 5,
+      "val_truncated_pct": 0.1037,
+      "truncation_required": true
+    },
+    "candidate_256": {
+      "train_truncated_count": 0,
+      "train_truncated_pct": 0.0,
+      "val_truncated_count": 0,
+      "val_truncated_pct": 0.0,
+      "truncation_required": false
+    },
+    "final_recommendation": 256,
+    "justification": "max_length=256 accommodates 100.000% of sequences across both train (max 188) and validation (max 217) with special tokens included, eliminating token dropping or boundary truncation logic entirely, while staying well within MuRIL's maximum input limit of 512."
+  },
+  "colab_training_configuration": {
+    "max_length": 256,
+    "per_device_train_batch_size": 16,
+    "gradient_accumulation_steps": 2,
+    "effective_batch_size": 32,
+    "fp16": true,
+    "bf16": false,
+    "learning_rate": 3e-05,
+    "weight_decay": 0.01,
+    "epochs": 4,
+    "warmup_ratio": 0.1,
+    "warmup_steps": 542,
+    "optimizer": "AdamW",
+    "lr_scheduler": "linear",
+    "early_stopping_patience": 3,
+    "metric_for_best_model": "eval_macro_f1",
+    "greater_is_better": true,
+    "dynamic_padding": true,
+    "steps_per_epoch": 1356,
+    "total_optimization_steps": 5424,
+    "eval_schedule_steps": 500,
+    "eval_checkpoints": [
+      500,
+      1000,
+      1500,
+      2000,
+      2500,
+      3000,
+      3500,
+      4000,
+      4500,
+      5000,
+      5424
+    ],
+    "total_evaluations": 11,
+    "early_stopping_viable": true,
+    "fallback_config": {
+      "per_device_train_batch_size": 8,
+      "gradient_accumulation_steps": 4,
+      "effective_batch_size": 32,
+      "notes": "Reduces peak micro-batch activation memory by 50% if Colab GPU memory fragmentation occurs."
+    },
+    "memory_safety_disclaimer": "While theoretical activation and parameter memory with dynamic padding on max_length=256 is ~4-6 GB (well within Colab T4 15.36 GB VRAM), actual GPU memory fit cannot be guaranteed prior to empirical execution of a forward-backward training step on Google Colab hardware."
+  },
+  "token_level_loss_and_metrics": {
+    "loss_function": "CrossEntropyLoss(ignore_index=-100)",
+    "first_subword_loss_only": true,
+    "continuation_subwords_label": -100,
+    "special_tokens_label": -100,
+    "ignored_source_labels_label": -100,
+    "evaluation_positions": "Supervised first-subwords only (y != -100)",
+    "whitespace_token_bijection_verified": true,
+    "primary_metric": "eval_macro_f1",
+    "secondary_metrics": [
+      "eval_accuracy",
+      "eval_macro_precision",
+      "eval_macro_recall",
+      "per_class_f1 (EN, HI, TE, OTHER)",
+      "confusion_matrix_4x4"
+    ]
+  },
+  "test_set_isolation": {
+    "test_file": "C:\\Users\\YOGESWAR\\OneDrive\\Apps\\CodeMix-Intelligence\\data\\processed\\language_identification\\test.jsonl",
+    "status": "STRICTLY_ISOLATED",
+    "training_loader_access": false,
+    "validation_loader_access": false,
+    "hyperparameter_selection_access": false,
+    "prediction_metrics_generated": false
+  },
+  "integrity_verification": {
+    "train.jsonl": {
+      "expected_size": 52692357,
+      "actual_size": 52692357,
+      "expected_sha256": "879d8ca621c3063cec00cd498489f92dff32f8d9c359ede555e9688475244f2b",
+      "actual_sha256": "879d8ca621c3063cec00cd498489f92dff32f8d9c359ede555e9688475244f2b",
+      "match": true
+    },
+    "validation.jsonl": {
+      "expected_size": 5900569,
+      "actual_size": 5900569,
+      "expected_sha256": "3bc233527aac08cce37c28d53cf73c221e70b81a109c5e767ec249ef3960537b",
+      "actual_sha256": "3bc233527aac08cce37c28d53cf73c221e70b81a109c5e767ec249ef3960537b",
+      "match": true
+    },
+    "test.jsonl": {
+      "expected_size": 16230756,
+      "actual_size": 16230756,
+      "expected_sha256": "58a222754ef1b293ae719fd0acc86f86b22fe3a504bbd31119d787361890daca",
+      "actual_sha256": "58a222754ef1b293ae719fd0acc86f86b22fe3a504bbd31119d787361890daca",
+      "match": true
+    },
+    "dataset_manifest.json": {
+      "expected_size": 3224,
+      "actual_size": 3224,
+      "expected_sha256": "8502b021e0439e8af76cb445948fa3f4d9b7f456057149bd3fba8053d992e67d",
+      "actual_sha256": "8502b021e0439e8af76cb445948fa3f4d9b7f456057149bd3fba8053d992e67d",
+      "match": true
+    },
+    "candidate_sentences.jsonl": {
+      "size": 0,
+      "is_empty": true
+    },
+    "reviewed_sentences.jsonl": {
+      "size": 0,
+      "is_empty": true
+    },
+    "rejected_sentences.jsonl": {
+      "size": 0,
+      "is_empty": true
+    }
+  },
+  "remaining_blockers": []
+}

@@ -1,0 +1,94 @@
+{
+  "startup_time_seconds": 10.24,
+  "inference_latency_ms": 316.6,
+  "health_endpoint": {
+    "url": "http://127.0.0.1:8000/health",
+    "status": {
+      "status": "healthy"
+    }
+  },
+  "api_health_endpoint": {
+    "url": "http://127.0.0.1:8000/api/health",
+    "status": {
+      "application": "CodeMix Intelligence - Token-Level Language Identification",
+      "model": "google/muril-base-cased",
+      "model_loaded": true,
+      "device": "cpu",
+      "supported_labels": [
+        "EN",
+        "HI",
+        "TE",
+        "OTHER"
+      ],
+      "label_mapping": {
+        "EN": 0,
+        "HI": 1,
+        "TE": 2,
+        "OTHER": 3
+      },
+      "status": "ready"
+    }
+  },
+  "smoke_test": {
+    "request": {
+      "text": "Hello dost nenu repu office ki vastanu"
+    },
+    "response": {
+      "text": "Hello dost nenu repu office ki vastanu",
+      "tokens": [
+        {
+          "token_index": 0,
+          "token": "Hello",
+          "predicted_label": "EN",
+          "predicted_label_id": 0,
+          "confidence": 0.9845
+        },
+        {
+          "token_index": 1,
+          "token": "dost",
+          "predicted_label": "EN",
+          "predicted_label_id": 0,
+          "confidence": 0.932
+        },
+        {
+          "token_index": 2,
+          "token": "nenu",
+          "predicted_label": "TE",
+          "predicted_label_id": 2,
+          "confidence": 0.973
+        },
+        {
+          "token_index": 3,
+          "token": "repu",
+          "predicted_label": "TE",
+          "predicted_label_id": 2,
+          "confidence": 0.9722
+        },
+        {
+          "token_index": 4,
+          "token": "office",
+          "predicted_label": "EN",
+          "predicted_label_id": 0,
+          "confidence": 0.9846
+        },
+        {
+          "token_index": 5,
+          "token": "ki",
+          "predicted_label": "TE",
+          "predicted_label_id": 2,
+          "confidence": 0.973
+        },
+        {
+          "token_index": 6,
+          "token": "vastanu",
+          "predicted_label": "TE",
+          "predicted_label_id": 2,
+          "confidence": 0.973
+        }
+      ],
+      "chunked": false,
+      "chunk_count": 1,
+      "model": "google/muril-base-cased"
+    }
+  }
+}

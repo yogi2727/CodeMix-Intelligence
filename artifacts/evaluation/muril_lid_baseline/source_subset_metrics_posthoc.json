@@ -1,0 +1,101 @@
+{
+  "COMI-LINGUA": {
+    "records": 4944,
+    "supervised_tokens": 105588,
+    "accuracy": 0.9811152782513164,
+    "present_classes": [
+      "EN",
+      "HI",
+      "OTHER"
+    ],
+    "macro_precision_present_classes": 0.9763292910089335,
+    "macro_recall_present_classes": 0.9691777905144329,
+    "macro_f1_present_classes": 0.9726550537483093,
+    "per_class": {
+      "EN": {
+        "precision": 0.962150753049762,
+        "recall": 0.9729759062296506,
+        "f1": 0.9675330515334113,
+        "support": 27642
+      },
+      "HI": {
+        "precision": 0.9892339304836049,
+        "recall": 0.9888904961666426,
+        "f1": 0.9890621835122544,
+        "support": 69130
+      },
+      "OTHER": {
+        "precision": 0.9776031894934334,
+        "recall": 0.9456669691470054,
+        "f1": 0.961369926199262,
+        "support": 8816
+      }
+    }
+  },
+  "Telugu-English Blog": {
+    "records": 3105,
+    "supervised_tokens": 40775,
+    "accuracy": 0.9864132434089515,
+    "present_classes": [
+      "EN",
+      "TE",
+      "OTHER"
+    ],
+    "macro_precision_present_classes": 0.9757007248217833,
+    "macro_recall_present_classes": 0.9697766663211832,
+    "macro_f1_present_classes": 0.9727147249441122,
+    "per_class": {
+      "EN": {
+        "precision": 0.9846738442051931,
+        "recall": 0.9840506329113924,
+        "f1": 0.9843621399176955,
+        "support": 15800
+      },
+      "TE": {
+        "precision": 0.9904939809049398,
+        "recall": 0.9897954950844153,
+        "f1": 0.9901446148100504,
+        "support": 24107
+      },
+      "OTHER": {
+        "precision": 0.9519343493552169,
+        "recall": 0.9354838709677419,
+        "f1": 0.9436374201045904,
+        "support": 868
+      }
+    }
+  },
+  "Telugu-English Twitter": {
+    "records": 6806,
+    "supervised_tokens": 52856,
+    "accuracy": 0.9793968518238232,
+    "present_classes": [
+      "EN",
+      "TE",
+      "OTHER"
+    ],
+    "macro_precision_present_classes": 0.9818264277633254,
+    "macro_recall_present_classes": 0.9799783220377988,
+    "macro_f1_present_classes": 0.9808896992219923,
+    "per_class": {
+      "EN": {
+        "precision": 0.9840668415427961,
+        "recall": 0.9749266085952163,
+        "f1": 0.9794754019098272,
+        "support": 20779
+      },
+      "TE": {
+        "precision": 0.9854749133716239,
+        "recall": 0.9818396784109719,
+        "f1": 0.9836539372690231,
+        "support": 21145
+      },
+      "OTHER": {
+        "precision": 0.9759375283755561,
+        "recall": 0.9831686791072082,
+        "f1": 0.9795397584871269,
+        "support": 10932
+      }
+    }
+  }
+}

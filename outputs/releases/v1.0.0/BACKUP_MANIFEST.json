@@ -1,0 +1,101 @@
+{
+  "snapshot_archive": {
+    "path": "outputs/releases/CodeMix_Intelligence_v1.0.0_source.zip",
+    "size_bytes": 1680817,
+    "sha256": "1255f24192a1d0f1550ae5d8bf8036e4fbbf62526a0bb9dcae21278b4d338489",
+    "file_count": 88,
+    "description": "V1.0.0 source code, configurations, lightweight model metadata, evaluation reports, and screenshots."
+  },
+  "included_files_summary": {
+    "frontend_files": [
+      "frontend/.gitkeep",
+      "frontend/app.js",
+      "frontend/index.html",
+      "frontend/styles.css"
+    ],
+    "backend_files": [
+      "backend/__init__.py",
+      "backend/main.py"
+    ],
+    "src_files": [
+      "src/__init__.py",
+      "src/evaluation/__init__.py",
+      "src/inference/__init__.py",
+      "src/inference/predictor.py",
+      "src/models/__init__.py",
+      "src/preprocessing/__init__.py",
+      "src/training/__init__.py"
+    ],
+    "test_files": [
+      "tests/__init__.py",
+      "tests/test_inference_and_api.py"
+    ],
+    "config_files": [
+      "configs/.gitkeep",
+      "configs/label_mapping.json"
+    ],
+    "script_files": [
+      "scripts/audit_comi_lingua.py",
+      "scripts/audit_comi_normalized.py",
+      "scripts/audit_custom_lid_sources.py",
+      "scripts/audit_final_lid_dataset.py",
+      "scripts/audit_full_comi.py",
+      "scripts/audit_internal_duplicates.py",
+      "scripts/audit_lid_training_readiness.py",
+      "scripts/audit_quarantined_leakage.py",
+      "scripts/audit_tenglish_splits.py",
+      "scripts/audit_unified_schema_and_muril.py",
+      "scripts/build_muril_colab_bundle.py",
+      "scripts/build_muril_colab_test_bundle.py",
+      "scripts/build_unified_lid_dataset.py",
+      "scripts/build_v1_source_snapshot.py",
+      "scripts/calculate_comi_consensus.py",
+      "scripts/check_muril_config.py",
+      "scripts/final_duplicate_conflict_audit.py",
+      "scripts/generate_muril_colab_notebook.py",
+      "scripts/generate_step31_reports.py",
+      "scripts/generate_step33A_reports.py",
+      "scripts/generate_step33b_reports.py",
+      "scripts/generate_step33c_reports.py",
+      "scripts/inspect_annotator_agreement.py",
+      "scripts/inspect_comi_lingua.py",
+      "scripts/inspect_comi_metadata.py",
+      "scripts/inspect_tenglish_duplicate_details.py",
+      "scripts/inspect_tenglish_files.py",
+      "scripts/inspect_tenglish_sentences.py",
+      "scripts/integrate_step33A_artifacts.py",
+      "scripts/investigate_comi_labels.py",
+      "scripts/prepare_comi_lingua.py",
+      "scripts/prepare_tenglish.py",
+      "scripts/reconcile_quarantine_counts.py",
+      "scripts/reconcile_step30A_statistics.py",
+      "scripts/split_custom_trilingual_dataset.py",
+      "scripts/test_muril_tokenizer.py",
+      "scripts/validate_comi_lingua.py",
+      "scripts/validate_custom_trilingual_dataset.py",
+      "scripts/validate_label_mapping.py",
+      "scripts/validate_tenglish_processed.py",
+      "scripts/validate_unified_lid_dataset.py",
+      "scripts/verify_backend_service.py",
+      "scripts/verify_step25_integrity.py"
+    ],
+    "report_files": [
+      "outputs/reports/step33A_checksum_correction.md",
+      "outputs/reports/step33A_model_integration_and_audit.json",
+      "outputs/reports/step33A_model_integration_and_audit.md",
+      "outputs/reports/step33B_backend_inference_implementation.json",
+      "outputs/reports/step33B_backend_inference_implementation.md",
+      "outputs/reports/step33B_live_verification.json",
+      "outputs/reports/step33C_frontend_implementation.json",
+      "outputs/reports/step33C_frontend_implementation.md",
+      "outputs/reports/step33C_screenshots/desktop.png",
+      "outputs/reports/step33C_screenshots/mobile.png",
+      "outputs/reports/step33C_screenshots/tablet.png"
+    ],
+    "release_files": [
+      "outputs/releases/v1.0.0/ARTIFACT_MANIFEST.json",
+      "outputs/releases/v1.0.0/RELEASE_NOTES.md",
+      "outputs/releases/v1.0.0/RESTORE_V1.md"
+    ]
+  }
+}

@@ -1,0 +1,123 @@
+# ==============================================================================
+# CodeMix Intelligence: .gitignore
+# ==============================================================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# C extensions
+*.build/
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Python Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+bin/
+include/
+Lib/
+
+# Environment Variables & Secrets
+.env
+.env.local
+.env.*.local
+*.env
+secrets.json
+*.pem
+*.key
+!.env.example
+
+# Large Datasets (keep folder structure intact via .gitkeep)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/custom/*
+!data/custom/.gitkeep
+
+# Dataset file formats (if placed outside standard directories)
+*.tar.gz
+*.zip
+*.7z
+*.rar
+*.parquet
+
+# Model Checkpoints & Pretrained Weights
+checkpoints/*
+!checkpoints/.gitkeep
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.onnx
+*.h5
+*.model
+
+# Experiment Outputs & Run Logs
+outputs/metrics/*
+!outputs/metrics/.gitkeep
+outputs/predictions/*
+!outputs/predictions/.gitkeep
+outputs/plots/*
+!outputs/plots/.gitkeep
+runs/
+logs/
+*.log
+
+# Colab bundles, temporary scratch, and caches
+artifacts/colab/*
+!artifacts/colab/.gitkeep
+scratch/*
+!scratch/.gitkeep
+
+# Jupyter Notebook Checkpoints & Cache
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# IDE & Editor Configurations
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+[Dd]esktop.ini

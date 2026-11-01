@@ -1,0 +1,303 @@
+{
+    "audit_title": "Final Read-Only Unified LID Dataset Audit",
+    "splits": {
+        "train": {
+            "records": 43369,
+            "total_tokens": 665313,
+            "usable_tokens": 638926,
+            "ignored_tokens": 26387,
+            "subsets": {
+                "Blog": 5874,
+                "COMI-LINGUA": 23343,
+                "Twitter": 14152
+            },
+            "label_counts": {
+                "EN (0)": 174059,
+                "HI (1)": 310887,
+                "TE (2)": 91036,
+                "OTHER (3)": 62944,
+                "IGNORED (-100)": 26387
+            },
+            "non_ignored_percentages": {
+                "EN": 27.24,
+                "HI": 48.66,
+                "TE": 14.25,
+                "OTHER": 9.85
+            },
+            "telugu_script": {
+                "telugu_native_script_tokens": 0,
+                "telugu_romanized_tokens": 91036,
+                "other_tokens_with_telugu_script": 0,
+                "total_te_tokens": 91036,
+                "native_script_percentage": 0.0,
+                "romanized_script_percentage": 100.0,
+                "sentences_with_native_telugu": 0
+            },
+            "mixing_patterns": {
+                "EN_TE_bilingual": 12673,
+                "EN_monolingual": 3895,
+                "TE_monolingual": 2780,
+                "EN_HI_bilingual": 20454,
+                "HI_monolingual": 2198,
+                "OTHER_or_NONE": 1369
+            }
+        },
+        "validation": {
+            "records": 4820,
+            "total_tokens": 73957,
+            "usable_tokens": 70992,
+            "ignored_tokens": 2965,
+            "subsets": {
+                "Blog": 653,
+                "COMI-LINGUA": 2594,
+                "Twitter": 1573
+            },
+            "label_counts": {
+                "EN (0)": 19135,
+                "HI (1)": 34316,
+                "TE (2)": 10380,
+                "OTHER (3)": 7161,
+                "IGNORED (-100)": 2965
+            },
+            "non_ignored_percentages": {
+                "EN": 26.95,
+                "HI": 48.34,
+                "TE": 14.62,
+                "OTHER": 10.09
+            },
+            "telugu_script": {
+                "telugu_native_script_tokens": 0,
+                "telugu_romanized_tokens": 10380,
+                "other_tokens_with_telugu_script": 0,
+                "total_te_tokens": 10380,
+                "native_script_percentage": 0.0,
+                "romanized_script_percentage": 100.0,
+                "sentences_with_native_telugu": 0
+            },
+            "mixing_patterns": {
+                "EN_monolingual": 443,
+                "EN_TE_bilingual": 1380,
+                "TE_monolingual": 306,
+                "EN_HI_bilingual": 2276,
+                "HI_monolingual": 251,
+                "OTHER_or_NONE": 164
+            }
+        },
+        "test_unified": {
+            "records": 14855,
+            "total_tokens": 211576,
+            "usable_tokens": 199234,
+            "ignored_tokens": 12342,
+            "subsets": {
+                "COMI-LINGUA": 4944,
+                "Blog": 3105,
+                "Twitter": 6806
+            },
+            "label_counts": {
+                "EN (0)": 64231,
+                "HI (1)": 69130,
+                "TE (2)": 45252,
+                "OTHER (3)": 20621,
+                "IGNORED (-100)": 12342
+            },
+            "non_ignored_percentages": {
+                "EN": 32.24,
+                "HI": 34.7,
+                "TE": 22.71,
+                "OTHER": 10.35
+            },
+            "telugu_script": {
+                "telugu_native_script_tokens": 0,
+                "telugu_romanized_tokens": 45252,
+                "other_tokens_with_telugu_script": 0,
+                "total_te_tokens": 45252,
+                "native_script_percentage": 0.0,
+                "romanized_script_percentage": 100.0,
+                "sentences_with_native_telugu": 0
+            },
+            "mixing_patterns": {
+                "EN_HI_bilingual": 4944,
+                "EN_TE_bilingual": 6211,
+                "TE_monolingual": 1410,
+                "EN_monolingual": 1615,
+                "OTHER_or_NONE": 675
+            }
+        },
+        "test_domain_subsets": {
+            "comi_lingua": {
+                "records": 4944,
+                "total_tokens": 105882,
+                "label_counts": {
+                    "EN (0)": 27642,
+                    "HI (1)": 69130,
+                    "TE (2)": 0,
+                    "OTHER (3)": 8816,
+                    "IGNORED (-100)": 294
+                },
+                "non_ignored_percentages": {
+                    "EN": 26.18,
+                    "HI": 65.47,
+                    "TE": 0.0,
+                    "OTHER": 8.35
+                }
+            },
+            "tenglish_blog": {
+                "records": 3105,
+                "total_tokens": 42855,
+                "label_counts": {
+                    "EN (0)": 15800,
+                    "HI (1)": 0,
+                    "TE (2)": 24107,
+                    "OTHER (3)": 868,
+                    "IGNORED (-100)": 2080
+                },
+                "non_ignored_percentages": {
+                    "EN": 38.75,
+                    "HI": 0.0,
+                    "TE": 59.12,
+                    "OTHER": 2.13
+                }
+            },
+            "tenglish_twitter": {
+                "records": 6806,
+                "total_tokens": 62839,
+                "label_counts": {
+                    "EN (0)": 20789,
+                    "HI (1)": 0,
+                    "TE (2)": 21145,
+                    "OTHER (3)": 10937,
+                    "IGNORED (-100)": 9968
+                },
+                "non_ignored_percentages": {
+                    "EN": 39.32,
+                    "HI": 0.0,
+                    "TE": 39.99,
+                    "OTHER": 20.69
+                }
+            }
+        },
+        "excluded_records": {
+            "records": 1647,
+            "tokens": 2538,
+            "reasons": {
+                "all_tokens_ignored_ne": 1647
+            }
+        },
+        "quarantined_duplicates": {
+            "records": 4388,
+            "tokens": 88692,
+            "reasons": {
+                "test_exact_duplicate_deduped": 45,
+                "test_label_conflict": 2,
+                "cross_split_test_leakage_prevented": 4258,
+                "train_label_conflict": 22,
+                "train_exact_duplicate_deduped": 61
+            }
+        }
+    },
+    "leakage_verification": {
+        "train_val_overlap": 0,
+        "train_test_overlap": 0,
+        "val_test_overlap": 0,
+        "leakage_free": true
+    },
+    "test_reconciliation": {
+        "COMI-LINGUA": {
+            "original_test_records": 4944,
+            "test_comi_lingua_records": 4944,
+            "quarantined_test_records": 0,
+            "excluded_test_records": 0,
+            "reconciled": true
+        },
+        "Blog": {
+            "original_test_records": 3110,
+            "test_blog_records": 3105,
+            "quarantined_duplicate_copies": 5,
+            "excluded_test_records": 0,
+            "reconciled": true
+        },
+        "Twitter": {
+            "original_test_records": 7322,
+            "test_twitter_records": 6806,
+            "quarantined_duplicate_copies": 40,
+            "quarantined_conflict_records": 2,
+            "excluded_all_ne_records": 474,
+            "reconciled": true
+        }
+    },
+    "telugu_script_aggregate": {
+        "total_te_tokens": 146668,
+        "telugu_native_script_tokens": 0,
+        "telugu_romanized_tokens": 146668,
+        "native_script_percentage": 0.0,
+        "romanized_script_percentage": 100.0,
+        "sentences_with_native_telugu": 0
+    },
+    "language_mixing_aggregate": {
+        "EN_HI_bilingual_sentences": 27674,
+        "EN_TE_bilingual_sentences": 20264,
+        "HI_TE_bilingual_sentences": 0,
+        "EN_HI_TE_trilingual_sentences": 0,
+        "EN_monolingual_sentences": 5953,
+        "HI_monolingual_sentences": 2449,
+        "TE_monolingual_sentences": 4496,
+        "OTHER_or_NONE_sentences": 2208
+    },
+    "manifest_verification": {
+        "train_records": {
+            "actual": 43369,
+            "manifest": 43369,
+            "match": true
+        },
+        "train_tokens": {
+            "actual": 665313,
+            "manifest": 665313,
+            "match": true
+        },
+        "val_records": {
+            "actual": 4820,
+            "manifest": 4820,
+            "match": true
+        },
+        "val_tokens": {
+            "actual": 73957,
+            "manifest": 73957,
+            "match": true
+        },
+        "test_records": {
+            "actual": 14855,
+            "manifest": 14855,
+            "match": true
+        },
+        "test_tokens": {
+            "actual": 211576,
+            "manifest": 211576,
+            "match": true
+        },
+        "excluded_records": {
+            "actual": 1647,
+            "manifest": 1647,
+            "match": true
+        },
+        "quarantined_records": {
+            "actual": 4388,
+            "manifest": 4388,
+            "match": true
+        },
+        "total_raw_accounted": {
+            "actual": 69079,
+            "manifest": 69079,
+            "match": true
+        }
+    },
+    "total_accounting": {
+        "train": 43369,
+        "validation": 4820,
+        "test": 14855,
+        "excluded": 1647,
+        "quarantined": 4388,
+        "total": 69079,
+        "expected_raw": 69079,
+        "discrepancy": 0
+    }
+}

@@ -1,0 +1,231 @@
+{
+  "meta": {
+    "project": "CodeMix Intelligence",
+    "step": "Step 31 - Generate Google Colab MuRIL Baseline Training Notebook",
+    "timestamp_utc": "2026-11-01T05:26:21.169743+00:00",
+    "status": "NOTEBOOK_GENERATED_AND_STATICALLY_VALIDATED",
+    "local_environment_cpu_only": true
+  },
+  "dataset_record_schema_inspection": {
+    "record_id_field": "sentence_id",
+    "original_whitespace_token_field": "tokens",
+    "source_annotation_field": "source_labels",
+    "model_label_field": "model_labels",
+    "note_on_labels_field": "The original processed dataset stores integer model labels in 'model_labels' (not 'labels'). In the canonical Colab data bundle, records are extracted into a clean schema: {\"id\": str, \"tokens\": list[str], \"labels\": list[int]} where 'labels' contains the verified integer IDs.",
+    "label_taxonomy": {
+      "EN": 0,
+      "HI": 1,
+      "TE": 2,
+      "OTHER": 3
+    },
+    "ignored_annotations": {
+      "NE": -100,
+      "MIXED": -100,
+      "AMBIGUOUS": -100,
+      "NULL": -100
+    }
+  },
+  "training_data_bundle": {
+    "path": "C:\\Users\\YOGESWAR\\OneDrive\\Apps\\CodeMix-Intelligence\\artifacts\\colab\\muril_lid_data_bundle.zip",
+    "size_bytes": 2978074,
+    "sha256": "5000c1e70d642d470b61bcd10bfb58fd63d26477a7745b127e55e694da723b09",
+    "members": [
+      "train.jsonl",
+      "validation.jsonl",
+      "bundle_manifest.json",
+      "README.md"
+    ],
+    "train_records": 43369,
+    "validation_records": 4820,
+    "test_records": 0,
+    "manifest": {
+      "bundle_name": "MuRIL Baseline LID Colab Training Bundle",
+      "version": "1.0.0",
+      "created_at_utc": "2026-11-01T05:22:26.487629+00:00",
+      "source_dataset_directory": "data/processed/language_identification",
+      "original_source_checksums": {
+        "train_jsonl_sha256": "879d8ca621c3063cec00cd498489f92dff32f8d9c359ede555e9688475244f2b",
+        "validation_jsonl_sha256": "3bc233527aac08cce37c28d53cf73c221e70b81a109c5e767ec249ef3960537b"
+      },
+      "governance": {
+        "test_data_included": false,
+        "custom_pilot_data_included": false,
+        "isolation_status": "STRICT_EVALUATION_ISOLATION"
+      },
+      "taxonomy": {
+        "model_id": "google/muril-base-cased",
+        "classes": {
+          "EN": 0,
+          "HI": 1,
+          "TE": 2,
+          "OTHER": 3
+        },
+        "ignore_label_id": -100,
+        "recommended_max_length": 256
+      },
+      "splits": {
+        "train": {
+          "records": 43369,
+          "total_tokens": 665313,
+          "supervised_tokens": 638926,
+          "ignored_tokens": 26387,
+          "label_counts": {
+            "EN_0": 174059,
+            "HI_1": 310887,
+            "TE_2": 91036,
+            "OTHER_3": 62944,
+            "IGNORED_minus100": 26387
+          },
+          "file_size_bytes": 12494624,
+          "sha256": "fd6f661e718fd80d971cfe00787d5aff02e621cfa44aa9c0b0b3d342f5096d2f"
+        },
+        "validation": {
+          "records": 4820,
+          "total_tokens": 73957,
+          "supervised_tokens": 70992,
+          "ignored_tokens": 2965,
+          "label_counts": {
+            "EN_0": 19135,
+            "HI_1": 34316,
+            "TE_2": 10380,
+            "OTHER_3": 7161,
+            "IGNORED_minus100": 2965
+          },
+          "file_size_bytes": 1414325,
+          "sha256": "60c2ea95d9496c8ad201dfd7a3f1084a694d8c699ef548c3d9d5f68d65fbde5f"
+        }
+      },
+      "archive_members": [
+        "train.jsonl",
+        "validation.jsonl",
+        "bundle_manifest.json",
+        "README.md"
+      ]
+    }
+  },
+  "colab_notebook": {
+    "path": "C:\\Users\\YOGESWAR\\OneDrive\\Apps\\CodeMix-Intelligence\\training\\colab\\muril_lid_baseline.ipynb",
+    "size_bytes": 38124,
+    "sha256": "37666bc252b1847fb45a5f1745222c17dcd45de1dcc8072f86f257092721d23e",
+    "nbformat_version": 4,
+    "nbformat_minor": 5,
+    "total_cells": 37,
+    "markdown_cells": 19,
+    "code_cells": 18,
+    "all_code_unexecuted": true,
+    "sections": [
+      "A. Project introduction and training objective",
+      "B. Colab runtime setup",
+      "C. GPU and software version inspection",
+      "D. Dependency setup",
+      "E. Upload training data bundle",
+      "F. Verify bundle manifest and SHA-256 hashes",
+      "G. Load train and validation records",
+      "H. Load MuRIL tokenizer",
+      "I. WordPiece token alignment",
+      "J. Sequence length and label alignment verification",
+      "K. Load token classification model",
+      "L. GPU memory and forward/backward smoke test",
+      "M. Training configuration",
+      "N. Macro-F1 metrics",
+      "O. Fine-tuning setup",
+      "P. Fine-tuning execution",
+      "Q. Final validation evaluation",
+      "R. Save best model and tokenizer",
+      "S. Reproducibility and final audit"
+    ],
+    "static_validation_passed": true
+  },
+  "colab_hardware_and_environment": {
+    "runtime_type": "Google Colab GPU Runtime",
+    "recommended_gpu": "NVIDIA T4 (15.36 GB GDDR6) or A100 (40 GB)",
+    "cpu_fallback_prohibited": true,
+    "precision_strategy": {
+      "t4": "fp16 = True",
+      "a100": "bf16 = True",
+      "cpu": "Execution halted by runtime assertion"
+    },
+    "persistent_storage": "Google Drive (/content/drive/MyDrive/CodeMix_Intelligence/muril_lid_baseline)"
+  },
+  "subword_alignment_policy": {
+    "tokenizer": "google/muril-base-cased (use_fast=False)",
+    "first_subword": "Receives original integer label (0..3)",
+    "continuation_subwords": "Receive -100 (masked)",
+    "special_tokens": "[CLS] = -100, [SEP] = -100, [PAD] = -100",
+    "ignored_source_labels": "All subwords receive -100",
+    "empty_tokenization_fallback": "[UNK] token inserted with original label to prevent sequence corruption",
+    "bijection_verified": true
+  },
+  "training_parameters_and_step_schedule": {
+    "max_length": 256,
+    "per_device_train_batch_size": 16,
+    "gradient_accumulation_steps": 2,
+    "effective_batch_size": 32,
+    "learning_rate": 3e-05,
+    "weight_decay": 0.01,
+    "epochs": 4,
+    "train_examples": 43369,
+    "steps_per_epoch": 1356,
+    "total_optimization_steps": 5424,
+    "warmup_steps": 542,
+    "warmup_ratio": 0.1,
+    "eval_steps": 500,
+    "save_steps": 500,
+    "total_evaluations": 11,
+    "early_stopping_patience": 3,
+    "metric_for_best_model": "eval_macro_f1",
+    "greater_is_better": true,
+    "dynamic_padding": true
+  },
+  "gpu_smoke_test_implementation": {
+    "sample_size": 16,
+    "forward_pass": true,
+    "backward_pass": true,
+    "optimizer_step": false,
+    "checkpoint_saved": false,
+    "loss_finite_check": true,
+    "vram_headroom_check": true,
+    "zero_grad_executed": true
+  },
+  "test_set_isolation": {
+    "bundle_test_records": 0,
+    "notebook_test_loaders": 0,
+    "hyperparameter_access": false,
+    "status": "STRICT_EMPIRICAL_ISOLATION",
+    "reserved_for_step": 32
+  },
+  "integrity_verification": {
+    "train.jsonl": {
+      "size": 52692357,
+      "sha256": "879d8ca621c3063cec00cd498489f92dff32f8d9c359ede555e9688475244f2b",
+      "match": true
+    },
+    "validation.jsonl": {
+      "size": 5900569,
+      "sha256": "3bc233527aac08cce37c28d53cf73c221e70b81a109c5e767ec249ef3960537b",
+      "match": true
+    },
+    "test.jsonl": {
+      "size": 16230756,
+      "sha256": "58a222754ef1b293ae719fd0acc86f86b22fe3a504bbd31119d787361890daca",
+      "match": true
+    },
+    "dataset_manifest.json": {
+      "size": 3224,
+      "sha256": "8502b021e0439e8af76cb445948fa3f4d9b7f456057149bd3fba8053d992e67d",
+      "match": true
+    },
+    "candidate_sentences.jsonl": {
+      "size": 0,
+      "is_empty": true
+    },
+    "reviewed_sentences.jsonl": {
+      "size": 0,
+      "is_empty": true
+    },
+    "rejected_sentences.jsonl": {
+      "size": 0,
+      "is_empty": true
+    }
+  }
+}

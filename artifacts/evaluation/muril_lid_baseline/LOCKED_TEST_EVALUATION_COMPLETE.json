@@ -1,0 +1,8 @@
+{
+  "status": "COMPLETED",
+  "checkpoint": "checkpoint-5000",
+  "test_sha256": "58a222754ef1b293ae719fd0acc86f86b22fe3a504bbd31119d787361890daca",
+  "test_records": 14855,
+  "evaluated_supervised_tokens": 199219,
+  "results_file": "/content/drive/MyDrive/CodeMix_Intelligence/muril_lid_baseline/locked_test_evaluation/locked_test_results.json"
+}

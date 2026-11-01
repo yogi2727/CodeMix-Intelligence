@@ -1,0 +1,201 @@
+{
+  "project": "CodeMix Intelligence",
+  "step": "32D - Locked Test Evaluation",
+  "model": "google/muril-base-cased",
+  "checkpoint": "checkpoint-5000",
+  "model_directory": "/content/drive/MyDrive/CodeMix_Intelligence/muril_lid_baseline/best_model",
+  "test_file": "/content/CodeMix_Intelligence_locked_test/test.jsonl",
+  "test_sha256": "58a222754ef1b293ae719fd0acc86f86b22fe3a504bbd31119d787361890daca",
+  "test_records": 14855,
+  "total_original_tokens": 211576,
+  "original_supervised_tokens": 199234,
+  "evaluated_supervised_tokens": 199219,
+  "truncated_records": 1,
+  "truncated_original_tokens": 27,
+  "truncated_supervised_tokens": 15,
+  "evaluation_coverage": 0.9999247116456027,
+  "overall": {
+    "accuracy": 0.9817437091843649,
+    "macro_precision": 0.9810943178244103,
+    "macro_recall": 0.9791060911164766,
+    "macro_f1": 0.9800920995833442,
+    "per_class": {
+      "EN": {
+        "precision": 0.9746925958743335,
+        "recall": 0.9763317294965821,
+        "f1": 0.975511474134578,
+        "support": 64221
+      },
+      "HI": {
+        "precision": 0.9859240243445153,
+        "recall": 0.9888904961666426,
+        "f1": 0.987405032209608,
+        "support": 69130
+      },
+      "TE": {
+        "precision": 0.9881305637982196,
+        "recall": 0.9860779634049324,
+        "f1": 0.9871031965490543,
+        "support": 45252
+      },
+      "OTHER": {
+        "precision": 0.9756300872805728,
+        "recall": 0.9651241753977493,
+        "f1": 0.9703486954401366,
+        "support": 20616
+      }
+    },
+    "confusion_matrix": [
+      [
+        62701,
+        704,
+        449,
+        367
+      ],
+      [
+        678,
+        68362,
+        1,
+        89
+      ],
+      [
+        427,
+        162,
+        44622,
+        41
+      ],
+      [
+        523,
+        110,
+        86,
+        19897
+      ]
+    ],
+    "classification_report": {
+      "EN": {
+        "precision": 0.9746925958743335,
+        "recall": 0.9763317294965821,
+        "f1-score": 0.975511474134578,
+        "support": 64221.0
+      },
+      "HI": {
+        "precision": 0.9859240243445153,
+        "recall": 0.9888904961666426,
+        "f1-score": 0.987405032209608,
+        "support": 69130.0
+      },
+      "TE": {
+        "precision": 0.9881305637982196,
+        "recall": 0.9860779634049324,
+        "f1-score": 0.9871031965490543,
+        "support": 45252.0
+      },
+      "OTHER": {
+        "precision": 0.9756300872805728,
+        "recall": 0.9651241753977493,
+        "f1-score": 0.9703486954401366,
+        "support": 20616.0
+      },
+      "accuracy": 0.9817437091843649,
+      "macro avg": {
+        "precision": 0.9810943178244103,
+        "recall": 0.9791060911164766,
+        "f1-score": 0.9800920995833442,
+        "support": 199219.0
+      },
+      "weighted avg": {
+        "precision": 0.981739368006843,
+        "recall": 0.9817437091843649,
+        "f1-score": 0.981737358447129,
+        "support": 199219.0
+      }
+    }
+  },
+  "source_wise": {
+    "COMI-LINGUA": {
+      "records": 4944,
+      "supervised_tokens": 105588,
+      "accuracy": 0.9811152782513164,
+      "macro_precision": 0.7322469682567001,
+      "macro_recall": 0.7268833428858247,
+      "macro_f1": 0.7294912903112319,
+      "per_class": {
+        "EN": {
+          "precision": 0.962150753049762,
+          "recall": 0.9729759062296506,
+          "f1": 0.9675330515334113,
+          "support": 27642
+        },
+        "HI": {
+          "precision": 0.9892339304836049,
+          "recall": 0.9888904961666426,
+          "f1": 0.9890621835122544,
+          "support": 69130
+        },
+        "TE": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "OTHER": {
+          "precision": 0.9776031894934334,
+          "recall": 0.9456669691470054,
+          "f1": 0.961369926199262,
+          "support": 8816
+        }
+      }
+    },
+    "Telugu-English": {
+      "records": 9911,
+      "supervised_tokens": 93631,
+      "accuracy": 0.9824523929040595,
+      "macro_precision": 0.7366737019958682,
+      "macro_recall": 0.7361516591649039,
+      "macro_f1": 0.7364086085686457,
+      "per_class": {
+        "EN": {
+          "precision": 0.9843303276885859,
+          "recall": 0.9788676563055305,
+          "f1": 0.9815913919539442,
+          "support": 36579
+        },
+        "HI": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "TE": {
+          "precision": 0.988152445910933,
+          "recall": 0.9860779634049324,
+          "f1": 0.9871141147452134,
+          "support": 45252
+        },
+        "OTHER": {
+          "precision": 0.9742120343839542,
+          "recall": 0.9796610169491525,
+          "f1": 0.9769289275754247,
+          "support": 11800
+        }
+      }
+    }
+  },
+  "validation_comparison": {
+    "validation_accuracy": 0.978195,
+    "test_accuracy": 0.9817437091843649,
+    "accuracy_difference_percentage_points": 0.35487091843648955,
+    "validation_macro_f1": 0.9749040372711093,
+    "test_macro_f1": 0.9800920995833442,
+    "macro_f1_difference_percentage_points": 0.5188062312234898
+  },
+  "evaluation_configuration": {
+    "max_sequence_length": 256,
+    "batch_size": 32,
+    "tokenizer": "BertTokenizer",
+    "first_wordpiece_only": true,
+    "ignored_label": -100,
+    "training_performed": false,
+    "test_used_for_model_selection": false
+  }
+}

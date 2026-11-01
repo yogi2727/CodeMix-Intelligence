@@ -1,0 +1,181 @@
+{
+  "step": "STEP 33B — MuRIL Inference Engine and FastAPI Backend Implementation",
+  "timestamp_utc": "2026-11-01T06:57:09.293985+00:00",
+  "environment": {
+    "python_version": "3.14.3",
+    "pytorch_version": "2.15.0+cpu",
+    "transformers_version": "5.22.1",
+    "fastapi_version": "0.162.0",
+    "uvicorn_version": "0.54.0",
+    "device": "cpu"
+  },
+  "model_artifacts": {
+    "model_name": "google/muril-base-cased",
+    "location": "artifacts/models/muril_lid_baseline/best_model/",
+    "architecture": "BertForTokenClassification",
+    "num_labels": 4,
+    "label_mapping": {
+      "EN": 0,
+      "HI": 1,
+      "TE": 2,
+      "OTHER": 3
+    },
+    "subword_alignment": "First WordPiece subword receives label; continuation subwords ignored",
+    "max_sequence_length": 256,
+    "max_content_subwords": 254,
+    "model_loaded_successfully": true,
+    "model_loading_time_seconds": 10.24
+  },
+  "inference_engine": {
+    "class_name": "MuRILLIDPredictor",
+    "file": "src/inference/predictor.py",
+    "features": [
+      "Local-only artifact resolution",
+      "BertTokenizer with use_fast=False",
+      "Word-by-word WordPiece alignment",
+      "Whitespace token preservation and 1-to-1 output mapping",
+      "Long-sequence chunking at original whitespace token boundaries",
+      "Oversized single token error raising (max 254 subwords)",
+      "torch.inference_mode() execution on CPU"
+    ]
+  },
+  "backend": {
+    "framework": "FastAPI",
+    "entrypoint": "backend/main.py",
+    "lifespan_initialization": "Single model load at application startup",
+    "endpoints": [
+      {
+        "path": "/health",
+        "method": "GET",
+        "description": "Liveness check",
+        "status_code": 200,
+        "sample_response": {
+          "status": "healthy"
+        }
+      },
+      {
+        "path": "/api/health",
+        "method": "GET",
+        "description": "Application & model readiness check",
+        "status_code": 200,
+        "sample_response": {
+          "application": "CodeMix Intelligence - Token-Level Language Identification",
+          "model": "google/muril-base-cased",
+          "model_loaded": true,
+          "device": "cpu",
+          "supported_labels": [
+            "EN",
+            "HI",
+            "TE",
+            "OTHER"
+          ],
+          "label_mapping": {
+            "EN": 0,
+            "HI": 1,
+            "TE": 2,
+            "OTHER": 3
+          },
+          "status": "ready"
+        }
+      },
+      {
+        "path": "/api/predict",
+        "method": "POST",
+        "description": "Token-level language prediction",
+        "status_code": 200,
+        "sample_request": {
+          "text": "Hello dost nenu repu office ki vastanu"
+        },
+        "sample_response": {
+          "text": "Hello dost nenu repu office ki vastanu",
+          "tokens": [
+            {
+              "token_index": 0,
+              "token": "Hello",
+              "predicted_label": "EN",
+              "predicted_label_id": 0,
+              "confidence": 0.9845
+            },
+            {
+              "token_index": 1,
+              "token": "dost",
+              "predicted_label": "EN",
+              "predicted_label_id": 0,
+              "confidence": 0.932
+            },
+            {
+              "token_index": 2,
+              "token": "nenu",
+              "predicted_label": "TE",
+              "predicted_label_id": 2,
+              "confidence": 0.973
+            },
+            {
+              "token_index": 3,
+              "token": "repu",
+              "predicted_label": "TE",
+              "predicted_label_id": 2,
+              "confidence": 0.9722
+            },
+            {
+              "token_index": 4,
+              "token": "office",
+              "predicted_label": "EN",
+              "predicted_label_id": 0,
+              "confidence": 0.9846
+            },
+            {
+              "token_index": 5,
+              "token": "ki",
+              "predicted_label": "TE",
+              "predicted_label_id": 2,
+              "confidence": 0.973
+            },
+            {
+              "token_index": 6,
+              "token": "vastanu",
+              "predicted_label": "TE",
+              "predicted_label_id": 2,
+              "confidence": 0.973
+            }
+          ],
+          "chunked": false,
+          "chunk_count": 1,
+          "model": "google/muril-base-cased"
+        },
+        "measured_latency_ms": 316.6
+      }
+    ]
+  },
+  "verification_suite": {
+    "test_file": "tests/test_inference_and_api.py",
+    "total_tests": 13,
+    "passed": 13,
+    "failed": 0,
+    "test_cases": [
+      "test_model_directory_validation",
+      "test_label_mapping",
+      "test_empty_input_handling",
+      "test_token_prediction_count_equality",
+      "test_valid_predicted_labels",
+      "test_confidence_values_in_bounds",
+      "test_long_input_chunking",
+      "test_oversized_single_token_error",
+      "test_health_endpoint",
+      "test_api_health_endpoint",
+      "test_api_predict_endpoint_valid_input",
+      "test_api_predict_empty_input",
+      "test_api_predict_oversized_token"
+    ]
+  },
+  "files_created_or_modified": [
+    "src/inference/predictor.py",
+    "src/inference/__init__.py",
+    "backend/main.py",
+    "tests/test_inference_and_api.py",
+    "scripts/verify_backend_service.py",
+    "outputs/reports/step33B_live_verification.json",
+    "outputs/reports/step33B_backend_inference_implementation.json",
+    "outputs/reports/step33B_backend_inference_implementation.md"
+  ]
+}

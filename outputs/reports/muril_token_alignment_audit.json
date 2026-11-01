@@ -1,0 +1,1457 @@
+{
+    "audit_name": "CodeMix Intelligence MuRIL Tokenizer & Dataset Compatibility Audit",
+    "model_id": "google/muril-base-cased",
+    "tokenizer_class": "BertTokenizer",
+    "label_mapping": {
+        "EN": 0,
+        "HI": 1,
+        "TE": 2,
+        "OTHER": 3
+    },
+    "ignore_label_id": -100,
+    "file_existence": {
+        "tenglish_blog_train": {
+            "exists": true,
+            "path": "data\\processed\\normalized\\tenglish_blog_train.jsonl",
+            "size_kb": 4198.21
+        },
+        "tenglish_blog_test": {
+            "exists": true,
+            "path": "data\\processed\\normalized\\tenglish_blog_test.jsonl",
+            "size_kb": 1959.04
+        },
+        "tenglish_twitter_train": {
+            "exists": true,
+            "path": "data\\processed\\normalized\\tenglish_twitter_train.jsonl",
+            "size_kb": 8677.26
+        },
+        "tenglish_twitter_test": {
+            "exists": true,
+            "path": "data\\processed\\normalized\\tenglish_twitter_test.jsonl",
+            "size_kb": 3704.12
+        },
+        "comi_lid_train": {
+            "exists": true,
+            "path": "data\\processed\\normalized\\comi_lingua\\comi_lid_train.jsonl",
+            "size_kb": 39526.91
+        },
+        "comi_lid_test": {
+            "exists": true,
+            "path": "data\\processed\\normalized\\comi_lingua\\comi_lid_test.jsonl",
+            "size_kb": 6976.04
+        },
+        "comi_lid_train_rejected": {
+            "exists": true,
+            "path": "data\\processed\\normalized\\comi_lingua\\comi_lid_train_rejected.jsonl",
+            "size_kb": 387.81
+        },
+        "comi_lid_test_rejected": {
+            "exists": true,
+            "path": "data\\processed\\normalized\\comi_lingua\\comi_lid_test_rejected.jsonl",
+            "size_kb": 52.93
+        },
+        "comi_lid_audit": {
+            "exists": true,
+            "path": "data\\processed\\normalized\\comi_lingua\\comi_lid_audit.json",
+            "size_kb": 3.5
+        }
+    },
+    "dataset_inspection": {
+        "comi_lid_train": {
+            "total_records": 30074,
+            "total_tokens": 588533,
+            "empty_tokens": 0,
+            "whitespace_tokens": 0,
+            "reconstruction_mismatches": 10625,
+            "reconstruction_match_pct": 64.67,
+            "fields": [
+                "alignment_method",
+                "consensus_method",
+                "ignored_token_count",
+                "labels",
+                "lid_eligible",
+                "lid_eligible_tokens",
+                "original_labels_by_annotator",
+                "sentence_id",
+                "source",
+                "split",
+                "subset",
+                "text",
+                "tokens"
+            ],
+            "script_distribution": {
+                "Devanagari": 362883,
+                "Latin": 189118,
+                "Punctuation": 69328,
+                "Digits": 12547,
+                "Other_Unicode": 3646
+            }
+        },
+        "comi_lid_test": {
+            "total_records": 4944,
+            "total_tokens": 105882,
+            "empty_tokens": 0,
+            "whitespace_tokens": 0,
+            "reconstruction_mismatches": 1632,
+            "reconstruction_match_pct": 66.99,
+            "fields": [
+                "alignment_method",
+                "consensus_method",
+                "ignored_token_count",
+                "labels",
+                "lid_eligible",
+                "lid_eligible_tokens",
+                "original_labels_by_annotator",
+                "sentence_id",
+                "source",
+                "split",
+                "subset",
+                "text",
+                "tokens"
+            ],
+            "script_distribution": {
+                "Latin": 34083,
+                "Punctuation": 12665,
+                "Devanagari": 65306,
+                "Digits": 2362,
+                "Other_Unicode": 594
+            }
+        },
+        "tenglish_blog_train": {
+            "total_records": 6547,
+            "total_tokens": 92743,
+            "empty_tokens": 0,
+            "whitespace_tokens": 0,
+            "reconstruction_mismatches": 0,
+            "reconstruction_match_pct": 100.0,
+            "fields": [
+                "labels",
+                "lid_eligible",
+                "lid_eligible_tokens",
+                "original_labels",
+                "sentence_id",
+                "source",
+                "split",
+                "subset",
+                "text",
+                "text_format",
+                "tokens"
+            ],
+            "script_distribution": {
+                "Latin": 91751,
+                "Digits": 1048,
+                "Other_Unicode": 149
+            }
+        },
+        "tenglish_blog_test": {
+            "total_records": 3110,
+            "total_tokens": 42898,
+            "empty_tokens": 0,
+            "whitespace_tokens": 0,
+            "reconstruction_mismatches": 0,
+            "reconstruction_match_pct": 100.0,
+            "fields": [
+                "labels",
+                "lid_eligible",
+                "lid_eligible_tokens",
+                "original_labels",
+                "sentence_id",
+                "source",
+                "split",
+                "subset",
+                "text",
+                "text_format",
+                "tokens"
+            ],
+            "script_distribution": {
+                "Latin": 42452,
+                "Digits": 544,
+                "Other_Unicode": 76,
+                "Punctuation": 11
+            }
+        },
+        "tenglish_twitter_train": {
+            "total_records": 17082,
+            "total_tokens": 148358,
+            "empty_tokens": 0,
+            "whitespace_tokens": 0,
+            "reconstruction_mismatches": 0,
+            "reconstruction_match_pct": 100.0,
+            "fields": [
+                "labels",
+                "lid_eligible",
+                "lid_eligible_tokens",
+                "original_labels",
+                "sentence_id",
+                "source",
+                "split",
+                "subset",
+                "text",
+                "text_format",
+                "tokens"
+            ],
+            "script_distribution": {
+                "Latin": 125459,
+                "Punctuation": 33265,
+                "Digits": 7640,
+                "Other_Unicode": 10080,
+                "Devanagari": 8
+            }
+        },
+        "tenglish_twitter_test": {
+            "total_records": 7322,
+            "total_tokens": 63662,
+            "empty_tokens": 0,
+            "whitespace_tokens": 0,
+            "reconstruction_mismatches": 0,
+            "reconstruction_match_pct": 100.0,
+            "fields": [
+                "labels",
+                "lid_eligible",
+                "lid_eligible_tokens",
+                "original_labels",
+                "sentence_id",
+                "source",
+                "split",
+                "subset",
+                "text",
+                "text_format",
+                "tokens"
+            ],
+            "script_distribution": {
+                "Latin": 53675,
+                "Punctuation": 14159,
+                "Digits": 3240,
+                "Other_Unicode": 4435,
+                "Devanagari": 9
+            }
+        }
+    },
+    "proposed_common_schema": {
+        "required_fields": [
+            "sentence_id",
+            "source",
+            "subset",
+            "split",
+            "text",
+            "tokens",
+            "source_labels",
+            "model_labels",
+            "text_format",
+            "lid_eligible",
+            "lid_eligible_tokens"
+        ],
+        "label_encoding": {
+            "EN": 0,
+            "HI": 1,
+            "TE": 2,
+            "OTHER": 3,
+            "NE (Telugu-English)": -100,
+            "null (COMI-LINGUA tie)": -100
+        }
+    },
+    "synthetic_test_results": [
+        {
+            "category": "English",
+            "words": [
+                "Today",
+                "I",
+                "am",
+                "going",
+                "to",
+                "college",
+                "."
+            ],
+            "subwords": [
+                "[CLS]",
+                "Today",
+                "I",
+                "am",
+                "going",
+                "to",
+                "college",
+                ".",
+                "[SEP]"
+            ],
+            "total_words": 7,
+            "total_subwords": 9,
+            "unknown_tokens": 0
+        },
+        {
+            "category": "Hindi Native",
+            "words": [
+                "आज",
+                "मैं",
+                "कॉलेज",
+                "जा",
+                "रहा",
+                "हूँ",
+                "।"
+            ],
+            "subwords": [
+                "[CLS]",
+                "आज",
+                "मैं",
+                "कॉलेज",
+                "जा",
+                "रहा",
+                "हूँ",
+                "।",
+                "[SEP]"
+            ],
+            "total_words": 7,
+            "total_subwords": 9,
+            "unknown_tokens": 0
+        },
+        {
+            "category": "Telugu Native",
+            "words": [
+                "నేను",
+                "ఈరోజు",
+                "కాలేజీకి",
+                "వెళ్తున్నాను",
+                "."
+            ],
+            "subwords": [
+                "[CLS]",
+                "నేను",
+                "ఈరోజు",
+                "కాలేజీ",
+                "##కి",
+                "వ",
+                "##ె",
+                "##ళ్",
+                "##తున్న",
+                "##ాను",
+                ".",
+                "[SEP]"
+            ],
+            "total_words": 5,
+            "total_subwords": 12,
+            "unknown_tokens": 0
+        },
+        {
+            "category": "Romanized Hindi",
+            "words": [
+                "Aaj",
+                "college",
+                "mein",
+                "assignment",
+                "submit",
+                "karna",
+                "hai",
+                "."
+            ],
+            "subwords": [
+                "[CLS]",
+                "Aaj",
+                "college",
+                "mein",
+                "assignment",
+                "submit",
+                "karna",
+                "hai",
+                ".",
+                "[SEP]"
+            ],
+            "total_words": 8,
+            "total_subwords": 10,
+            "unknown_tokens": 0
+        },
+        {
+            "category": "Romanized Telugu",
+            "words": [
+                "Nenu",
+                "today",
+                "college",
+                "ki",
+                "velthunnanu",
+                "."
+            ],
+            "subwords": [
+                "[CLS]",
+                "Ne",
+                "##nu",
+                "today",
+                "college",
+                "ki",
+                "vel",
+                "##thun",
+                "##nan",
+                "##u",
+                ".",
+                "[SEP]"
+            ],
+            "total_words": 6,
+            "total_subwords": 12,
+            "unknown_tokens": 0
+        },
+        {
+            "category": "Trilingual Code-Mixed",
+            "words": [
+                "Today",
+                "मैं",
+                "college",
+                "కి",
+                "వెళ్తున్నాను",
+                "."
+            ],
+            "subwords": [
+                "[CLS]",
+                "Today",
+                "मैं",
+                "college",
+                "కి",
+                "వ",
+                "##ె",
+                "##ళ్",
+                "##తున్న",
+                "##ాను",
+                ".",
+                "[SEP]"
+            ],
+            "total_words": 6,
+            "total_subwords": 12,
+            "unknown_tokens": 0
+        }
+    ],
+    "real_data_alignment_results": {
+        "comi_lid_train": {
+            "file": "comi_lid_train",
+            "source": "COMI-LINGUA",
+            "split": "train",
+            "records_tested": 500,
+            "total_words": 11164,
+            "total_subwords": 15594,
+            "expansion_ratio": 1.4,
+            "ignored_subwords": 4436,
+            "ignored_subwords_pct": 28.45,
+            "unknown_tokens": 0,
+            "unknown_tokens_pct": 0.0,
+            "empty_tokenizations": 0,
+            "alignment_errors": 0,
+            "sample_mappings": [
+                {
+                    "sentence_id": "comi_lid_train_000001",
+                    "original_text": "इस स्पोकन ट्यूटोरियल में हम usb driver संस्थापित करने के लिए कंप्यूटर और sbhs के बीच फिज़िकल कम्युनि",
+                    "tokens_sample": [
+                        "इस",
+                        "स्पोकन",
+                        "ट्यूटोरियल",
+                        "में",
+                        "हम",
+                        "usb",
+                        "driver",
+                        "संस्थापित"
+                    ],
+                    "model_labels_sample": [
+                        1,
+                        0,
+                        0,
+                        1,
+                        1,
+                        0,
+                        0,
+                        1
+                    ],
+                    "subwords_sample": [
+                        "[CLS]",
+                        "इस",
+                        "स्",
+                        "##पो",
+                        "##कन",
+                        "ट्यूटोरियल",
+                        "में",
+                        "हम",
+                        "us",
+                        "##b",
+                        "driver",
+                        "संस्था"
+                    ],
+                    "subword_label_ids_sample": [
+                        -100,
+                        1,
+                        0,
+                        -100,
+                        -100,
+                        0,
+                        1,
+                        1,
+                        0,
+                        -100,
+                        0,
+                        1
+                    ],
+                    "expansion_ratio": 1.62
+                },
+                {
+                    "sentence_id": "comi_lid_train_000002",
+                    "original_text": "बाद के tutorials में हम अपने logos को बेहतर बनाने के लिए इसके size को बदलना सीखेंगे|",
+                    "tokens_sample": [
+                        "बाद",
+                        "के",
+                        "tutorials",
+                        "में",
+                        "हम",
+                        "अपने",
+                        "logos",
+                        "को"
+                    ],
+                    "model_labels_sample": [
+                        1,
+                        1,
+                        0,
+                        1,
+                        1,
+                        1,
+                        0,
+                        1
+                    ],
+                    "subwords_sample": [
+                        "[CLS]",
+                        "बाद",
+                        "के",
+                        "tutorials",
+                        "में",
+                        "हम",
+                        "अपने",
+                        "logos",
+                        "को",
+                        "बेहतर",
+                        "बनाने",
+                        "के"
+                    ],
+                    "subword_label_ids_sample": [
+                        -100,
+                        1,
+                        1,
+                        0,
+                        1,
+                        1,
+                        1,
+                        0,
+                        1,
+                        1,
+                        1,
+                        1
+                    ],
+                    "expansion_ratio": 1.24
+                },
+                {
+                    "sentence_id": "comi_lid_train_000003",
+                    "original_text": "Coronavirus Jamshedpur News. टाटा-रांची राष्ट्रीय राजमार्ग संख्या 33 पर चांडिल थाना क्षेत्र भादूडीह ",
+                    "tokens_sample": [
+                        "Coronavirus",
+                        "Jamshedpur",
+                        "News",
+                        ".",
+                        "टाटा-रांची",
+                        "राष्ट्रीय",
+                        "राजमार्ग",
+                        "संख्या"
+                    ],
+                    "model_labels_sample": [
+                        0,
+                        0,
+                        0,
+                        3,
+                        1,
+                        1,
+                        1,
+                        1
+                    ],
+                    "subwords_sample": [
+                        "[CLS]",
+                        "Co",
+                        "##rona",
+                        "##virus",
+                        "Jam",
+                        "##shedpur",
+                        "News",
+                        ".",
+                        "टाटा",
+                        "-",
+                        "रांची",
+                        "राष्ट्रीय"
+                    ],
+                    "subword_label_ids_sample": [
+                        -100,
+                        0,
+                        -100,
+                        -100,
+                        0,
+                        -100,
+                        0,
+                        3,
+                        1,
+                        -100,
+                        -100,
+                        1
+                    ],
+                    "expansion_ratio": 1.46
+                }
+            ]
+        },
+        "comi_lid_test": {
+            "file": "comi_lid_test",
+            "source": "COMI-LINGUA",
+            "split": "test",
+            "records_tested": 500,
+            "total_words": 10861,
+            "total_subwords": 15290,
+            "expansion_ratio": 1.41,
+            "ignored_subwords": 4455,
+            "ignored_subwords_pct": 29.14,
+            "unknown_tokens": 10,
+            "unknown_tokens_pct": 0.065,
+            "empty_tokenizations": 0,
+            "alignment_errors": 0,
+            "sample_mappings": [
+                {
+                    "sentence_id": "comi_lid_test_000001",
+                    "original_text": "Bihar JDU Student Leader Kanhaiya Kaushik Murder - बिहार: JDU नेता कन्हैया कौशिक की गोली मारकर हत्या",
+                    "tokens_sample": [
+                        "Bihar",
+                        "JDU",
+                        "Student",
+                        "Leader",
+                        "Kanhaiya",
+                        "Kaushik",
+                        "Murder",
+                        "-"
+                    ],
+                    "model_labels_sample": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        3
+                    ],
+                    "subwords_sample": [
+                        "[CLS]",
+                        "Bihar",
+                        "JDU",
+                        "Student",
+                        "Leader",
+                        "Ka",
+                        "##nha",
+                        "##iya",
+                        "Ka",
+                        "##ushik",
+                        "Murder",
+                        "-"
+                    ],
+                    "subword_label_ids_sample": [
+                        -100,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        -100,
+                        -100,
+                        0,
+                        -100,
+                        0,
+                        3
+                    ],
+                    "expansion_ratio": 1.29
+                },
+                {
+                    "sentence_id": "comi_lid_test_000002",
+                    "original_text": "यह ट्रेन शिमोगा टाउन रेलवे स्टेशन (स्टेशन कोड:SMET) से 10:00PM बजे छूटती है और बंगलौर सिटी जंक्शन रे",
+                    "tokens_sample": [
+                        "यह",
+                        "ट्रेन",
+                        "शिमोगा",
+                        "टाउन",
+                        "रेलवे",
+                        "स्टेशन",
+                        "(स्टेशन",
+                        "कोड"
+                    ],
+                    "model_labels_sample": [
+                        1,
+                        0,
+                        1,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "subwords_sample": [
+                        "[CLS]",
+                        "यह",
+                        "ट्रेन",
+                        "शि",
+                        "##मो",
+                        "##गा",
+                        "टाउन",
+                        "रेलवे",
+                        "स्टेशन",
+                        "(",
+                        "स्टेशन",
+                        "कोड"
+                    ],
+                    "subword_label_ids_sample": [
+                        -100,
+                        1,
+                        0,
+                        1,
+                        -100,
+                        -100,
+                        0,
+                        0,
+                        0,
+                        0,
+                        -100,
+                        0
+                    ],
+                    "expansion_ratio": 1.38
+                },
+                {
+                    "sentence_id": "comi_lid_test_000003",
+                    "original_text": "सरकार ने PMRF यानि Prime Minister Research Fellowship की घोषणा की है और मैं चाहूंगा कि आप सब इसका फा",
+                    "tokens_sample": [
+                        "सरकार",
+                        "ने",
+                        "PMRF",
+                        "यानि",
+                        "Prime",
+                        "Minister",
+                        "Research",
+                        "Fellowship"
+                    ],
+                    "model_labels_sample": [
+                        1,
+                        1,
+                        0,
+                        1,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "subwords_sample": [
+                        "[CLS]",
+                        "सरकार",
+                        "ने",
+                        "PM",
+                        "##R",
+                        "##F",
+                        "यानि",
+                        "Prime",
+                        "Minister",
+                        "Research",
+                        "Fellowship",
+                        "की"
+                    ],
+                    "subword_label_ids_sample": [
+                        -100,
+                        1,
+                        1,
+                        0,
+                        -100,
+                        -100,
+                        1,
+                        0,
+                        0,
+                        0,
+                        0,
+                        1
+                    ],
+                    "expansion_ratio": 1.33
+                }
+            ]
+        },
+        "tenglish_blog_train": {
+            "file": "tenglish_blog_train",
+            "source": "Telugu-English",
+            "split": "train",
+            "records_tested": 500,
+            "total_words": 7166,
+            "total_subwords": 12780,
+            "expansion_ratio": 1.78,
+            "ignored_subwords": 5931,
+            "ignored_subwords_pct": 46.41,
+            "unknown_tokens": 1,
+            "unknown_tokens_pct": 0.008,
+            "empty_tokenizations": 0,
+            "alignment_errors": 0,
+            "sample_mappings": [
+                {
+                    "sentence_id": "tenglish_blog_train_000001",
+                    "original_text": "If so inka silly but most irritating panulu evaina unte comment cheseyandi",
+                    "tokens_sample": [
+                        "If",
+                        "so",
+                        "inka",
+                        "silly",
+                        "but",
+                        "most",
+                        "irritating",
+                        "panulu"
+                    ],
+                    "model_labels_sample": [
+                        0,
+                        0,
+                        2,
+                        0,
+                        0,
+                        0,
+                        0,
+                        2
+                    ],
+                    "subwords_sample": [
+                        "[CLS]",
+                        "If",
+                        "so",
+                        "ink",
+                        "##a",
+                        "silly",
+                        "but",
+                        "most",
+                        "i",
+                        "##rri",
+                        "##tati",
+                        "##ng"
+                    ],
+                    "subword_label_ids_sample": [
+                        -100,
+                        0,
+                        0,
+                        2,
+                        -100,
+                        0,
+                        0,
+                        0,
+                        0,
+                        -100,
+                        -100,
+                        -100
+                    ],
+                    "expansion_ratio": 1.83
+                },
+                {
+                    "sentence_id": "tenglish_blog_train_000002",
+                    "original_text": "Asalu prapanchaanni appude chudatam modalu pedataam",
+                    "tokens_sample": [
+                        "Asalu",
+                        "prapanchaanni",
+                        "appude",
+                        "chudatam",
+                        "modalu",
+                        "pedataam"
+                    ],
+                    "model_labels_sample": [
+                        2,
+                        2,
+                        2,
+                        2,
+                        2,
+                        2
+                    ],
+                    "subwords_sample": [
+                        "[CLS]",
+                        "As",
+                        "##alu",
+                        "prapanch",
+                        "##aan",
+                        "##ni",
+                        "app",
+                        "##ude",
+                        "chu",
+                        "##data",
+                        "##m",
+                        "modal"
+                    ],
+                    "subword_label_ids_sample": [
+                        -100,
+                        2,
+                        -100,
+                        2,
+                        -100,
+                        -100,
+                        2,
+                        -100,
+                        2,
+                        -100,
+                        -100,
+                        2
+                    ],
+                    "expansion_ratio": 2.83
+                },
+                {
+                    "sentence_id": "tenglish_blog_train_000003",
+                    "original_text": "abba em shot ra ani anipinchi cinematographer evara ani Google chesela kondaru cinematographers work",
+                    "tokens_sample": [
+                        "abba",
+                        "em",
+                        "shot",
+                        "ra",
+                        "ani",
+                        "anipinchi",
+                        "cinematographer",
+                        "evara"
+                    ],
+                    "model_labels_sample": [
+                        2,
+                        2,
+                        0,
+                        2,
+                        2,
+                        2,
+                        0,
+                        2
+                    ],
+                    "subwords_sample": [
+                        "[CLS]",
+                        "ab",
+                        "##ba",
+                        "em",
+                        "shot",
+                        "ra",
+                        "ani",
+                        "ani",
+                        "##pin",
+                        "##chi",
+                        "cinematographer",
+                        "evar"
+                    ],
+                    "subword_label_ids_sample": [
+                        -100,
+                        2,
+                        -100,
+                        2,
+                        0,
+                        2,
+                        2,
+                        2,
+                        -100,
+                        -100,
+                        0,
+                        2
+                    ],
+                    "expansion_ratio": 1.73
+                }
+            ]
+        },
+        "tenglish_blog_test": {
+            "file": "tenglish_blog_test",
+            "source": "Telugu-English",
+            "split": "test",
+            "records_tested": 500,
+            "total_words": 6848,
+            "total_subwords": 12410,
+            "expansion_ratio": 1.81,
+            "ignored_subwords": 5901,
+            "ignored_subwords_pct": 47.55,
+            "unknown_tokens": 1,
+            "unknown_tokens_pct": 0.008,
+            "empty_tokenizations": 0,
+            "alignment_errors": 0,
+            "sample_mappings": [
+                {
+                    "sentence_id": "tenglish_blog_test_000001",
+                    "original_text": "ee cinema gurunchi entha matladukunna takkuve RGV please come back but I know u will never",
+                    "tokens_sample": [
+                        "ee",
+                        "cinema",
+                        "gurunchi",
+                        "entha",
+                        "matladukunna",
+                        "takkuve",
+                        "RGV",
+                        "please"
+                    ],
+                    "model_labels_sample": [
+                        2,
+                        0,
+                        2,
+                        2,
+                        2,
+                        2,
+                        3,
+                        0
+                    ],
+                    "subwords_sample": [
+                        "[CLS]",
+                        "e",
+                        "##e",
+                        "cinema",
+                        "guru",
+                        "##nchi",
+                        "ent",
+                        "##ha",
+                        "mat",
+                        "##lad",
+                        "##uku",
+                        "##nna"
+                    ],
+                    "subword_label_ids_sample": [
+                        -100,
+                        2,
+                        -100,
+                        0,
+                        2,
+                        -100,
+                        2,
+                        -100,
+                        2,
+                        -100,
+                        -100,
+                        -100
+                    ],
+                    "expansion_ratio": 1.69
+                },
+                {
+                    "sentence_id": "tenglish_blog_test_000002",
+                    "original_text": "Mana mida jarige konni oohinchani personal attacks nundi manalni manam ela kapadukogalamo anede ee a",
+                    "tokens_sample": [
+                        "Mana",
+                        "mida",
+                        "jarige",
+                        "konni",
+                        "oohinchani",
+                        "personal",
+                        "attacks",
+                        "nundi"
+                    ],
+                    "model_labels_sample": [
+                        2,
+                        2,
+                        2,
+                        2,
+                        2,
+                        0,
+                        0,
+                        2
+                    ],
+                    "subwords_sample": [
+                        "[CLS]",
+                        "Man",
+                        "##a",
+                        "mid",
+                        "##a",
+                        "jari",
+                        "##ge",
+                        "konni",
+                        "oo",
+                        "##hinch",
+                        "##ani",
+                        "personal"
+                    ],
+                    "subword_label_ids_sample": [
+                        -100,
+                        2,
+                        -100,
+                        2,
+                        -100,
+                        2,
+                        -100,
+                        2,
+                        2,
+                        -100,
+                        -100,
+                        0
+                    ],
+                    "expansion_ratio": 2.0
+                },
+                {
+                    "sentence_id": "tenglish_blog_test_000003",
+                    "original_text": "Prastutam ICC match referee ga unnaru Srinath",
+                    "tokens_sample": [
+                        "Prastutam",
+                        "ICC",
+                        "match",
+                        "referee",
+                        "ga",
+                        "unnaru",
+                        "Srinath"
+                    ],
+                    "model_labels_sample": [
+                        2,
+                        3,
+                        0,
+                        0,
+                        2,
+                        2,
+                        -100
+                    ],
+                    "subwords_sample": [
+                        "[CLS]",
+                        "P",
+                        "##rast",
+                        "##uta",
+                        "##m",
+                        "ICC",
+                        "match",
+                        "referee",
+                        "ga",
+                        "unnar",
+                        "##u",
+                        "Sri"
+                    ],
+                    "subword_label_ids_sample": [
+                        -100,
+                        2,
+                        -100,
+                        -100,
+                        -100,
+                        3,
+                        0,
+                        0,
+                        2,
+                        2,
+                        -100,
+                        -100
+                    ],
+                    "expansion_ratio": 2.0
+                }
+            ]
+        },
+        "tenglish_twitter_train": {
+            "file": "tenglish_twitter_train",
+            "source": "Telugu-English",
+            "split": "train",
+            "records_tested": 500,
+            "total_words": 4546,
+            "total_subwords": 10990,
+            "expansion_ratio": 2.42,
+            "ignored_subwords": 7200,
+            "ignored_subwords_pct": 65.51,
+            "unknown_tokens": 253,
+            "unknown_tokens_pct": 2.302,
+            "empty_tokenizations": 0,
+            "alignment_errors": 0,
+            "sample_mappings": [
+                {
+                    "sentence_id": "tenglish_twitter_train_000001",
+                    "original_text": "@ThanosDupeJagan @Flamboy63401053 😂 Adhe brathuku needi ani chepthuna ra low class fellow .",
+                    "tokens_sample": [
+                        "@ThanosDupeJagan",
+                        "@Flamboy63401053",
+                        "😂",
+                        "Adhe",
+                        "brathuku",
+                        "needi",
+                        "ani",
+                        "chepthuna"
+                    ],
+                    "model_labels_sample": [
+                        -100,
+                        -100,
+                        3,
+                        2,
+                        2,
+                        2,
+                        2,
+                        2
+                    ],
+                    "subwords_sample": [
+                        "[CLS]",
+                        "@",
+                        "Than",
+                        "##os",
+                        "##D",
+                        "##upe",
+                        "##J",
+                        "##agan",
+                        "@",
+                        "F",
+                        "##lam",
+                        "##boy"
+                    ],
+                    "subword_label_ids_sample": [
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100
+                    ],
+                    "expansion_ratio": 2.69
+                },
+                {
+                    "sentence_id": "tenglish_twitter_train_000002",
+                    "original_text": "@deepu_tweetz @NetflixIndia Anni rod unnai .. unna vaatilo tharun B konchem better anthe",
+                    "tokens_sample": [
+                        "@deepu_tweetz",
+                        "@NetflixIndia",
+                        "Anni",
+                        "rod",
+                        "unnai",
+                        "..",
+                        "unna",
+                        "vaatilo"
+                    ],
+                    "model_labels_sample": [
+                        -100,
+                        -100,
+                        2,
+                        0,
+                        2,
+                        3,
+                        2,
+                        2
+                    ],
+                    "subwords_sample": [
+                        "[CLS]",
+                        "@",
+                        "deep",
+                        "##u",
+                        "_",
+                        "tweet",
+                        "##z",
+                        "@",
+                        "Netflix",
+                        "##I",
+                        "##ndia",
+                        "Ann"
+                    ],
+                    "subword_label_ids_sample": [
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        2
+                    ],
+                    "expansion_ratio": 2.46
+                },
+                {
+                    "sentence_id": "tenglish_twitter_train_000003",
+                    "original_text": "@CricCrazyJohns No need to change rules now to make help for few franchises",
+                    "tokens_sample": [
+                        "@CricCrazyJohns",
+                        "No",
+                        "need",
+                        "to",
+                        "change",
+                        "rules",
+                        "now",
+                        "to"
+                    ],
+                    "model_labels_sample": [
+                        -100,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "subwords_sample": [
+                        "[CLS]",
+                        "@",
+                        "Cr",
+                        "##ic",
+                        "##C",
+                        "##raz",
+                        "##y",
+                        "##J",
+                        "##oh",
+                        "##ns",
+                        "No",
+                        "need"
+                    ],
+                    "subword_label_ids_sample": [
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        0,
+                        0
+                    ],
+                    "expansion_ratio": 1.85
+                }
+            ]
+        },
+        "tenglish_twitter_test": {
+            "file": "tenglish_twitter_test",
+            "source": "Telugu-English",
+            "split": "test",
+            "records_tested": 500,
+            "total_words": 4258,
+            "total_subwords": 10307,
+            "expansion_ratio": 2.42,
+            "ignored_subwords": 6778,
+            "ignored_subwords_pct": 65.76,
+            "unknown_tokens": 274,
+            "unknown_tokens_pct": 2.658,
+            "empty_tokenizations": 0,
+            "alignment_errors": 0,
+            "sample_mappings": [
+                {
+                    "sentence_id": "tenglish_twitter_test_000001",
+                    "original_text": "@Sneyyhaaa 25 *",
+                    "tokens_sample": [
+                        "@Sneyyhaaa",
+                        "25",
+                        "*"
+                    ],
+                    "model_labels_sample": [
+                        -100,
+                        3,
+                        3
+                    ],
+                    "subwords_sample": [
+                        "[CLS]",
+                        "@",
+                        "S",
+                        "##ney",
+                        "##y",
+                        "##haa",
+                        "##a",
+                        "25",
+                        "*",
+                        "[SEP]"
+                    ],
+                    "subword_label_ids_sample": [
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        3,
+                        3,
+                        -100
+                    ],
+                    "expansion_ratio": 3.33
+                },
+                {
+                    "sentence_id": "tenglish_twitter_test_000002",
+                    "original_text": "Think HCA should change RGICS to Mithali Raj’s name . What a player .",
+                    "tokens_sample": [
+                        "Think",
+                        "HCA",
+                        "should",
+                        "change",
+                        "RGICS",
+                        "to",
+                        "Mithali",
+                        "Raj’s"
+                    ],
+                    "model_labels_sample": [
+                        0,
+                        3,
+                        0,
+                        0,
+                        3,
+                        0,
+                        -100,
+                        3
+                    ],
+                    "subwords_sample": [
+                        "[CLS]",
+                        "Think",
+                        "HC",
+                        "##A",
+                        "should",
+                        "change",
+                        "R",
+                        "##G",
+                        "##ICS",
+                        "to",
+                        "Mi",
+                        "##thal"
+                    ],
+                    "subword_label_ids_sample": [
+                        -100,
+                        0,
+                        3,
+                        -100,
+                        0,
+                        0,
+                        3,
+                        -100,
+                        -100,
+                        0,
+                        -100,
+                        -100
+                    ],
+                    "expansion_ratio": 1.64
+                },
+                {
+                    "sentence_id": "tenglish_twitter_test_000003",
+                    "original_text": "@HarshAA_45 😂 😂 🤣 🤣",
+                    "tokens_sample": [
+                        "@HarshAA_45",
+                        "😂",
+                        "😂",
+                        "🤣",
+                        "🤣"
+                    ],
+                    "model_labels_sample": [
+                        -100,
+                        3,
+                        3,
+                        3,
+                        3
+                    ],
+                    "subwords_sample": [
+                        "[CLS]",
+                        "@",
+                        "Har",
+                        "##sh",
+                        "##AA",
+                        "_",
+                        "45",
+                        "[UNK]",
+                        "[UNK]",
+                        "[UNK]",
+                        "[UNK]",
+                        "[SEP]"
+                    ],
+                    "subword_label_ids_sample": [
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        -100,
+                        3,
+                        3,
+                        3,
+                        3,
+                        -100
+                    ],
+                    "expansion_ratio": 2.4
+                }
+            ]
+        }
+    },
+    "key_findings": {
+        "token_count_parity": "All test samples achieved 100% exact length match between input_ids and label_ids",
+        "tokenizer_type": "BertTokenizer (slow), word_ids() not available, word-level iteration verified successfully",
+        "telugu_english_reconstruction": "100% exact text match with ' '.join(tokens)",
+        "comi_lingua_reconstruction": "Original 'Sentences' text differs from ' '.join(tokens) due to whitespace and tokenization keys; training must tokenize tokens directly rather than raw text string",
+        "whitespace_in_tokens": "COMI-LINGUA contains some tokens with embedded spaces; MuRIL subword tokenizer splits them into multiple pieces, first piece takes label, remaining take -100, maintaining strict length parity"
+    }
+}

@@ -1,0 +1,103 @@
+{
+  "step": "27",
+  "report_title": "Human Contributor Pilot Preparation Kit & Calibration Protocol",
+  "timestamp_utc": "2026-10-31T12:45:00.000000+00:00",
+  "schema_version": "1.2.0",
+  "pilot_directory_tree": {
+    "root": "data/custom/trilingual_lid/pilot/",
+    "files": [
+      { "name": "README.md", "purpose": "Kit overview, directory index, and operational safeguards" },
+      { "name": "contributor_guide.md", "purpose": "Plain-language instructions for native multilingual authors" },
+      { "name": "draft_consent_form.md", "purpose": "Faculty-reviewable informed consent agreement and rights notice" },
+      { "name": "contributor_eligibility.md", "purpose": "Linguistic proficiency standards, PII exclusion, and minor protections" },
+      { "name": "elicitation_scenarios.md", "purpose": "40 communicative scenario prompts across 4 categories and 6 domains (no examples)" },
+      { "name": "pilot_protocol.md", "purpose": "7-phase operational protocol from faculty sign-off to workload projection" },
+      { "name": "pilot_record_template.csv", "purpose": "Blank tabular template for recording contributor submissions and annotations" },
+      { "name": "reviewer_instruction_sheet.md", "purpose": "Detailed checklists, rules, and rejection codes for Stage 1 & Stage 2 reviewers" },
+      { "name": "pilot_acceptance_tracker.csv", "purpose": "Tabular tracker for empirical submission counts, approvals, and error types" },
+      { "name": "ethics_and_privacy_notes.md", "purpose": "Privacy safeguards, PII exclusion, CC non-commercial scope, and IRB checklist" }
+    ]
+  },
+  "contributor_eligibility": {
+    "category_A_native_telugu": "Fluent native or heritage Telugu speaker capable of writing natural Telugu-script sentences.",
+    "category_B_english_telugu": "Conversational bilingual speaker comfortable using English and Telugu within the same utterance.",
+    "category_C_hindi_telugu": "Bilingual speaker proficient in written Hindi (Devanagari) and Telugu (Telugu script).",
+    "category_D_english_hindi_telugu": "Trilingual speaker proficient in English, Hindi, and Telugu across all three scripts (Latin, Devanagari, Telugu).",
+    "screening_method": "Non-intrusive self-reported proficiency questionnaire without collecting sensitive dossiers.",
+    "pii_exclusion": "No legal names, phone numbers, email addresses, student roll numbers, or government IDs stored in dataset records.",
+    "minor_protection": "Adult participants (>=18 years) required for initial pilot. Formal IRB approval and parental consent required before any minor participation."
+  },
+  "draft_consent_summary": {
+    "project_purpose": "Academic NLP research on token-level language identification in mixed Indian languages.",
+    "voluntary_nature": "Participation is entirely voluntary; refusal or withdrawal carries no academic or personal penalty.",
+    "withdrawal_right": "Contributors may withdraw submissions at any time prior to the designated Dataset Freeze Date.",
+    "anonymity": "Contributors identified exclusively by pseudonyms (contrib_XX); zero PII collected.",
+    "proposed_license": "Creative Commons Attribution 4.0 International (CC BY 4.0) for research and open publication.",
+    "non_commercial_scope": "Operating within an academic setting does not automatically establish non-commercial status under CC terms; institutional review required prior to external distribution.",
+    "legal_notice": "Clearly designated as a draft for faculty and institutional ethics review, not a finalized legal contract."
+  },
+  "elicitation_strategy": {
+    "pilot_target": "40 total sentences (10 per category across 3 independent adult contributors).",
+    "domains_covered": [
+      "College & Higher Education",
+      "Technology & Software Programming",
+      "Everyday Conversational & Family Life",
+      "Food, Cooking & Dining",
+      "Entertainment, Cinema & Sports",
+      "Workplace & Professional Collaboration"
+    ],
+    "scenario_design": "Situational prompts outlining context and communicative intent without providing example sentences (prevents template copying).",
+    "script_rules": {
+      "English": "Latin script ([A-Za-z])",
+      "Hindi": "Devanagari script (U+0900-U+097F)",
+      "Telugu": "Telugu script (U+0C00-U+0C7F)"
+    },
+    "lexical_threshold": "At least one unambiguous lexical token from every participating language required by the category.",
+    "synthetic_text_rule": "LLM generation alone is strictly prohibited from ground-truth data. Parallel text is never automatically concatenated."
+  },
+  "reviewer_process": {
+    "stage_1_screening": "Fluent reviewer verifies sentence naturalness, script conformity, tokenization, and initial labels.",
+    "stage_2_independent_audit": "Independent second linguist conducts blind token audit, checks NE (-100) and MIXED (-100) governance, independently recalculates language statistics, and adjudicates consensus.",
+    "rejection_codes": ["REJ_NAT", "REJ_SCR", "REJ_MIX", "REJ_LEN", "REJ_PII", "REJ_TOK", "REJ_DIS"]
+  },
+  "acceptance_rate_methodology": {
+    "formula": "A_pilot = N_stage2_approved / N_submitted",
+    "category_stratification": "Calculated independently for Native_Telugu, English_Telugu, Hindi_Telugu, and English_Hindi_Telugu.",
+    "projections_policy": "No invented expected acceptance rates; empirical pilot results dictate full dataset drafting quotas.",
+    "workload_projection_formula": "N_drafts_needed = ceil(100 / A_pilot)",
+    "isolation_rule": "Pilot records are quarantined in pilot/ and are NOT automatically added to reviewed_sentences.jsonl or final splits."
+  },
+  "bht25_source_group_decision": {
+    "investigation_status": "BHT25 public Parquet files provide only id, bn, hi, te. Work and book identifiers are absent in raw rows, leaving document grouping unresolved.",
+    "comparison": {
+      "route_A_manual_literary_mapping": "Extract Category A from BHT25 and manually align rows against original Tagore/Chattopadhyay novels to assign source_group_id. High labor, high risk of boundary errors, and carries archaic 19th-century literary domain bias.",
+      "route_B_direct_human_elicitation": "Author Category A via direct human elicitation. Assigns source_group_id = contributor_id or session cleanly, guarantees 100% disjoint train/val/test contributor splitting, and produces contemporary natural Telugu."
+    },
+    "recommendation": "Route B (Direct Human Elicitation) is the safer, cleaner, and higher-fidelity operational route for the custom dataset. BHT25 should be retained strictly as an out-of-domain evaluation benchmark."
+  },
+  "statistics_accounting_issue": {
+    "problem_identified": "Schema v1.2.0 language_token_counts requires EN, HI, TE, OTHER, NE, MIXED and sets additionalProperties: false. If a token is annotated as AMBIGUOUS or null, it is silently omitted from language_token_counts, causing total token counts to not equal sentence length.",
+    "proposed_backward_compatible_correction": "In Schema v1.3.0, add AMBIGUOUS and NULL as optional integer properties in language_token_counts while keeping existing keys required, or add metadata.unresolved_token_count. Token count parity sum(counts) == len(tokens) is then preserved.",
+    "status": "Documented and tested; dataset_schema.json kept unchanged in Step 27 per user instructions."
+  },
+  "verification_results": {
+    "candidate_sentences_bytes": 0,
+    "reviewed_sentences_bytes": 0,
+    "rejected_sentences_bytes": 0,
+    "candidate_records_count": 0,
+    "reviewed_records_count": 0,
+    "rejected_records_count": 0,
+    "validator_status": "PASS (0 hard errors, 0 warnings)",
+    "self_test_results": "ALL 22/22 TESTS PASSED",
+    "splits_executed": false,
+    "model_training_executed": false,
+    "primary_processed_datasets_untouched": true,
+    "overall_integrity_passed": true
+  },
+  "approvals_required_before_collection": [
+    "Departmental faculty supervisor review and written sign-off on draft_consent_form.md.",
+    "Confirmation from institutional research coordinator on whether formal Institutional Review Board (IRB) review is required.",
+    "Configuration of secure, encrypted storage for consent archives and pseudonym lookup keys.",
+    "Appointment of two independent, qualified reviewers for Stage 1 and Stage 2 verification."
+  ]
+}
