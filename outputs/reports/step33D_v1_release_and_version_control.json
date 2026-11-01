@@ -1,0 +1,90 @@
+{
+  "step": "STEP 33D — Freeze V1.0.0 Stable Release and Prepare V2 Development",
+  "project": "CodeMix Intelligence",
+  "version": "1.0.0",
+  "timestamp_utc": "2026-11-01T12:08:00Z",
+  "authoritative_checksums": {
+    "model_archive": {
+      "filename": "muril_lid_best_model.zip",
+      "size_bytes": 881225333,
+      "sha256": "a5439181f02fece996bf526629c70da20166a53450fb615a44f343d8cbf8a827",
+      "status": "VERIFIED_BITWISE_MATCH"
+    },
+    "evaluation_archive": {
+      "filename": "muril_lid_evaluation_results.zip",
+      "size_bytes": 3823,
+      "sha256": "bbe1585281070b78baa98b0d4e6ae5e64ae9fe07c1c9ed31abb7cd08677cc876",
+      "status": "VERIFIED_BITWISE_MATCH"
+    },
+    "extracted_model_weights": {
+      "path": "artifacts/models/muril_lid_baseline/best_model/model.safetensors",
+      "size_bytes": 947898192,
+      "sha256": "714defc6f90659ebc25e5e011a9101579d36cf9f3b4c57165c0614f1bc744bae",
+      "status": "VERIFIED_BITWISE_MATCH"
+    }
+  },
+  "checksum_correction_note": {
+    "path": "outputs/reports/step33A_checksum_correction.md",
+    "status": "CREATED_AND_COMMITTED"
+  },
+  "git_repository": {
+    "status": "INITIALIZED_AND_CLEAN",
+    "v1_commit_hash": "c9509f0e9e10fe715c759edc09d1dacadb540f74",
+    "v1_commit_message": "Release CodeMix Intelligence V1.0.0 - MuRIL LID baseline",
+    "annotated_tag": "v1.0.0",
+    "tag_target_commit": "c9509f0e9e10fe715c759edc09d1dacadb540f74",
+    "tag_message": "Stable CodeMix Intelligence release containing the completed MuRIL token-level language identification application.",
+    "current_branch": "feature/mt5-translation-v2",
+    "branch_starting_commit": "c9509f0e9e10fe715c759edc09d1dacadb540f74",
+    "files_committed_count": 137,
+    "working_tree_clean": true
+  },
+  "gitignore_rules_added": [
+    "artifacts/colab/*",
+    "!artifacts/colab/.gitkeep",
+    "scratch/*",
+    "!scratch/.gitkeep"
+  ],
+  "files_excluded_from_git": [
+    "artifacts/models/muril_lid_baseline/best_model/model.safetensors (948 MB)",
+    "artifacts/models/muril_lid_baseline/best_model/training_args.bin (5.8 KB)",
+    "muril_lid_best_model.zip (881 MB)",
+    "muril_lid_evaluation_results.zip (3.8 KB)",
+    "artifacts/colab/muril_lid_data_bundle.zip (2.98 MB)",
+    "artifacts/colab/muril_lid_test_bundle.zip (2.21 MB)",
+    "outputs/releases/CodeMix_Intelligence_v1.0.0_source.zip (1.68 MB)",
+    "data/raw/*",
+    "data/processed/*",
+    "data/custom/*",
+    ".venv/",
+    "scratch/",
+    "__pycache__/"
+  ],
+  "source_snapshot_backup": {
+    "path": "outputs/releases/CodeMix_Intelligence_v1.0.0_source.zip",
+    "size_bytes": 1680817,
+    "sha256": "1255f24192a1d0f1550ae5d8bf8036e4fbbf62526a0bb9dcae21278b4d338489",
+    "member_count": 88,
+    "verified_open": true
+  },
+  "test_verification": {
+    "test_file": "tests/test_inference_and_api.py",
+    "framework": "unittest",
+    "total_tests": 13,
+    "passed": 13,
+    "failed": 0,
+    "duration_seconds": 10.49
+  },
+  "live_service_smoke_test": {
+    "health_endpoint": "http://127.0.0.1:8000/health (200 OK)",
+    "api_health_endpoint": "http://127.0.0.1:8000/api/health (200 OK, model_loaded: True, device: cpu)",
+    "predict_endpoint": "http://127.0.0.1:8000/api/predict (200 OK, latency: 586.3ms, 7 tokens classified)",
+    "frontend_server": "http://127.0.0.1:5500 (HTTP 200 OK)"
+  },
+  "independent_backup_recommendation": {
+    "local_drives_detected": ["C:"],
+    "secondary_drive_detected": false,
+    "recommendation": "Manual offsite copy required: Copy muril_lid_best_model.zip, muril_lid_evaluation_results.zip, CodeMix_Intelligence_v1.0.0_source.zip, and BACKUP_MANIFEST.json to Google Drive or external USB/SSD."
+  },
+  "rollback_procedure": "git checkout v1.0.0 (or git checkout -b restore/v1.0.0 v1.0.0) without destructive commands."
+}
