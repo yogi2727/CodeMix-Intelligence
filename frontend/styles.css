@@ -1418,9 +1418,14 @@ summary:focus-visible {
   padding: 18px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   z-index: 200;
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 12px;
+}
+
+/* Show popover when .is-open class is present */
+.settings-popover.is-open {
+  display: flex !important;
 }
 
 .popover-header {

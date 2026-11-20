@@ -7,11 +7,16 @@
 import time
 from .lid import is_native_script
 from .normalizer import detokenize, normalize_tokens
-from .transliterate import NoTransliterator
+from .transliterate import NoTransliterator, HI_LEXICON
 
 STRATEGIES = ("direct", "lid_only", "full", "clause")
 INDIC = ("HI", "TE")
 BREAK = {",", ";", ".", "!", "?", ":"}
+
+# Lexicon overrides LID for words that appear in the curated Hindi lexicon.
+# The MuRIL model sometimes misclassifies common Hinglish words (mai, kal, karta, huu)
+# as Telugu when they appear in mixed sentences. The lexicon is authoritative for these.
+_HI_LEX_KEYS = set(HI_LEXICON.keys())
 
 
 def split_clauses(tokens):
@@ -33,7 +38,11 @@ def split_clauses(tokens):
 
 
 def dominant_language(labels, confs):
-    score = {l: sum(c for lab, c in zip(labels, confs) if lab == l) for l in INDIC}
+    # Majority vote by token count, not sum of confidences.
+    # Summing confidences lets a few high-confidence Telugu tokens outvote many
+    # lower-confidence Hindi tokens in mixed sentences, which transliterates Hindi
+    # words into Telugu script and produces garbage translations.
+    score = {l: sum(1 for lab in labels if lab == l) for l in INDIC}
     if max(score.values()) == 0:
         return None
     return max(score, key=score.get)
@@ -61,10 +70,21 @@ class CodeMixPipeline:
         labels, confs = lid.predict(tokens)
         tm["lid"] = _ms(t0); t0 = time.perf_counter()
 
+        # Authority Check: The Hindi lexicon is more reliable for common Hinglish words
+        # than the MuRIL model when appearing in mixed Hindi+Telugu sentences.
+        for i, tok in enumerate(tokens):
+            low = tok.lower()
+            if low in _HI_LEX_KEYS and labels[i] == "TE":
+                labels[i] = "HI"
+                confs[i] = 1.0  # boost confidence to override dominant language if needed
+
+        # Token-level native script mapping
         natives = list(tokens)
         if strategy in ("full", "clause"):
             for i, (tok, lab) in enumerate(zip(tokens, labels)):
                 if lab in INDIC and not is_native_script(tok):
+                    # We use the token's individual label for transliteration
+                    # This handles mixed Hindi + Telugu within a single sentence
                     natives[i] = self.translit(tok, lab)
         tm["transliterate"] = _ms(t0); t0 = time.perf_counter()
 
@@ -76,6 +96,8 @@ class CodeMixPipeline:
         elif strategy == "clause":
             translation, clauses = self._translate_clauses(tokens, natives, labels, confs)
         else:
+            # Full strategy: use token-level native script, but MT still needs a source tag.
+            # We use the majority vote dominant language for the source tag.
             translation = self.translator.translate([detokenize(natives)], dom)[0]
         tm["translate"] = _ms(t0)
 

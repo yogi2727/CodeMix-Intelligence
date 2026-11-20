@@ -18,7 +18,7 @@ HI_LEXICON = {
     "mujhe": "मुझे", "tumhe": "तुम्हें", "hume": "हमें", "humein": "हमें", "usse": "उससे", "mujhse": "मुझसे",
     "mera": "मेरा", "meri": "मेरी", "mere": "मेरे", "tera": "तेरा", "tumhara": "तुम्हारा", "tumhari": "तुम्हारी",
     "hamara": "हमारा", "uska": "उसका", "uski": "उसकी", "tumne": "तुमने", "usne": "उसने", "maine": "मैंने",
-    "hoon": "हूँ", "hu": "हूँ", "hai": "है", "hain": "हैं", "ho": "हो", "tha": "था", "thi": "थी", "the": "थे",
+    "hoon": "हूँ", "hu": "हूँ", "huu": "हूँ", "hai": "है", "hain": "हैं", "ho": "हो", "tha": "था", "thi": "थी", "the": "थे",
     "hoga": "होगा", "hogi": "होगी", "hui": "हुई", "hua": "हुआ", "hue": "हुए", "gaya": "गया", "gayi": "गई", "gaye": "गए",
     # question words
     "kya": "क्या", "kab": "कब", "kahan": "कहाँ", "kaise": "कैसे", "kyun": "क्यों", "kyu": "क्यों", "kaun": "कौन",
@@ -43,7 +43,7 @@ HI_LEXICON = {
     # verbs
     "aao": "आओ", "aaoge": "आओगे", "aana": "आना", "aaunga": "आऊँगा", "aa": "आ", "jao": "जाओ", "jaana": "जाना",
     "ja": "जा", "jaunga": "जाऊँगा", "raha": "रहा", "rahi": "रही", "rahe": "रहे", "chal": "चल", "chalo": "चलो",
-    "chalte": "चलते", "chalo": "चलो", "karo": "करो", "karna": "करना", "kar": "कर", "kiya": "किया", "karunga": "करूँगा",
+    "chalte": "चलते", "chalo": "चलो", "karo": "करो", "karna": "करना", "kar": "कर", "karta": "करता", "kiya": "किया", "karunga": "करूँगा",
     "karenge": "करेंगे", "bol": "बोल", "bolo": "बोलो", "bata": "बता", "batao": "बताओ", "dekh": "देख", "dekho": "देखो",
     "dekhi": "देखी", "suno": "सुनो", "samajh": "समझ", "samjha": "समझा", "pata": "पता", "padhna": "पढ़ना",
     "bhej": "भेज", "dena": "देना", "do": "दो", "de": "दे", "dijiye": "दीजिए", "lena": "लेना", "le": "ले", "lo": "लो",

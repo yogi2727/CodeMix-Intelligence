@@ -37,11 +37,19 @@ class MurilLID:
     def __init__(self, model_dir=None, device=None, max_len=256):
         import torch
         from transformers import AutoModelForTokenClassification, AutoTokenizer
-        model_dir = model_dir or os.getenv("LID_MODEL_DIR", "models/muril-lid")
+        import os
+        model_dir = model_dir or os.getenv("LID_MODEL_DIR", "artifacts/models/muril_lid_baseline")
         self.torch, self.max_len = torch, max_len
         self.device = device or ("cuda" if torch.cuda.is_available() else "cpu")
-        self.tok = AutoTokenizer.from_pretrained(model_dir)
-        self.model = AutoModelForTokenClassification.from_pretrained(model_dir).to(self.device).eval()
+        # The fine-tuned MuRIL tokenizer is BERT-style with vocab.txt
+        # Use AutoTokenizer with use_fast=False and local_files_only=True to load the full vocabulary
+        best_model_dir = os.path.join(model_dir, "best_model")
+        self.tok = AutoTokenizer.from_pretrained(
+            best_model_dir,
+            use_fast=False,
+            local_files_only=True
+        )
+        self.model = AutoModelForTokenClassification.from_pretrained(best_model_dir).to(self.device).eval()
         self.id2label = {int(i): re.sub(r"^[BI]-", "", l).upper() for i, l in self.model.config.id2label.items()}
 
     def predict(self, tokens):

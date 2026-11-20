@@ -218,9 +218,7 @@ const elements = {
   experimentsChartsGrid: document.getElementById("experiments-charts-grid"),
   experimentsLidContainer: document.getElementById("experiments-lid-container"),
   experimentsLidCompareContainer: document.getElementById("experiments-lid-compare-container"),
-  experimentsRegressionContainer: document.getElementById("experiments-regression-container"),
-  experimentsNegativeList: document.getElementById("experiments-negative-list"),
-  experimentsLimitationsList: document.getElementById("experiments-limitations-list")
+  experimentsRegressionContainer: document.getElementById("experiments-regression-container")
 };
 
 // ==============================================================================
@@ -700,6 +698,7 @@ function initSettingsPopover() {
       elements.settingMtBase.value = getMtApiBase();
     }
     elements.settingsPopover.hidden = false;
+    elements.settingsPopover.classList.add("is-open");
     elements.settingsBtn.setAttribute("aria-expanded", "true");
     if (elements.settingMtBase) {
       elements.settingMtBase.focus();
@@ -707,15 +706,16 @@ function initSettingsPopover() {
   }
 
   function closePopover() {
+    elements.settingsPopover.classList.remove("is-open");
     elements.settingsPopover.hidden = true;
     elements.settingsBtn.setAttribute("aria-expanded", "false");
   }
 
   function togglePopover() {
-    if (elements.settingsPopover.hidden) {
-      openPopover();
-    } else {
+    if (elements.settingsPopover.classList.contains("is-open")) {
       closePopover();
+    } else {
+      openPopover();
     }
   }
 
@@ -731,7 +731,7 @@ function initSettingsPopover() {
 
   // Close when clicking outside
   document.addEventListener("click", (e) => {
-    if (!elements.settingsPopover.hidden && !elements.settingsPopover.contains(e.target) && e.target !== elements.settingsBtn) {
+    if (elements.settingsPopover.classList.contains("is-open") && !elements.settingsPopover.contains(e.target) && e.target !== elements.settingsBtn) {
       closePopover();
     }
   });
@@ -739,7 +739,7 @@ function initSettingsPopover() {
   // Close popover and tooltips on Escape key
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
-      if (!elements.settingsPopover.hidden) {
+      if (elements.settingsPopover.classList.contains("is-open")) {
         closePopover();
         elements.settingsBtn.focus();
       }
@@ -4000,46 +4000,6 @@ function renderExperiments(data) {
     fn.className = "exp-card-footnote font-mono";
     fn.textContent = "Confirms that the new mixed-trained LID variant does not regress translation performance on held-out benchmarks.";
     elements.experimentsRegressionContainer.appendChild(fn);
-  }
-
-  // ----------------------------------------------------------------------------
-  // 4B. Negative Results List
-  // ----------------------------------------------------------------------------
-  if (elements.experimentsNegativeList && Array.isArray(data.negative_results)) {
-    while (elements.experimentsNegativeList.firstChild) {
-      elements.experimentsNegativeList.removeChild(elements.experimentsNegativeList.firstChild);
-    }
-    data.negative_results.forEach((item) => {
-      const li = document.createElement("li");
-      li.textContent = item;
-      elements.experimentsNegativeList.appendChild(li);
-    });
-  }
-
-  // ----------------------------------------------------------------------------
-  // 4C. Limitations Panel (Zero "provisional" wording)
-  // ----------------------------------------------------------------------------
-  if (elements.experimentsLimitationsList) {
-    while (elements.experimentsLimitationsList.firstChild) {
-      elements.experimentsLimitationsList.removeChild(elements.experimentsLimitationsList.firstChild);
-    }
-
-    const defaultLimitations = [
-      "rule-based transliteration is the main weakness for Telugu",
-      "one source language tag per sentence unless clause mode is used",
-      "the Telugu test set is small and hand-written",
-      "PHINC references are noisy"
-    ];
-
-    const limitationsToRender = Array.isArray(data.limitations)
-      ? data.limitations.filter((lim) => !lim.toLowerCase().includes("provisional"))
-      : defaultLimitations;
-
-    limitationsToRender.forEach((item) => {
-      const li = document.createElement("li");
-      li.textContent = item;
-      elements.experimentsLimitationsList.appendChild(li);
-    });
   }
 }
 
