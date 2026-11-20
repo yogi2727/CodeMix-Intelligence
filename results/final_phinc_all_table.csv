@@ -1,0 +1,4 @@
+system,chrF,BLEU,ms/sent
+direct (HI hint),42.83,23.3,744.3
+lid_only,44.17,24.98,681.7
+full,53.17,31.21,568.4

@@ -1,0 +1,5 @@
+system,chrF,BLEU
+mT5 (earlier model),43.09,24.19
+direct (HI hint),42.83,23.3
+lid_only,44.17,24.98
+full (pipeline),53.17,31.21

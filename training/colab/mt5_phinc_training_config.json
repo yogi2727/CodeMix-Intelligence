@@ -1,0 +1,69 @@
+{
+  "config_version": "1.0.0",
+  "project_name": "CodeMix Intelligence",
+  "model_name": "google/mt5-small",
+  "task": "Romanized Hinglish-to-English Translation",
+  "task_prefix": "translate Hinglish to English: ",
+  "provenance": "human_translated",
+  "license": "CC BY 4.0",
+  "dataset_source": "PHINC (Srivastava & Singh, W-NUT 2020)",
+  "dataset_splits": {
+    "train_records": 10802,
+    "validation_records": 1350,
+    "locked_test_records": 1351,
+    "train_sha256": "f9b9b4e5678c5ce628891d0fa9e53224d4723a8015828a95206ce2a3c34f7f41",
+    "validation_sha256": "b63971bbc05c692279f092c682d6c2bd1e184fe759009a3a52576c5e54500007",
+    "locked_test_sha256": "7cd192e2d65b1cd7c3b8b725690cf9e0f0e948e3ace3650235f832ae8ca8bf20"
+  },
+  "training_bundle": {
+    "filename": "mt5_phinc_training_bundle.zip",
+    "sha256": "d2af7d5a193b641878f34b19f1a0dab5dd1ff65cc7c78c87f76884e31b87ff60",
+    "size_bytes": 1387072,
+    "test_set_included": false
+  },
+  "hyperparameters": {
+    "seed": 42,
+    "num_train_epochs": 3,
+    "learning_rate": 1e-4,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.06,
+    "per_device_train_batch_size": 4,
+    "gradient_accumulation_steps": 4,
+    "effective_batch_size": 16,
+    "per_device_eval_batch_size": 4,
+    "lr_scheduler_type": "linear",
+    "max_grad_norm": 1.0,
+    "logging_strategy": "steps",
+    "logging_steps": 50,
+    "evaluation_strategy": "epoch",
+    "save_strategy": "epoch",
+    "load_best_model_at_end": true,
+    "metric_for_best_model": "bleu",
+    "greater_is_better": true,
+    "save_total_limit": 2,
+    "early_stopping_patience": 2,
+    "generation_num_beams": 4,
+    "generation_max_length": 128,
+    "max_source_length": 128,
+    "max_target_length": 128,
+    "fp16": true,
+    "bf16": false
+  },
+  "google_drive_paths": {
+    "base_dir": "/content/drive/MyDrive/CodeMix_Intelligence/mt5_phinc_baseline",
+    "bundle_path": "/content/drive/MyDrive/CodeMix_Intelligence/mt5_phinc_training_bundle.zip",
+    "checkpoints_dir": "/content/drive/MyDrive/CodeMix_Intelligence/mt5_phinc_baseline/checkpoints",
+    "best_model_dir": "/content/drive/MyDrive/CodeMix_Intelligence/mt5_phinc_baseline/best_model",
+    "metrics_dir": "/content/drive/MyDrive/CodeMix_Intelligence/mt5_phinc_baseline/metrics",
+    "logs_dir": "/content/drive/MyDrive/CodeMix_Intelligence/mt5_phinc_baseline/logs",
+    "metadata_dir": "/content/drive/MyDrive/CodeMix_Intelligence/mt5_phinc_baseline/metadata",
+    "final_zip_path": "/content/drive/MyDrive/CodeMix_Intelligence/mt5_phinc_baseline/mt5_phinc_baseline_best_model.zip"
+  },
+  "package_requirements": {
+    "transformers": ">=5.0.0,<6.0.0",
+    "accelerate": ">=1.0.0,<2.0.0",
+    "sentencepiece": ">=0.2.0,<1.0.0",
+    "sacrebleu": ">=2.4.0,<3.0.0",
+    "safetensors": ">=0.4.0"
+  }
+}

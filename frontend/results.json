@@ -1,0 +1,90 @@
+{
+  "meta": {"updated": "2026-11-15", "note": "chrF and BLEU by sacreBLEU; CI = paired bootstrap on sentence-level chrF, 2000 resamples (recomputed from the saved outputs with an independent chrF implementation that matches sacreBLEU within 0.1)"},
+  "headline": {
+    "phinc_gain_chrF": 11.30, "phinc_gain_ci": [10.47, 12.16], "phinc_n": 1351,
+    "lid_gating_gain_chrF": 6.64, "lid_gating_ci": [5.21, 8.04], "lid_gating_n": 400,
+    "lid_macro_f1": 0.983, "ms_full": 568, "ms_direct": 744
+  },
+  "phinc_all": {
+    "n": 1351,
+    "systems": [
+      {"system": "direct (HI hint)", "chrF": 42.83, "BLEU": 23.30, "ms": 744},
+      {"system": "lid_only", "chrF": 44.17, "BLEU": 24.98, "ms": 682},
+      {"system": "full", "chrF": 53.17, "BLEU": 31.21, "ms": 568}
+    ],
+    "gains": [
+      {"comparison": "full - direct", "mean": 11.30, "ci": [10.47, 12.16]},
+      {"comparison": "full - lid_only", "mean": 10.30, "ci": [9.47, 11.10]},
+      {"comparison": "lid_only - direct", "mean": 0.99, "ci": [0.72, 1.29]}
+    ]
+  },
+  "phinc_400": [
+    {"system": "direct (HI hint)", "chrF": 40.56, "BLEU": 21.17},
+    {"system": "lid_only", "chrF": 41.46, "BLEU": 22.44},
+    {"system": "transliterate all words (no LID)", "chrF": 44.34, "BLEU": null},
+    {"system": "full", "chrF": 52.03, "BLEU": 29.40}
+  ],
+  "dev_80": [
+    {"system": "direct (correct hint)", "chrF": 28.71, "BLEU": 6.29, "chrF_te": 26.64, "chrF_hi": 30.80},
+    {"system": "direct (fixed TE hint)", "chrF": 27.50, "BLEU": 4.26, "chrF_te": 26.64, "chrF_hi": 28.36},
+    {"system": "lid_only", "chrF": 28.71, "BLEU": 6.29, "chrF_te": 26.64, "chrF_hi": 30.80},
+    {"system": "transliterate all words (no LID)", "chrF": 47.93, "BLEU": null, "chrF_te": null, "chrF_hi": null},
+    {"system": "full", "chrF": 65.56, "BLEU": 40.13, "chrF_te": 59.13, "chrF_hi": 71.85}
+  ],
+  "dev_80_note": "Measured before the Telugu lexicon was added. A later re-run of the full pipeline scored 68.05 chrF on this set, but the lexicon was built from errors on this same set, so it is not a clean number.",
+  "translit_ablation_80": [
+    {"system": "none", "chrF": 28.71, "BLEU": 6.29},
+    {"system": "Telugu rules only", "chrF": 44.84, "BLEU": 20.63},
+    {"system": "Telugu + Hindi rules", "chrF": 65.56, "BLEU": 40.13}
+  ],
+  "lid": {
+    "test_sentences": 14855, "headline_macro_f1": 0.983,
+    "classes": [
+      {"label": "EN", "P": 0.990, "R": 0.986, "F1": 0.988},
+      {"label": "HI", "P": 0.968, "R": 0.978, "F1": 0.973},
+      {"label": "TE", "P": 0.990, "R": 0.986, "F1": 0.988}
+    ]
+  },
+  "lid_compare": [
+    {"test": "normal test (held-out)", "model": "old", "macro_F1": 0.940, "HI_F1": 0.971, "TE_F1": 0.988, "EN_F1": 0.988, "TE_to_HI": 97, "HI_to_TE": 1},
+    {"test": "normal test (held-out)", "model": "new (mixed-trained)", "macro_F1": 0.938, "HI_F1": 0.961, "TE_F1": 0.983, "EN_F1": 0.988, "TE_to_HI": 204, "HI_to_TE": 29},
+    {"test": "mixed HI+TE splices", "model": "old", "macro_F1": 0.728, "HI_F1": 0.568, "TE_F1": 0.770, "EN_F1": 0.920, "TE_to_HI": 1130, "HI_to_TE": 221},
+    {"test": "mixed HI+TE splices", "model": "new (mixed-trained)", "macro_F1": 0.920, "HI_F1": 0.947, "TE_F1": 0.981, "EN_F1": 0.981, "TE_to_HI": 53, "HI_to_TE": 16}
+  ],
+  "mixed_multi_clause": {
+    "provisional": false, "n": 40,
+    "systems": [
+      {"system": "sentence + old LID", "chrF": 57.7},
+      {"system": "sentence + new LID", "chrF": 56.1},
+      {"system": "clause + old LID", "chrF": 58.0},
+      {"system": "clause + new LID", "chrF": 64.4}
+    ],
+    "gains": [
+      {"comparison": "clause+new LID - sentence+old LID", "mean": 6.03, "ci": [0.37, 12.10]},
+      {"comparison": "clause+new LID - clause+old LID", "mean": 6.38, "ci": [2.97, 10.07]},
+      {"comparison": "sentence+new LID - sentence+old LID", "mean": -1.75, "ci": [-7.19, 3.62]}
+    ]
+  },
+  "mixed_all_50": [
+    {"system": "sentence + old LID", "chrF": 60.1}, {"system": "sentence + new LID", "chrF": 58.7},
+    {"system": "clause + old LID", "chrF": 60.4}, {"system": "clause + new LID", "chrF": 65.9}
+  ],
+  "mixed_intra_clause": {
+    "n": 10, "note": "Inconclusive: only 10 sentences, 95% CI of the difference -9.6 to +17.3",
+    "systems": [{"system": "sentence + old LID", "chrF": 76.8}, {"system": "sentence + new LID", "chrF": 76.5},
+                {"system": "clause + old LID", "chrF": 76.8}, {"system": "clause + new LID", "chrF": 76.5}]
+  },
+  "regression_check": [
+    {"set": "PHINC-200", "system": "sentence + old LID", "chrF": 52.75},
+    {"set": "PHINC-200", "system": "sentence + new LID", "chrF": 52.47},
+    {"set": "PHINC-200", "system": "clause + new LID", "chrF": 53.43},
+    {"set": "80-sentence set", "system": "all three variants identical", "chrF": 68.05}
+  ],
+  "negative_results": [
+    "Collapsing repeated punctuation: -0.06 chrF (95% CI -0.27 to +0.15), no effect",
+    "Protecting @mentions, hashtags and URLs from the translator: +0.20 chrF (95% CI -0.25 to +0.66), not significant",
+    "The new LID alone (sentence-level translation) does not help: -1.75 chrF (95% CI -7.19 to +3.62)",
+    "Clause-level translation gives no clear gain when the language switches inside a clause (10 sentences, inconclusive)",
+    "The new LID costs a little on normal text: more Telugu words tagged Hindi (97 to 204) and Hindi tagged Telugu (1 to 29)"
+  ]
+}

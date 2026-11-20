@@ -75,6 +75,9 @@ checkpoints/*
 *.h5
 *.model
 
+# Model 2: local extracted mT5 model artifacts
+/artifacts/models/mt5_hinglish_translation/
+
 # Experiment Outputs & Run Logs
 outputs/metrics/*
 !outputs/metrics/.gitkeep

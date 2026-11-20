@@ -1,0 +1,34 @@
+{
+  "comparison": "full - mT5",
+  "n_sentences": 1351,
+  "n_resamples": 2000,
+  "mean_gain_chrF": 9.74,
+  "ci_95": [
+    8.92,
+    10.6
+  ],
+  "chrf_signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.6.0",
+  "bleu_signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.6.0",
+  "systems": [
+    {
+      "system": "mT5 (earlier model)",
+      "chrF": 43.09,
+      "BLEU": 24.19
+    },
+    {
+      "system": "direct (HI hint)",
+      "chrF": 42.83,
+      "BLEU": 23.3
+    },
+    {
+      "system": "lid_only",
+      "chrF": 44.17,
+      "BLEU": 24.98
+    },
+    {
+      "system": "full (pipeline)",
+      "chrF": 53.17,
+      "BLEU": 31.21
+    }
+  ]
+}

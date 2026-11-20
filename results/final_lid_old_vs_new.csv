@@ -1,0 +1,5 @@
+test,model,macro_F1,HI_F1,TE_F1,EN_F1,TE->HI,HI->TE
+normal test (full),old,0.94,0.971,0.988,0.988,97,1
+normal test (full),new,0.938,0.961,0.983,0.988,204,29
+mixed HI+TE splices,old,0.728,0.568,0.77,0.92,1130,221
+mixed HI+TE splices,new,0.92,0.947,0.981,0.981,53,16

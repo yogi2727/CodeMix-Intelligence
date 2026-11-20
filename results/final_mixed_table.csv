@@ -1,0 +1,5 @@
+system,ALL,multi-clause,intra-clause
+sentence+old LID,60.1,57.7,76.8
+sentence+new LID,58.7,56.1,76.5
+clause+old LID,60.4,58.0,76.8
+clause+new LID,65.9,64.4,76.5

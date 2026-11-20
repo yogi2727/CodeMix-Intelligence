@@ -1,0 +1,4 @@
+transliterator,chrF,BLEU,chrF_te,chrF_hi
+none,28.71,6.29,26.64,30.8
+rule_TE_only,44.84,20.63,59.13,30.8
+rule_TE+HI (new),65.56,40.13,59.13,71.85

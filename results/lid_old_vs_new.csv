@@ -1,0 +1,5 @@
+test,model,macro_F1,HI_F1,TE_F1,EN_F1,TE->HI,HI->TE
+normal test,old,0.945,0.976,0.988,0.99,24,0
+normal test,new,0.942,0.963,0.983,0.988,31,36
+mixed HI+TE test,old,0.752,0.613,0.777,0.918,1022,178
+mixed HI+TE test,new,0.921,0.949,0.983,0.982,27,36

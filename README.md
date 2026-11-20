@@ -120,6 +120,39 @@ pip install -r requirements.txt
 
 ---
 
+## 🎬 Run the demo
+
+Follow these steps to launch the dual-model backend and the interactive web interface:
+
+### 1. Start the FastAPI Backend
+Start the server hosting MuRIL LID, mT5 translation, and the IndicTrans2 pipeline with background warm-up:
+```bash
+uvicorn backend.main:app --host 127.0.0.1 --port 8000 --reload
+```
+The backend initializes MuRIL for token-level LID immediately and automatically warms up the IndicTrans2 translation pipeline in a background daemon thread.
+
+### 2. Start the Frontend Server
+In a separate terminal, serve the static web interface over HTTP:
+```bash
+python -m http.server 5500 --directory frontend
+```
+
+### 3. Open in Browser
+Open [http://127.0.0.1:5500](http://127.0.0.1:5500) (or [http://localhost:5500](http://localhost:5500)) in your web browser:
+- **Language Identification tab**: Token-level LID with MuRIL.
+- **Hinglish Translation tab**: Romanized Hinglish-to-English translation with fine-tuned mT5.
+- **Pipeline Translate tab**: Trilingual Hindi/Telugu/English translation with IndicTrans2 and strategy ablations (`direct`, `lid_only`, `full`, `clause`).
+- **Experiments tab**: Benchmarks, ablations, and negative results.
+
+### 4. Verify Pipeline Health via Smoke Test
+Run the automated end-to-end smoke test against the live backend:
+```bash
+python scripts/smoke_mt.py
+```
+This tests Telugu (`full`), Hindi (`full`), and mixed Telugu+Hindi (`clause`) translations sequentially.
+
+---
+
 ## 👥 Contributors & Academic Context
 
 - **Institution:** University NLP Project

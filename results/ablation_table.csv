@@ -1,0 +1,5 @@
+system,ms/sent,chrF,BLEU,chrF_te,chrF_hi
+direct_oracle_hint,378.4,28.71,6.29,26.64,30.8
+direct_fixed_TE,357.6,27.5,4.26,26.64,28.36
+lid_only,363.8,28.71,6.29,26.64,30.8
+full,311.4,65.56,40.13,59.13,71.85

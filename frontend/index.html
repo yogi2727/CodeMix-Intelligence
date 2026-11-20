@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Token-level language identification for English, Hindi, and Telugu code-mixed text using fine-tuned MuRIL.">
-  <title>CodeMix Intelligence — Token-Level Language Identification</title>
+  <meta name="description" content="CodeMix Intelligence — Token-level language identification and Romanized Hinglish-to-English translation.">
+  <title>CodeMix Intelligence — Language Identification & Translation</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,10 +15,33 @@
         CodeMix <em>Intelligence</em>
       </div>
       <div class="nav-actions">
-        <span class="nav-label" aria-current="page">Language Identification</span>
+        <span class="nav-label" id="active-nav-label" aria-current="page">Language Identification</span>
         <div id="status-pill" class="status-pill" aria-live="polite">
           <span class="status-dot status-loading" id="status-dot" aria-hidden="true"></span>
           <span class="status-text" id="status-text">Model loading</span>
+        </div>
+        <!-- Settings Popover (Pipeline API Base Override) -->
+        <div class="settings-wrapper">
+          <button type="button" id="settings-btn" class="settings-btn" aria-label="Settings" aria-expanded="false" aria-controls="settings-popover" title="Pipeline Settings">
+            <svg class="settings-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </button>
+          <div id="settings-popover" class="settings-popover" role="dialog" aria-label="Pipeline Settings" hidden>
+            <div class="popover-header">
+              <span class="caption">Pipeline Settings</span>
+            </div>
+            <div class="popover-body">
+              <label for="setting-mt-base" class="setting-label">Pipeline API Base URL</label>
+              <input type="url" id="setting-mt-base" class="setting-input font-mono" placeholder="http://127.0.0.1:8000" spellcheck="false" autocomplete="off">
+              <p class="setting-hint">Override the MT pipeline host for remote GPU instances. Saved in <code>localStorage</code> under <code>codemix_mt_base</code>.</p>
+              <div class="popover-actions">
+                <button type="button" id="setting-reset-btn" class="btn btn-secondary btn-sm">Reset</button>
+                <button type="button" id="setting-save-btn" class="btn btn-primary btn-sm">Save</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -28,239 +51,880 @@
   <main class="page-container">
     <!-- Hero Section -->
     <section class="hero-section" aria-labelledby="hero-title">
-      <div class="caption">Token-level language identification</div>
+      <div class="caption">Dual-Model Code-Mixed NLP Lab</div>
       <h1 id="hero-title" class="hero-title">
         Understand your <em>code&#8209;mixed</em> text
       </h1>
-      <p class="hero-desc">
-        Identify English, Hindi, Telugu and other language tokens using our fine-tuned MuRIL model. Understand every word in multilingual conversations.
+      <p class="hero-desc" id="hero-desc">
+        Identify English, Hindi, Telugu and other language tokens with fine-tuned MuRIL, translate Hinglish with mT5, or translate trilingual code-mixed sentences with IndicTrans2.
       </p>
     </section>
+
+    <!-- Capability Switcher Tabs -->
+    <nav class="capability-nav" aria-label="Capabilities">
+      <div class="capability-tablist" role="tablist" aria-label="Select intelligence capability">
+        <button
+          type="button"
+          id="tab-lid"
+          class="capability-tab active"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-lid"
+          tabindex="0"
+        >
+          <span class="tab-title">Language Identification</span>
+          <span class="tab-badge">MuRIL</span>
+        </button>
+        <button
+          type="button"
+          id="tab-translation"
+          class="capability-tab"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-translation"
+          tabindex="-1"
+        >
+          <span class="tab-title">Hinglish Translation</span>
+          <span class="tab-badge">mT5-small</span>
+        </button>
+        <button
+          type="button"
+          id="tab-pipeline"
+          class="capability-tab"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-pipeline"
+          tabindex="-1"
+        >
+          <span class="tab-title">Pipeline Translate</span>
+          <span class="tab-badge">IndicTrans2</span>
+        </button>
+        <button
+          type="button"
+          id="tab-experiments"
+          class="capability-tab"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-experiments"
+          tabindex="-1"
+        >
+          <span class="tab-title">Experiments</span>
+          <span class="tab-badge">Ablations &amp; Eval</span>
+        </button>
+      </div>
+    </nav>
 
     <!-- Global Inline Notice Region -->
     <div id="notice-container" class="notice-container" aria-live="polite"></div>
 
-    <!-- Main Content Grid -->
-    <section class="main-grid" aria-label="Input and model metadata">
-      <!-- Left Panel: Text Input -->
-      <div class="panel input-panel">
-        <div class="panel-header">
-          <label for="sentence-input" class="caption">Your sentence</label>
-        </div>
-        <textarea
-          id="sentence-input"
-          class="sentence-textarea"
-          placeholder="Naku meeting ki late avuthundi, tum start kar do please"
-          aria-label="Your sentence for language identification"
-          rows="4"
-          spellcheck="false"
-          autocomplete="off"
-          autocorrect="off"
-          autocapitalize="off"
-        ></textarea>
+    <!-- ====================================================================== -->
+    <!-- Mode A: Language Identification Panel (Existing MuRIL UI preserved)     -->
+    <!-- ====================================================================== -->
+    <div id="panel-lid" class="capability-panel" role="tabpanel" aria-labelledby="tab-lid">
+      <!-- Main Content Grid -->
+      <section class="main-grid" aria-label="Language identification input and metadata">
+        <!-- Left Panel: Text Input -->
+        <div class="panel input-panel">
+          <div class="panel-header">
+            <label for="sentence-input" class="caption">Your sentence</label>
+          </div>
+          <textarea
+            id="sentence-input"
+            class="sentence-textarea"
+            placeholder="Naku meeting ki late avuthundi, tum start kar do please"
+            aria-label="Your sentence for language identification"
+            rows="4"
+            spellcheck="false"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+          ></textarea>
 
-        <div class="input-actions-bar">
-          <div class="char-count" id="char-count" aria-live="polite">0 characters</div>
-          <div class="action-buttons">
-            <button
-              type="button"
-              id="clear-btn"
-              class="btn btn-secondary"
-              aria-label="Clear input text"
-            >
-              Clear
-            </button>
-            <button
-              type="button"
-              id="detect-btn"
-              class="btn btn-primary"
-              disabled
-              aria-label="Detect languages in sentence"
-            >
-              <span class="btn-spinner" id="btn-spinner" aria-hidden="true"></span>
-              <span id="btn-text">Detect languages</span>
-            </button>
-          </div>
-        </div>
-
-        <hr class="panel-divider" aria-hidden="true">
-
-        <!-- Sample Inputs -->
-        <div class="samples-section">
-          <div class="caption">Try a sample</div>
-          <div class="sample-pills" role="group" aria-label="Sample sentences">
-            <button type="button" class="sample-pill" data-sample="te-en">Telugu + English</button>
-            <button type="button" class="sample-pill" data-sample="hi-en">Hindi + English</button>
-            <button type="button" class="sample-pill" data-sample="tri">Three languages</button>
-            <button type="button" class="sample-pill" data-sample="long">Long paragraph</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right Panel: Model Information -->
-      <aside class="panel model-panel" aria-labelledby="model-info-heading">
-        <div class="caption" id="model-info-heading">System Information</div>
-        <dl class="info-list">
-          <div class="info-row">
-            <dt class="info-key">Model</dt>
-            <dd class="info-val font-mono">google/muril-base-cased</dd>
-          </div>
-          <div class="info-row">
-            <dt class="info-key">Task</dt>
-            <dd class="info-val">Token-level language identification</dd>
-          </div>
-          <div class="info-row">
-            <dt class="info-key">Labels</dt>
-            <dd class="info-val font-mono">EN · HI · TE · OTHER</dd>
-          </div>
-          <div class="info-row">
-            <dt class="info-key">Backend</dt>
-            <dd class="info-val font-sans">Local FastAPI</dd>
-          </div>
-          <div class="info-row">
-            <dt class="info-key">Device</dt>
-            <dd class="info-val font-mono" id="device-info">Checking...</dd>
-          </div>
-        </dl>
-      </aside>
-    </section>
-
-    <!-- Results Panel (Initially Hidden) -->
-    <section id="results-panel" class="panel results-panel" aria-labelledby="results-caption" hidden aria-live="polite">
-      <!-- Results Header -->
-      <div class="results-header">
-        <div class="results-header-left">
-          <span class="caption" id="results-caption">Result</span>
-        </div>
-        <div class="results-header-right">
-          <span class="chunking-info" id="chunking-info">Not chunked · 1 chunk processed</span>
-          <div class="view-toggle" role="tablist" aria-label="Result presentation mode">
-            <button
-              type="button"
-              id="view-annotated-btn"
-              class="view-toggle-btn active"
-              role="tab"
-              aria-selected="true"
-              aria-controls="annotated-container"
-            >
-              Annotated
-            </button>
-            <button
-              type="button"
-              id="view-table-btn"
-              class="view-toggle-btn"
-              role="tab"
-              aria-selected="false"
-              aria-controls="table-container"
-            >
-              Table
-            </button>
-          </div>
-          <button type="button" id="copy-btn" class="btn btn-secondary btn-sm" aria-label="Copy results to clipboard">
-            Copy results
-          </button>
-        </div>
-      </div>
-
-      <!-- Copy Success Feedback Notice -->
-      <div id="copy-notice" class="copy-notice" role="status" aria-live="polite" hidden></div>
-
-      <!-- View 1: Annotated Research Manuscript View -->
-      <div id="annotated-container" class="annotated-container" role="tabpanel" aria-labelledby="view-annotated-btn">
-        <div id="tokens-flow" class="tokens-flow" aria-label="Annotated tokens"></div>
-      </div>
-
-      <!-- View 2: Accessible Table View -->
-      <div id="table-container" class="table-container" role="tabpanel" aria-labelledby="view-table-btn" hidden>
-        <div class="table-wrapper">
-          <table class="results-table" aria-label="Token-level predictions table">
-            <caption class="sr-only">Detailed token-level language identification results</caption>
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Token</th>
-                <th scope="col">Label</th>
-                <th scope="col">Confidence</th>
-              </tr>
-            </thead>
-            <tbody id="table-body"></tbody>
-          </table>
-        </div>
-      </div>
-
-      <hr class="results-divider" aria-hidden="true">
-
-      <!-- Results Summary Section -->
-      <div class="results-summary">
-        <!-- 5 Statistical Blocks -->
-        <div class="stats-grid">
-          <div class="stat-block">
-            <div class="caption">Tokens</div>
-            <div class="stat-number" id="stat-total">0</div>
-          </div>
-          <div class="stat-block">
-            <div class="caption stat-caption-en">EN</div>
-            <div class="stat-number" id="stat-en">0</div>
-          </div>
-          <div class="stat-block">
-            <div class="caption stat-caption-hi">HI</div>
-            <div class="stat-number" id="stat-hi">0</div>
-          </div>
-          <div class="stat-block">
-            <div class="caption stat-caption-te">TE</div>
-            <div class="stat-number" id="stat-te">0</div>
-          </div>
-          <div class="stat-block">
-            <div class="caption stat-caption-other">Other</div>
-            <div class="stat-number" id="stat-other">0</div>
-          </div>
-        </div>
-
-        <!-- Language Distribution Bar -->
-        <div class="distribution-section">
-          <div
-            id="distribution-bar"
-            class="distribution-bar"
-            role="progressbar"
-            aria-label="Language distribution in sentence"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            aria-valuenow="100"
-          ></div>
-
-          <!-- Distribution Legend -->
-          <div class="distribution-legend" aria-hidden="true">
-            <div class="legend-item">
-              <span class="legend-line legend-line-en"></span>
-              <span class="legend-name">English</span>
+          <div class="input-actions-bar">
+            <div class="char-count" id="char-count" aria-live="polite">0 characters</div>
+            <div class="action-buttons">
+              <button
+                type="button"
+                id="clear-btn"
+                class="btn btn-secondary"
+                aria-label="Clear input text"
+              >
+                Clear
+              </button>
+              <button
+                type="button"
+                id="detect-btn"
+                class="btn btn-primary"
+                disabled
+                aria-label="Detect languages in sentence"
+              >
+                <span class="btn-spinner" id="btn-spinner" aria-hidden="true"></span>
+                <span id="btn-text">Detect languages</span>
+              </button>
             </div>
-            <div class="legend-item">
-              <span class="legend-line legend-line-hi"></span>
-              <span class="legend-name">Hindi</span>
-            </div>
-            <div class="legend-item">
-              <span class="legend-line legend-line-te"></span>
-              <span class="legend-name">Telugu</span>
-            </div>
-            <div class="legend-item">
-              <span class="legend-line legend-line-other"></span>
-              <span class="legend-name">Other</span>
+          </div>
+
+          <hr class="panel-divider" aria-hidden="true">
+
+          <!-- Sample Inputs -->
+          <div class="samples-section">
+            <div class="caption">Try a sample</div>
+            <div class="sample-pills" role="group" aria-label="Sample sentences">
+              <button type="button" class="sample-pill" data-sample="te-en">Telugu + English</button>
+              <button type="button" class="sample-pill" data-sample="hi-en">Hindi + English</button>
+              <button type="button" class="sample-pill" data-sample="tri">Three languages</button>
+              <button type="button" class="sample-pill" data-sample="long">Long paragraph</button>
             </div>
           </div>
         </div>
 
-        <!-- Confidence Sub-note -->
+        <!-- Right Panel: Model Information -->
+        <aside class="panel model-panel" aria-labelledby="model-info-heading">
+          <div class="caption" id="model-info-heading">System Information</div>
+          <dl class="info-list">
+            <div class="info-row">
+              <dt class="info-key">Model</dt>
+              <dd class="info-val font-mono">google/muril-base-cased</dd>
+            </div>
+            <div class="info-row">
+              <dt class="info-key">Task</dt>
+              <dd class="info-val">Token-level language identification</dd>
+            </div>
+            <div class="info-row">
+              <dt class="info-key">Labels</dt>
+              <dd class="info-val font-mono">EN · HI · TE · OTHER</dd>
+            </div>
+            <div class="info-row">
+              <dt class="info-key">Backend</dt>
+              <dd class="info-val font-sans">Local FastAPI</dd>
+            </div>
+            <div class="info-row">
+              <dt class="info-key">Device</dt>
+              <dd class="info-val font-mono" id="device-info">Checking...</dd>
+            </div>
+          </dl>
+        </aside>
+      </section>
+
+      <!-- Results Panel (Initially Hidden) -->
+      <section id="results-panel" class="panel results-panel" aria-labelledby="results-caption" hidden aria-live="polite">
+        <!-- Results Header -->
+        <div class="results-header">
+          <div class="results-header-left">
+            <span class="caption" id="results-caption">Result</span>
+          </div>
+          <div class="results-header-right">
+            <span class="chunking-info" id="chunking-info">Not chunked · 1 chunk processed</span>
+            <div class="view-toggle" role="tablist" aria-label="Result presentation mode">
+              <button
+                type="button"
+                id="view-annotated-btn"
+                class="view-toggle-btn active"
+                role="tab"
+                aria-selected="true"
+                aria-controls="annotated-container"
+              >
+                Annotated
+              </button>
+              <button
+                type="button"
+                id="view-table-btn"
+                class="view-toggle-btn"
+                role="tab"
+                aria-selected="false"
+                aria-controls="table-container"
+              >
+                Table
+              </button>
+            </div>
+            <button type="button" id="copy-btn" class="btn btn-secondary btn-sm" aria-label="Copy results to clipboard">
+              Copy results
+            </button>
+          </div>
+        </div>
+
+        <!-- Copy Success Feedback Notice -->
+        <div id="copy-notice" class="copy-notice" role="status" aria-live="polite" hidden></div>
+
+        <!-- View 1: Annotated Research Manuscript View -->
+        <div id="annotated-container" class="annotated-container" role="tabpanel" aria-labelledby="view-annotated-btn">
+          <div id="tokens-flow" class="tokens-flow" aria-label="Annotated tokens"></div>
+        </div>
+
+        <!-- View 2: Accessible Table View -->
+        <div id="table-container" class="table-container" role="tabpanel" aria-labelledby="view-table-btn" hidden>
+          <div class="table-wrapper">
+            <table class="results-table" aria-label="Token-level predictions table">
+              <caption class="sr-only">Detailed token-level language identification results</caption>
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Token</th>
+                  <th scope="col">Label</th>
+                  <th scope="col">Confidence</th>
+                </tr>
+              </thead>
+              <tbody id="table-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <hr class="results-divider" aria-hidden="true">
+
+        <!-- Results Summary Section -->
+        <div class="results-summary">
+          <!-- 5 Statistical Blocks -->
+          <div class="stats-grid">
+            <div class="stat-block">
+              <div class="caption">Tokens</div>
+              <div class="stat-number" id="stat-total">0</div>
+            </div>
+            <div class="stat-block">
+              <div class="caption stat-caption-en">EN</div>
+              <div class="stat-number" id="stat-en">0</div>
+            </div>
+            <div class="stat-block">
+              <div class="caption stat-caption-hi">HI</div>
+              <div class="stat-number" id="stat-hi">0</div>
+            </div>
+            <div class="stat-block">
+              <div class="caption stat-caption-te">TE</div>
+              <div class="stat-number" id="stat-te">0</div>
+            </div>
+            <div class="stat-block">
+              <div class="caption stat-caption-other">Other</div>
+              <div class="stat-number" id="stat-other">0</div>
+            </div>
+          </div>
+
+          <!-- Language Distribution Bar -->
+          <div class="distribution-section">
+            <div
+              id="distribution-bar"
+              class="distribution-bar"
+              role="progressbar"
+              aria-label="Language distribution in sentence"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="100"
+            ></div>
+
+            <!-- Distribution Legend -->
+            <div class="distribution-legend" aria-hidden="true">
+              <div class="legend-item">
+                <span class="legend-line legend-line-en"></span>
+                <span class="legend-name">English</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-line legend-line-hi"></span>
+                <span class="legend-name">Hindi</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-line legend-line-te"></span>
+                <span class="legend-name">Telugu</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-line legend-line-other"></span>
+                <span class="legend-name">Other</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Confidence Sub-note -->
+          <div class="confidence-footer">
+            <div class="avg-confidence-text" id="avg-confidence-text">
+              Average model confidence: 0.0%
+            </div>
+            <p class="confidence-caveat">
+              Confidence is the model's own probability estimate, not a guarantee that a label is correct.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ====================================================================== -->
+    <!-- Mode B: Hinglish Translation Panel                                     -->
+    <!-- ====================================================================== -->
+    <div id="panel-translation" class="capability-panel" role="tabpanel" aria-labelledby="tab-translation" hidden>
+      <!-- Mode B Header -->
+      <div class="mode-header">
+        <div class="mode-header-text">
+          <h2 class="mode-title">Hinglish to English Translation</h2>
+          <p class="mode-subtitle">Translate Romanized Hinglish and explore the meaning of code-mixed text.</p>
+        </div>
+        <div class="model-badge font-mono">google/mt5-small · FP32</div>
+      </div>
+
+      <!-- Translation Main Grid -->
+      <section class="main-grid" aria-label="Translation input and model metadata">
+        <!-- Left Panel: Textarea -->
+        <div class="panel input-panel">
+          <div class="panel-header">
+            <label for="trans-input" class="caption">Romanized Hinglish sentence</label>
+          </div>
+          <textarea
+            id="trans-input"
+            class="sentence-textarea"
+            placeholder="Type Romanized Hinglish here... e.g. bas kabhi ghamand nahi kiya."
+            aria-label="Romanized Hinglish sentence for translation"
+            rows="4"
+            maxlength="1000"
+            spellcheck="false"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+          ></textarea>
+
+          <div class="input-actions-bar">
+            <div class="char-count" id="trans-char-count" aria-live="polite">0 / 1000 characters</div>
+            <div class="action-buttons">
+              <button
+                type="button"
+                id="trans-clear-btn"
+                class="btn btn-secondary"
+                aria-label="Clear translation input"
+              >
+                Clear
+              </button>
+              <button
+                type="button"
+                id="trans-btn"
+                class="btn btn-primary"
+                disabled
+                aria-label="Translate to English"
+              >
+                <span class="btn-spinner" id="trans-btn-spinner" aria-hidden="true"></span>
+                <span id="trans-btn-text">Translate to English</span>
+              </button>
+            </div>
+          </div>
+
+          <hr class="panel-divider" aria-hidden="true">
+
+          <!-- Translation Samples -->
+          <div class="samples-section">
+            <div class="caption">Try a sample</div>
+            <div class="sample-pills" role="group" aria-label="Sample Hinglish sentences">
+              <button type="button" class="sample-pill trans-sample-pill" data-sample="ghamand">
+                bas kabhi ghamand nahi kiya.
+              </button>
+              <button type="button" class="sample-pill trans-sample-pill" data-sample="train">
+                Mujhe lagta hai ki train late ho sakti hai.
+              </button>
+              <button type="button" class="sample-pill trans-sample-pill" data-sample="meeting">
+                Kal meeting kitne baje start hogi?
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Panel: Translation Metadata -->
+        <aside class="panel model-panel" aria-labelledby="trans-info-heading">
+          <div class="caption" id="trans-info-heading">Translation Model Information</div>
+          <dl class="info-list">
+            <div class="info-row">
+              <dt class="info-key">Model</dt>
+              <dd class="info-val font-mono">google/mt5-small</dd>
+            </div>
+            <div class="info-row">
+              <dt class="info-key">Task</dt>
+              <dd class="info-val">Hinglish to English translation</dd>
+            </div>
+            <div class="info-row">
+              <dt class="info-key">Status</dt>
+              <dd class="info-val font-mono" id="trans-status-val">Checking...</dd>
+            </div>
+            <div class="info-row">
+              <dt class="info-key">Generation</dt>
+              <dd class="info-val font-mono">4 Beams · Max 128 Tokens</dd>
+            </div>
+            <div class="info-row">
+              <dt class="info-key">Backend</dt>
+              <dd class="info-val font-sans">Local FastAPI</dd>
+            </div>
+            <div class="info-row">
+              <dt class="info-key">Device</dt>
+              <dd class="info-val font-mono" id="trans-device-val">Checking...</dd>
+            </div>
+          </dl>
+        </aside>
+      </section>
+
+      <!-- Translation Results Card (Initially hidden) -->
+      <section id="trans-results-panel" class="panel results-panel trans-results-panel" aria-labelledby="trans-results-caption" hidden aria-live="polite">
+        <div class="results-header">
+          <div class="results-header-left">
+            <span class="caption" id="trans-results-caption">English Translation</span>
+          </div>
+          <div class="results-header-right">
+            <span class="model-badge font-mono" id="trans-meta-badge">google/mt5-small · 4 beams</span>
+            <button type="button" id="trans-copy-btn" class="btn btn-secondary btn-sm" aria-label="Copy translation to clipboard">
+              Copy translation
+            </button>
+          </div>
+        </div>
+
+        <!-- Copy Success Feedback Notice -->
+        <div id="trans-copy-notice" class="copy-notice" role="status" aria-live="polite" hidden></div>
+
+        <!-- Translated Output Block -->
+        <div class="translation-output-card">
+          <div class="translation-result-text font-serif" id="trans-result-text"></div>
+          <div class="translation-original-block">
+            <span class="caption">Original Hinglish:</span>
+            <span class="translation-original-text font-mono" id="trans-original-text"></span>
+          </div>
+        </div>
+
+        <hr class="results-divider" aria-hidden="true">
+
+        <!-- Quality Caveat -->
         <div class="confidence-footer">
-          <div class="avg-confidence-text" id="avg-confidence-text">
-            Average model confidence: 0.0%
-          </div>
           <p class="confidence-caveat">
-            Confidence is the model's own probability estimate, not a guarantee that a label is correct.
+            AI-generated translations may not fully preserve idioms, context, spelling variations or named entities. Review important translations.
           </p>
         </div>
+      </section>
+    </div>
+
+    <!-- ====================================================================== -->
+    <!-- Mode C: CodeMix Translation Pipeline Panel                             -->
+    <!-- ====================================================================== -->
+    <div id="panel-pipeline" class="capability-panel" role="tabpanel" aria-labelledby="tab-pipeline" hidden>
+      <!-- Mode C Header -->
+      <div class="mode-header">
+        <div class="mode-header-text">
+          <h2 class="mode-title">Pipeline Translate</h2>
+          <p class="mode-subtitle">Translate trilingual Hindi, Telugu and English code-mixed text with ablation strategies and transliteration.</p>
+        </div>
+        <div class="model-badge font-mono">MuRIL + IndicTrans2</div>
       </div>
-    </section>
+
+      <!-- Mode C Demo Mode Banner -->
+      <div id="pipeline-demo-banner" class="pipeline-demo-banner" role="status" aria-live="polite" hidden>
+        <div class="demo-banner-content">
+          <span class="demo-banner-badge">DEMO MODE</span>
+          <span class="demo-banner-text">Demo mode - showing pre-computed results</span>
+        </div>
+      </div>
+
+      <!-- Pipeline Main Grid -->
+      <section class="main-grid" aria-label="Pipeline translation input and configuration">
+        <!-- Left Panel: Input & Controls -->
+        <div class="panel input-panel">
+          <div class="panel-header">
+            <label for="pipeline-input" class="caption">Your sentence</label>
+          </div>
+
+          <!-- Example Chips Above Textarea -->
+          <div class="pipeline-example-chips" role="group" aria-label="Example sentences">
+            <div class="example-chips-header">
+              <span class="caption">Examples:</span>
+            </div>
+            <div class="example-chips-list">
+              <button type="button" class="pipeline-example-chip" data-text="Nenu repu college ki vastanu, but assignment complete cheyyaledu">
+                Nenu repu college ki vastanu, but assignment complete cheyyaledu
+              </button>
+              <button type="button" class="pipeline-example-chip" data-text="Meeru ee project deadline gurinchi manager tho matladara?">
+                Meeru ee project deadline gurinchi manager tho matladara?
+              </button>
+              <button type="button" class="pipeline-example-chip" data-text="Kal meeting hai please slides bhej dena">
+                Kal meeting hai please slides bhej dena
+              </button>
+              <button type="button" class="pipeline-example-chip" data-text="Tum kab tak college aaoge?">
+                Tum kab tak college aaoge?
+              </button>
+              <button type="button" class="pipeline-example-chip" data-text="NENU REPU college ki vastanuuuu plz">
+                NENU REPU college ki vastanuuuu plz
+              </button>
+              <button type="button" class="pipeline-example-chip" data-text="Nenu repu college ki vastanu, tum bhi aao na">
+                Nenu repu college ki vastanu, tum bhi aao na
+              </button>
+            </div>
+          </div>
+
+          <div class="panel-header">
+            <label for="pipeline-input" class="caption">Code-mixed sentence</label>
+          </div>
+          <textarea
+            id="pipeline-input"
+            class="sentence-textarea"
+            placeholder="Type Telugu / Hindi / English mixed text, for example: Nenu repu college ki vastanu"
+            aria-label="Type Telugu / Hindi / English mixed text"
+            rows="4"
+            maxlength="1000"
+            spellcheck="false"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+          ></textarea>
+
+          <!-- Pipeline Controls: Strategy, Source Hint, Gloss -->
+          <div class="pipeline-controls-grid">
+            <div class="control-group">
+              <label for="pipeline-strategy" class="caption">Translation Strategy</label>
+              <select id="pipeline-strategy" class="form-select font-sans" aria-label="Select pipeline translation strategy">
+                <option value="full" selected>Full pipeline (recommended)</option>
+                <option value="clause">Mixed Hindi+Telugu (clause by clause)</option>
+                <option value="lid_only">Language ID only</option>
+                <option value="direct">Direct (no pipeline)</option>
+              </select>
+            </div>
+
+            <div class="control-group" id="pipeline-src-hint-wrapper" hidden>
+              <label for="pipeline-src-hint" class="caption">Source language hint</label>
+              <select id="pipeline-src-hint" class="form-select font-mono" aria-label="Source language hint for direct MT baseline">
+                <option value="TE" selected>Telugu</option>
+                <option value="HI">Hindi</option>
+              </select>
+            </div>
+
+            <div class="control-group control-group-checkbox">
+              <label class="checkbox-label font-sans" for="pipeline-gloss-check">
+                <input type="checkbox" id="pipeline-gloss-check">
+                <span>Show word meanings</span>
+              </label>
+            </div>
+
+            <!-- Optional Reference English Translation -->
+            <div class="control-group reference-group">
+              <label for="pipeline-reference-input" class="caption">Reference English translation (optional)</label>
+              <input
+                type="text"
+                id="pipeline-reference-input"
+                class="form-input font-serif"
+                placeholder="e.g. There is a meeting tomorrow, please send slides"
+                autocomplete="off"
+                spellcheck="false"
+              />
+            </div>
+          </div>
+
+          <div class="input-actions-bar">
+            <div class="char-count" id="pipeline-char-count" aria-live="polite">0 / 1000 characters</div>
+            <div class="action-buttons">
+              <button
+                type="button"
+                id="pipeline-clear-btn"
+                class="btn btn-secondary"
+                aria-label="Clear pipeline input"
+              >
+                Clear
+              </button>
+              <button
+                type="button"
+                id="pipeline-compare-btn"
+                class="btn btn-secondary"
+                disabled
+                aria-label="Compare all translation strategies"
+              >
+                <span class="btn-spinner" id="pipeline-compare-spinner" aria-hidden="true" style="display: none;"></span>
+                <span id="pipeline-compare-btn-text">Compare strategies</span>
+                <span id="pipeline-compare-progress" class="pipeline-elapsed font-mono" style="display: none;" aria-live="polite">0/4</span>
+              </button>
+              <button
+                type="button"
+                id="pipeline-btn"
+                class="btn btn-primary"
+                disabled
+                aria-label="Translate text"
+              >
+                <span class="btn-spinner" id="pipeline-btn-spinner" aria-hidden="true" style="display: none;"></span>
+                <span id="pipeline-btn-text">Translate</span>
+                <span id="pipeline-elapsed-counter" class="pipeline-elapsed font-mono" style="display: none;" aria-live="polite">0s</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Note shown when pipeline status is "not loaded" -->
+          <div id="pipeline-first-run-note" class="pipeline-note" role="note">
+            First request loads the models and can take a few minutes
+          </div>
+
+          <!-- Collapsible Translation History -->
+          <details class="pipeline-history-details" id="pipeline-history-details">
+            <summary class="pipeline-history-summary">
+              <div class="history-summary-left">
+                <span class="caption">Translation History</span>
+                <span class="history-count-badge font-mono" id="pipeline-history-count">0</span>
+              </div>
+              <span class="history-toggle-hint font-mono">Expand ▾</span>
+            </summary>
+            <div class="pipeline-history-body">
+              <div class="history-actions-bar">
+                <span class="history-subcaption">Last 10 results in local storage</span>
+                <button
+                  type="button"
+                  id="pipeline-clear-history-btn"
+                  class="btn btn-secondary btn-sm"
+                  aria-label="Clear translation history"
+                >
+                  Clear history
+                </button>
+              </div>
+              <div id="pipeline-history-empty" class="pipeline-history-empty">No translation history yet.</div>
+              <ul id="pipeline-history-list" class="pipeline-history-list" role="list" aria-label="Recent translation history"></ul>
+            </div>
+          </details>
+
+          <hr class="panel-divider" aria-hidden="true">
+
+          <!-- Sample Inputs -->
+          <div class="samples-section">
+            <div class="caption">Try a sample</div>
+            <div class="sample-pills" role="group" aria-label="Sample code-mixed sentences">
+              <button type="button" class="sample-pill pipeline-sample-pill" data-sample="comparison-sample">
+                Kal meeting hai please slides bhej dena
+              </button>
+              <button type="button" class="sample-pill pipeline-sample-pill" data-sample="acceptance-sample">
+                Nenu repu college ki vastanu
+              </button>
+              <button type="button" class="sample-pill pipeline-sample-pill" data-sample="trilingual">
+                mai kal morning school ku aatta huu, akkada adukundam.
+              </button>
+              <button type="button" class="sample-pill pipeline-sample-pill" data-sample="hinglish">
+                Mujhe lagta hai ki train late ho sakti hai.
+              </button>
+              <button type="button" class="sample-pill pipeline-sample-pill" data-sample="clause">
+                aaj office lo bahut work undi, akkada kaluddam.
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Panel: Pipeline Metadata -->
+        <aside class="panel model-panel" aria-labelledby="pipeline-info-heading">
+          <div class="caption" id="pipeline-info-heading">Pipeline Architecture</div>
+          <dl class="info-list">
+            <div class="info-row">
+              <dt class="info-key">LID Model</dt>
+              <dd class="info-val font-mono">MuRIL (Token-Level)</dd>
+            </div>
+            <div class="info-row">
+              <dt class="info-key">MT Model</dt>
+              <dd class="info-val font-mono">IndicTrans2-Indic-en</dd>
+            </div>
+            <div class="info-row">
+              <dt class="info-key">Transliteration</dt>
+              <dd class="info-val font-sans">IndicXlit / Roman to Native</dd>
+            </div>
+            <div class="info-row">
+              <dt class="info-key">Pipeline Status</dt>
+              <dd class="info-val font-mono" id="pipeline-status-val">Checking...</dd>
+            </div>
+            <div class="info-row">
+              <dt class="info-key">Endpoint</dt>
+              <dd class="info-val font-mono">/api/mt/translate</dd>
+            </div>
+            <div class="info-row">
+              <dt class="info-key">First Run Note</dt>
+              <dd class="info-val">Initial model download may take ~1-3 minutes; cached runs take seconds.</dd>
+            </div>
+          </dl>
+        </aside>
+      </section>
+
+      <!-- Pipeline Results Card (Initially hidden) -->
+      <section id="pipeline-results-panel" class="panel results-panel" aria-labelledby="pipeline-results-caption" hidden aria-live="polite">
+        <!-- Visible Error Banner Inside Card -->
+        <div id="pipeline-error-banner" class="pipeline-error-banner" role="alert" hidden></div>
+
+        <div class="results-header" id="pipeline-results-header">
+          <div class="results-header-left">
+            <span class="caption" id="pipeline-results-caption">English Translation</span>
+          </div>
+          <div class="results-header-right">
+            <span class="model-badge font-mono" id="pipeline-dominant-badge">--</span>
+            <button
+              type="button"
+              id="pipeline-download-json-btn"
+              class="btn btn-secondary btn-sm"
+              aria-label="Download translation result as JSON"
+            >
+              Download JSON
+            </button>
+            <button type="button" id="pipeline-copy-btn" class="btn btn-secondary btn-sm" aria-label="Copy translation to clipboard">
+              Copy
+            </button>
+          </div>
+        </div>
+
+        <!-- Copy Success Feedback Notice -->
+        <div id="pipeline-copy-notice" class="copy-notice" role="status" aria-live="polite" hidden></div>
+
+        <!-- Translated Output Block -->
+        <div class="translation-output-card" id="pipeline-card-content">
+          <div class="translation-result-text font-serif" id="pipeline-result-text"></div>
+          
+          <div class="translation-original-block" id="pipeline-normalized-block" style="margin-top: 8px;" hidden>
+            <span class="caption">Cleaned input:</span>
+            <span class="translation-original-text font-mono" id="pipeline-normalized-text"></span>
+          </div>
+        </div>
+
+        <!-- Clause Breakdown (Shown only when strategy == 'clause' and clauses present) -->
+        <div id="pipeline-clauses-section" class="pipeline-clauses-section" hidden>
+          <hr class="results-divider" aria-hidden="true">
+          <div class="caption">Clause-by-Clause Translation</div>
+          <div id="pipeline-clauses-list" class="pipeline-clauses-list" aria-label="Translated clauses list"></div>
+        </div>
+
+        <!-- Token Analysis (Rendered as chips) -->
+        <div id="pipeline-tokens-section" class="pipeline-tokens-section" hidden>
+          <hr class="results-divider" aria-hidden="true">
+          <div class="results-header" style="margin-bottom: 12px; padding: 0;">
+            <div class="results-header-left">
+              <span class="caption">Tokens &amp; Language Identification</span>
+            </div>
+            <div class="results-header-right">
+              <div class="chip-legend" aria-label="Language color legend">
+                <span class="legend-item"><span class="legend-dot dot-en"></span>English</span>
+                <span class="legend-item"><span class="legend-dot dot-hi"></span>Hindi</span>
+                <span class="legend-item"><span class="legend-dot dot-te"></span>Telugu</span>
+                <span class="legend-item"><span class="legend-dot dot-other"></span>Other</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Token Chips Container (responsively wrapping) -->
+          <div id="pipeline-tokens-flow" class="pipeline-chips-container" role="list" aria-label="Token chips"></div>
+        </div>
+
+        <!-- Word Glosses Section (Shown when glosses dictionary has entries) -->
+        <div id="pipeline-glosses-section" class="pipeline-glosses-section" hidden>
+          <hr class="results-divider" aria-hidden="true">
+          <div class="caption">Vocabulary Glosses (Hints)</div>
+          <div id="pipeline-glosses-grid" class="pipeline-glosses-grid" aria-label="Word glosses"></div>
+        </div>
+
+        <!-- Timing Strip -->
+        <div class="timing-strip-section" id="pipeline-timing-section">
+          <div class="caption">Execution Timings</div>
+          <div class="timing-strip" id="pipeline-timing-strip">
+            <div class="timing-segment">
+              <span class="timing-label">Normalize</span>
+              <span class="timing-val font-mono" id="timing-normalize">--</span>
+            </div>
+            <div class="timing-divider" aria-hidden="true">•</div>
+            <div class="timing-segment">
+              <span class="timing-label">Language ID</span>
+              <span class="timing-val font-mono" id="timing-lid">--</span>
+            </div>
+            <div class="timing-divider" aria-hidden="true">•</div>
+            <div class="timing-segment">
+              <span class="timing-label">Transliterate</span>
+              <span class="timing-val font-mono" id="timing-translit">--</span>
+            </div>
+            <div class="timing-divider" aria-hidden="true">•</div>
+            <div class="timing-segment">
+              <span class="timing-label">Translate</span>
+              <span class="timing-val font-mono" id="timing-translate">--</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Caveat Footer -->
+        <div class="confidence-footer">
+          <p class="confidence-caveat">
+            Glosses and translations are machine-generated approximations. Token transliterations depend on predicted language tags.
+          </p>
+        </div>
+      </section>
+
+      <!-- Strategy Comparison Panel (Initially hidden) -->
+      <section id="pipeline-comparison-panel" class="panel results-panel" aria-labelledby="pipeline-comparison-caption" hidden aria-live="polite">
+        <div class="results-header">
+          <div class="results-header-left">
+            <span class="caption" id="pipeline-comparison-caption">Strategy Comparison</span>
+          </div>
+          <div class="results-header-right">
+            <span id="pipeline-comparison-status" class="model-badge font-mono">Complete</span>
+          </div>
+        </div>
+
+        <p class="comparison-intro">
+          Evaluating strategies sequentially against the code-mixed input. Words differing from the <strong>Full pipeline</strong> column are highlighted.
+        </p>
+
+        <div id="pipeline-comparison-grid" class="comparison-grid" role="region" aria-label="Strategy comparison columns"></div>
+      </section>
+    </div>
+
+    <!-- ====================================================================== -->
+    <!-- Mode D: Experiments & Evaluation Panel                                 -->
+    <!-- ====================================================================== -->
+    <div id="panel-experiments" class="capability-panel" role="tabpanel" aria-labelledby="tab-experiments" hidden>
+      <!-- Mode Header -->
+      <div class="mode-header">
+        <div class="mode-header-text">
+          <h2 class="mode-title">Experiments &amp; Benchmark</h2>
+          <p class="mode-subtitle">Comprehensive evaluation across PHINC test benchmarks, transliteration ablations, and token-level LID accuracy.</p>
+        </div>
+        <div class="model-badge font-mono">SacreBLEU + Bootstrap CI</div>
+      </div>
+
+      <!-- Friendly Error Banner (Shown when results.json fetch fails, e.g. file:// protocol) -->
+      <div id="experiments-error-banner" class="notice-box notice-error" role="alert" style="margin-bottom: 24px;" hidden>
+        <span id="experiments-error-message">Unable to load experimental results from frontend/results.json. When accessing files directly via <code>file://</code>, browser security policies restrict local fetch requests. Please serve the frontend over HTTP (e.g. <code>python -m http.server 5500</code>) to view live experimental benchmarks.</span>
+      </div>
+
+      <!-- Content Container -->
+      <div id="experiments-content" class="experiments-container">
+        <!-- 1. Headline Metrics Grid -->
+        <section class="exp-section" aria-label="Key Performance Indicators">
+          <div class="exp-section-header">
+            <span class="caption">Key Findings &amp; Summary Metrics</span>
+          </div>
+          <div id="experiments-headlines-grid" class="exp-headlines-grid" role="region" aria-label="Headline metrics"></div>
+        </section>
+
+        <!-- 2. Bar Charts Grid -->
+        <section class="exp-section" aria-label="System Comparison Charts">
+          <div class="exp-section-header">
+            <span class="caption">Comparative Benchmarks &amp; Ablation Studies</span>
+          </div>
+          <div id="experiments-charts-grid" class="exp-charts-grid"></div>
+        </section>
+
+        <!-- 3. Token-Level LID Evaluation Table -->
+        <section class="exp-section" aria-label="Token-level Language Identification">
+          <div class="exp-section-header">
+            <span class="caption">Token-Level Language Identification (MuRIL)</span>
+          </div>
+          <div id="experiments-lid-container" class="exp-table-card panel"></div>
+          <div id="experiments-lid-compare-container" class="exp-table-card panel" style="margin-top: 16px;"></div>
+        </section>
+
+        <!-- 4. Qualitative Insights: Negative Results & Limitations -->
+        <section class="exp-section" aria-label="Qualitative Findings and Limitations">
+          <div id="experiments-regression-container" class="exp-table-card panel" style="margin-bottom: 20px;"></div>
+          <div class="exp-qualitative-grid">
+            <!-- Negative Results Card -->
+            <div class="panel exp-negative-card">
+              <div class="exp-card-header">
+                <span class="caption">Negative Results</span>
+                <span class="model-badge font-mono">Did Not Help</span>
+              </div>
+              <ul id="experiments-negative-list" class="exp-list exp-negative-list"></ul>
+            </div>
+
+            <!-- Limitations Panel -->
+            <div class="panel exp-limitations-card">
+              <div class="exp-card-header">
+                <span class="caption">Limitations</span>
+                <span class="model-badge font-mono">Known Constraints</span>
+              </div>
+              <ul id="experiments-limitations-list" class="exp-list exp-limitations-list"></ul>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
   </main>
+
+  <!-- Floating Toast Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
 
   <script src="app.js"></script>
 </body>

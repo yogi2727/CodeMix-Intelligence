@@ -1,0 +1,1398 @@
+{
+  "Nenu repu college ki vastanu, but assignment complete cheyyaledu": {
+    "direct": {
+      "original": "Nenu repu college ki vastanu, but assignment complete cheyyaledu",
+      "normalized": "Nenu repu college ki vastanu, but assignment complete cheyyaledu",
+      "tokens": [],
+      "dominant_lang": "TE",
+      "translation": "Nenu repu college ki vastanu but assignment complete cheyyaledu",
+      "strategy": "direct",
+      "glosses": {},
+      "timings_ms": {
+        "translate": 82997.9
+      }
+    },
+    "lid_only": {
+      "original": "Nenu repu college ki vastanu, but assignment complete cheyyaledu",
+      "normalized": "Nenu repu college ki vastanu, but assignment complete cheyyaledu",
+      "dominant_lang": "TE",
+      "strategy": "lid_only",
+      "tokens": [
+        {
+          "text": "Nenu",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": null
+        },
+        {
+          "text": "repu",
+          "lang": "TE",
+          "conf": 0.97,
+          "native": null
+        },
+        {
+          "text": "college",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "ki",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": null
+        },
+        {
+          "text": "vastanu",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": null
+        },
+        {
+          "text": ",",
+          "lang": "OTHER",
+          "conf": 1.0,
+          "native": null
+        },
+        {
+          "text": "but",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "assignment",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "complete",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "cheyyaledu",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": null
+        }
+      ],
+      "translation": "Nenu repu college ki vastanu but assignment complete cheyyaledu",
+      "glosses": {
+        "Nenu": "Nenu",
+        "repu": "Repu",
+        "ki": "ki",
+        "vastanu": "Vistana",
+        "cheyyaledu": "Cheyyaledu"
+      },
+      "timings_ms": {
+        "normalize": 0.1,
+        "lid": 1794.5,
+        "transliterate": 0.0,
+        "translate": 51025.8
+      }
+    },
+    "full": {
+      "original": "Nenu repu college ki vastanu, but assignment complete cheyyaledu",
+      "normalized": "Nenu repu college ki vastanu, but assignment complete cheyyaledu",
+      "dominant_lang": "TE",
+      "strategy": "full",
+      "tokens": [
+        {
+          "text": "Nenu",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": "నేను"
+        },
+        {
+          "text": "repu",
+          "lang": "TE",
+          "conf": 0.97,
+          "native": "రేపు"
+        },
+        {
+          "text": "college",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "ki",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": "కి"
+        },
+        {
+          "text": "vastanu",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": "వస్తాను"
+        },
+        {
+          "text": ",",
+          "lang": "OTHER",
+          "conf": 1.0,
+          "native": null
+        },
+        {
+          "text": "but",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "assignment",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "complete",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "cheyyaledu",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": "చేయ్యలేదు"
+        }
+      ],
+      "translation": "I'll be back to college tomorrow, but I haven't finished my assignment.",
+      "glosses": {
+        "Nenu": "I'm",
+        "repu": "Tomorrow",
+        "ki": "Ki",
+        "vastanu": "I'll come",
+        "cheyyaledu": "Didn't"
+      },
+      "timings_ms": {
+        "normalize": 0.1,
+        "lid": 122.5,
+        "transliterate": 0.1,
+        "translate": 2718.1
+      }
+    },
+    "clause": {
+      "original": "Nenu repu college ki vastanu, but assignment complete cheyyaledu",
+      "normalized": "Nenu repu college ki vastanu, but assignment complete cheyyaledu",
+      "dominant_lang": "TE",
+      "strategy": "clause",
+      "tokens": [
+        {
+          "text": "Nenu",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": "నేను"
+        },
+        {
+          "text": "repu",
+          "lang": "TE",
+          "conf": 0.97,
+          "native": "రేపు"
+        },
+        {
+          "text": "college",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "ki",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": "కి"
+        },
+        {
+          "text": "vastanu",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": "వస్తాను"
+        },
+        {
+          "text": ",",
+          "lang": "OTHER",
+          "conf": 1.0,
+          "native": null
+        },
+        {
+          "text": "but",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "assignment",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "complete",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "cheyyaledu",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": "చేయ్యలేదు"
+        }
+      ],
+      "translation": "I'm going to college tomorrow. But the assignment is not completed",
+      "glosses": {
+        "Nenu": "I'm",
+        "repu": "Tomorrow",
+        "ki": "Ki",
+        "vastanu": "I'll come",
+        "cheyyaledu": "Didn't"
+      },
+      "timings_ms": {
+        "normalize": 0.1,
+        "lid": 1129.1,
+        "transliterate": 0.1,
+        "translate": 25606.7
+      },
+      "clauses": [
+        {
+          "text": "నేను రేపు college కి వస్తాను,",
+          "lang": "TE",
+          "translation": "I'm going to college tomorrow."
+        },
+        {
+          "text": "but assignment complete చేయ్యలేదు",
+          "lang": "TE",
+          "translation": "But the assignment is not completed"
+        }
+      ]
+    }
+  },
+  "Meeru ee project deadline gurinchi manager tho matladara?": {
+    "direct": {
+      "original": "Meeru ee project deadline gurinchi manager tho matladara?",
+      "normalized": "Meeru ee project deadline gurinchi manager tho matladara?",
+      "tokens": [],
+      "dominant_lang": "TE",
+      "translation": "meeruee project deadline gurinchi manager tho matladara?",
+      "strategy": "direct",
+      "glosses": {},
+      "timings_ms": {
+        "translate": 8688.5
+      }
+    },
+    "lid_only": {
+      "original": "Meeru ee project deadline gurinchi manager tho matladara?",
+      "normalized": "Meeru ee project deadline gurinchi manager tho matladara?",
+      "dominant_lang": "TE",
+      "strategy": "lid_only",
+      "tokens": [
+        {
+          "text": "Meeru",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": null
+        },
+        {
+          "text": "ee",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": null
+        },
+        {
+          "text": "project",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "deadline",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "gurinchi",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": null
+        },
+        {
+          "text": "manager",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "tho",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": null
+        },
+        {
+          "text": "matladara",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": null
+        },
+        {
+          "text": "?",
+          "lang": "OTHER",
+          "conf": 1.0,
+          "native": null
+        }
+      ],
+      "translation": "meeruee project deadline gurinchi manager tho matladara?",
+      "glosses": {
+        "Meeru": "Meiru",
+        "ee": "ee",
+        "gurinchi": "Gurinchi",
+        "tho": "tho",
+        "matladara": "matladara"
+      },
+      "timings_ms": {
+        "normalize": 0.1,
+        "lid": 91.3,
+        "transliterate": 0.0,
+        "translate": 24762.4
+      }
+    },
+    "full": {
+      "original": "Meeru ee project deadline gurinchi manager tho matladara?",
+      "normalized": "Meeru ee project deadline gurinchi manager tho matladara?",
+      "dominant_lang": "TE",
+      "strategy": "full",
+      "tokens": [
+        {
+          "text": "Meeru",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": "మీరు"
+        },
+        {
+          "text": "ee",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": "ఈ"
+        },
+        {
+          "text": "project",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "deadline",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "gurinchi",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": "గురిన్చి"
+        },
+        {
+          "text": "manager",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "tho",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": "థో"
+        },
+        {
+          "text": "matladara",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": "మత్లదర"
+        },
+        {
+          "text": "?",
+          "lang": "OTHER",
+          "conf": 1.0,
+          "native": null
+        }
+      ],
+      "translation": "Do you know the deadline for this project?",
+      "glosses": {
+        "Meeru": "You're",
+        "ee": "This",
+        "gurinchi": "Gurinchi",
+        "tho": "tho",
+        "matladara": "Matlada"
+      },
+      "timings_ms": {
+        "normalize": 0.1,
+        "lid": 106.2,
+        "transliterate": 0.1,
+        "translate": 2310.2
+      }
+    },
+    "clause": {
+      "original": "Meeru ee project deadline gurinchi manager tho matladara?",
+      "normalized": "Meeru ee project deadline gurinchi manager tho matladara?",
+      "dominant_lang": "TE",
+      "strategy": "clause",
+      "tokens": [
+        {
+          "text": "Meeru",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": "మీరు"
+        },
+        {
+          "text": "ee",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": "ఈ"
+        },
+        {
+          "text": "project",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "deadline",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "gurinchi",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": "గురిన్చి"
+        },
+        {
+          "text": "manager",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "tho",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": "థో"
+        },
+        {
+          "text": "matladara",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": "మత్లదర"
+        },
+        {
+          "text": "?",
+          "lang": "OTHER",
+          "conf": 1.0,
+          "native": null
+        }
+      ],
+      "translation": "Do you know the deadline for this project?",
+      "glosses": {
+        "Meeru": "You're",
+        "ee": "This",
+        "gurinchi": "Gurinchi",
+        "tho": "tho",
+        "matladara": "Matlada"
+      },
+      "timings_ms": {
+        "normalize": 0.1,
+        "lid": 141.9,
+        "transliterate": 0.1,
+        "translate": 3138.2
+      },
+      "clauses": [
+        {
+          "text": "మీరు ఈ project deadline గురిన్చి manager థో మత్లదర?",
+          "lang": "TE",
+          "translation": "Do you know the deadline for this project?"
+        }
+      ]
+    }
+  },
+  "Kal meeting hai please slides bhej dena": {
+    "direct": {
+      "original": "Kal meeting hai please slides bhej dena",
+      "normalized": "Kal meeting hai please slides bhej dena",
+      "tokens": [],
+      "dominant_lang": "HI",
+      "translation": "tomorrow is the meeting please slides bhej dena",
+      "strategy": "direct",
+      "glosses": {},
+      "timings_ms": {
+        "translate": 3825.6
+      }
+    },
+    "lid_only": {
+      "original": "Kal meeting hai please slides bhej dena",
+      "normalized": "Kal meeting hai please slides bhej dena",
+      "dominant_lang": "HI",
+      "strategy": "lid_only",
+      "tokens": [
+        {
+          "text": "Kal",
+          "lang": "HI",
+          "conf": 0.992,
+          "native": null
+        },
+        {
+          "text": "meeting",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "hai",
+          "lang": "HI",
+          "conf": 0.992,
+          "native": null
+        },
+        {
+          "text": "please",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "slides",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "bhej",
+          "lang": "HI",
+          "conf": 0.992,
+          "native": null
+        },
+        {
+          "text": "dena",
+          "lang": "HI",
+          "conf": 0.992,
+          "native": null
+        }
+      ],
+      "translation": "tomorrow is the meeting please slides bhej dena",
+      "glosses": {
+        "Kal": "Kal",
+        "hai": "It's",
+        "bhej": "bhej",
+        "dena": "dena"
+      },
+      "timings_ms": {
+        "normalize": 0.1,
+        "lid": 656.8,
+        "transliterate": 0.0,
+        "translate": 4361.4
+      }
+    },
+    "full": {
+      "original": "Kal meeting hai please slides bhej dena",
+      "normalized": "Kal meeting hai please slides bhej dena",
+      "dominant_lang": "HI",
+      "strategy": "full",
+      "tokens": [
+        {
+          "text": "Kal",
+          "lang": "HI",
+          "conf": 0.992,
+          "native": "कल"
+        },
+        {
+          "text": "meeting",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "hai",
+          "lang": "HI",
+          "conf": 0.992,
+          "native": "है"
+        },
+        {
+          "text": "please",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "slides",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "bhej",
+          "lang": "HI",
+          "conf": 0.992,
+          "native": "भेज"
+        },
+        {
+          "text": "dena",
+          "lang": "HI",
+          "conf": 0.992,
+          "native": "देना"
+        }
+      ],
+      "translation": "there is a meeting tomorrow please send slides",
+      "glosses": {
+        "Kal": "Tomorrow",
+        "hai": "It's",
+        "bhej": "Send",
+        "dena": "give"
+      },
+      "timings_ms": {
+        "normalize": 0.1,
+        "lid": 40.0,
+        "transliterate": 0.0,
+        "translate": 910.1
+      }
+    },
+    "clause": {
+      "original": "Kal meeting hai please slides bhej dena",
+      "normalized": "Kal meeting hai please slides bhej dena",
+      "dominant_lang": "HI",
+      "strategy": "clause",
+      "tokens": [
+        {
+          "text": "Kal",
+          "lang": "HI",
+          "conf": 0.992,
+          "native": "कल"
+        },
+        {
+          "text": "meeting",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "hai",
+          "lang": "HI",
+          "conf": 0.992,
+          "native": "है"
+        },
+        {
+          "text": "please",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "slides",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "bhej",
+          "lang": "HI",
+          "conf": 0.992,
+          "native": "भेज"
+        },
+        {
+          "text": "dena",
+          "lang": "HI",
+          "conf": 0.992,
+          "native": "देना"
+        }
+      ],
+      "translation": "there is a meeting tomorrow please send slides",
+      "glosses": {
+        "Kal": "Tomorrow",
+        "hai": "It's",
+        "bhej": "Send",
+        "dena": "give"
+      },
+      "timings_ms": {
+        "normalize": 0.1,
+        "lid": 40.2,
+        "transliterate": 0.0,
+        "translate": 3570.8
+      },
+      "clauses": [
+        {
+          "text": "कल meeting है please slides भेज देना",
+          "lang": "HI",
+          "translation": "there is a meeting tomorrow please send slides"
+        }
+      ]
+    }
+  },
+  "Tum kab tak college aaoge?": {
+    "direct": {
+      "original": "Tum kab tak college aaoge?",
+      "normalized": "Tum kab tak college aaoge?",
+      "tokens": [],
+      "dominant_lang": "HI",
+      "translation": "Tum kab tak college aaoge?",
+      "strategy": "direct",
+      "glosses": {},
+      "timings_ms": {
+        "translate": 989.1
+      }
+    },
+    "lid_only": {
+      "original": "Tum kab tak college aaoge?",
+      "normalized": "Tum kab tak college aaoge?",
+      "dominant_lang": "HI",
+      "strategy": "lid_only",
+      "tokens": [
+        {
+          "text": "Tum",
+          "lang": "HI",
+          "conf": 0.992,
+          "native": null
+        },
+        {
+          "text": "kab",
+          "lang": "HI",
+          "conf": 0.992,
+          "native": null
+        },
+        {
+          "text": "tak",
+          "lang": "HI",
+          "conf": 0.992,
+          "native": null
+        },
+        {
+          "text": "college",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "aaoge",
+          "lang": "HI",
+          "conf": 0.992,
+          "native": null
+        },
+        {
+          "text": "?",
+          "lang": "OTHER",
+          "conf": 1.0,
+          "native": null
+        }
+      ],
+      "translation": "Tum kab tak college aaoge?",
+      "glosses": {
+        "Tum": "Tum",
+        "kab": "kab",
+        "tak": "tak",
+        "aaoge": "aaoge"
+      },
+      "timings_ms": {
+        "normalize": 0.1,
+        "lid": 54.8,
+        "transliterate": 0.0,
+        "translate": 1121.2
+      }
+    },
+    "full": {
+      "original": "Tum kab tak college aaoge?",
+      "normalized": "Tum kab tak college aaoge?",
+      "dominant_lang": "HI",
+      "strategy": "full",
+      "tokens": [
+        {
+          "text": "Tum",
+          "lang": "HI",
+          "conf": 0.992,
+          "native": "तुम"
+        },
+        {
+          "text": "kab",
+          "lang": "HI",
+          "conf": 0.992,
+          "native": "कब"
+        },
+        {
+          "text": "tak",
+          "lang": "HI",
+          "conf": 0.992,
+          "native": "तक"
+        },
+        {
+          "text": "college",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "aaoge",
+          "lang": "HI",
+          "conf": 0.992,
+          "native": "आओगे"
+        },
+        {
+          "text": "?",
+          "lang": "OTHER",
+          "conf": 1.0,
+          "native": null
+        }
+      ],
+      "translation": "How long will you be in college?",
+      "glosses": {
+        "Tum": "You",
+        "kab": "When",
+        "tak": "up to the",
+        "aaoge": "It'll come"
+      },
+      "timings_ms": {
+        "normalize": 0.1,
+        "lid": 58.5,
+        "transliterate": 0.0,
+        "translate": 1366.6
+      }
+    },
+    "clause": {
+      "original": "Tum kab tak college aaoge?",
+      "normalized": "Tum kab tak college aaoge?",
+      "dominant_lang": "HI",
+      "strategy": "clause",
+      "tokens": [
+        {
+          "text": "Tum",
+          "lang": "HI",
+          "conf": 0.992,
+          "native": "तुम"
+        },
+        {
+          "text": "kab",
+          "lang": "HI",
+          "conf": 0.992,
+          "native": "कब"
+        },
+        {
+          "text": "tak",
+          "lang": "HI",
+          "conf": 0.992,
+          "native": "तक"
+        },
+        {
+          "text": "college",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "aaoge",
+          "lang": "HI",
+          "conf": 0.992,
+          "native": "आओगे"
+        },
+        {
+          "text": "?",
+          "lang": "OTHER",
+          "conf": 1.0,
+          "native": null
+        }
+      ],
+      "translation": "How long will you be in college?",
+      "glosses": {
+        "Tum": "You",
+        "kab": "When",
+        "tak": "up to the",
+        "aaoge": "It'll come"
+      },
+      "timings_ms": {
+        "normalize": 0.1,
+        "lid": 41.5,
+        "transliterate": 0.0,
+        "translate": 1868.0
+      },
+      "clauses": [
+        {
+          "text": "तुम कब तक college आओगे?",
+          "lang": "HI",
+          "translation": "How long will you be in college?"
+        }
+      ]
+    }
+  },
+  "NENU REPU college ki vastanuuuu plz": {
+    "direct": {
+      "original": "NENU REPU college ki vastanuuuu plz",
+      "normalized": "NENU REPU college ki vastanuuuu plz",
+      "tokens": [],
+      "dominant_lang": "TE",
+      "translation": "NENU REPU College ki vastanuuu plz",
+      "strategy": "direct",
+      "glosses": {},
+      "timings_ms": {
+        "translate": 10551.6
+      }
+    },
+    "lid_only": {
+      "original": "NENU REPU college ki vastanuuuu plz",
+      "normalized": "nenu repu college ki vastanu please",
+      "dominant_lang": "TE",
+      "strategy": "lid_only",
+      "tokens": [
+        {
+          "text": "nenu",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": null
+        },
+        {
+          "text": "repu",
+          "lang": "TE",
+          "conf": 0.971,
+          "native": null
+        },
+        {
+          "text": "college",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "ki",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": null
+        },
+        {
+          "text": "vastanu",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": null
+        },
+        {
+          "text": "please",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        }
+      ],
+      "translation": "nenu repu college ki vastanu please",
+      "glosses": {
+        "nenu": "Nenu",
+        "repu": "Repu",
+        "ki": "ki",
+        "vastanu": "Vistana"
+      },
+      "timings_ms": {
+        "normalize": 0.1,
+        "lid": 1132.3,
+        "transliterate": 0.0,
+        "translate": 4627.9
+      }
+    },
+    "full": {
+      "original": "NENU REPU college ki vastanuuuu plz",
+      "normalized": "nenu repu college ki vastanu please",
+      "dominant_lang": "TE",
+      "strategy": "full",
+      "tokens": [
+        {
+          "text": "nenu",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": "నేను"
+        },
+        {
+          "text": "repu",
+          "lang": "TE",
+          "conf": 0.971,
+          "native": "రేపు"
+        },
+        {
+          "text": "college",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "ki",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": "కి"
+        },
+        {
+          "text": "vastanu",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": "వస్తాను"
+        },
+        {
+          "text": "please",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        }
+      ],
+      "translation": "I'll come to college tomorrow, please.",
+      "glosses": {
+        "nenu": "I'm",
+        "repu": "Tomorrow",
+        "ki": "Ki",
+        "vastanu": "I'll come"
+      },
+      "timings_ms": {
+        "normalize": 0.1,
+        "lid": 41.2,
+        "transliterate": 0.1,
+        "translate": 19673.2
+      }
+    },
+    "clause": {
+      "original": "NENU REPU college ki vastanuuuu plz",
+      "normalized": "nenu repu college ki vastanu please",
+      "dominant_lang": "TE",
+      "strategy": "clause",
+      "tokens": [
+        {
+          "text": "nenu",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": "నేను"
+        },
+        {
+          "text": "repu",
+          "lang": "TE",
+          "conf": 0.971,
+          "native": "రేపు"
+        },
+        {
+          "text": "college",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "ki",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": "కి"
+        },
+        {
+          "text": "vastanu",
+          "lang": "TE",
+          "conf": 0.973,
+          "native": "వస్తాను"
+        },
+        {
+          "text": "please",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        }
+      ],
+      "translation": "I'll come to college tomorrow, please.",
+      "glosses": {
+        "nenu": "I'm",
+        "repu": "Tomorrow",
+        "ki": "Ki",
+        "vastanu": "I'll come"
+      },
+      "timings_ms": {
+        "normalize": 0.0,
+        "lid": 728.0,
+        "transliterate": 0.1,
+        "translate": 8703.6
+      },
+      "clauses": [
+        {
+          "text": "నేను రేపు college కి వస్తాను please",
+          "lang": "TE",
+          "translation": "I'll come to college tomorrow, please."
+        }
+      ]
+    }
+  },
+  "Nenu repu college ki vastanu, tum bhi aao na": {
+    "direct": {
+      "original": "Nenu repu college ki vastanu, tum bhi aao na",
+      "normalized": "Nenu repu college ki vastanu, tum bhi aao na",
+      "tokens": [],
+      "dominant_lang": "TE",
+      "translation": "Nenu repu college ki vastanu: tum bhi aao na",
+      "strategy": "direct",
+      "glosses": {},
+      "timings_ms": {
+        "translate": 2798.7
+      }
+    },
+    "lid_only": {
+      "original": "Nenu repu college ki vastanu, tum bhi aao na",
+      "normalized": "Nenu repu college ki vastanu, tum bhi aao na",
+      "dominant_lang": "TE",
+      "strategy": "lid_only",
+      "tokens": [
+        {
+          "text": "Nenu",
+          "lang": "TE",
+          "conf": 0.954,
+          "native": null
+        },
+        {
+          "text": "repu",
+          "lang": "TE",
+          "conf": 0.912,
+          "native": null
+        },
+        {
+          "text": "college",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "ki",
+          "lang": "TE",
+          "conf": 0.921,
+          "native": null
+        },
+        {
+          "text": "vastanu",
+          "lang": "TE",
+          "conf": 0.916,
+          "native": null
+        },
+        {
+          "text": ",",
+          "lang": "OTHER",
+          "conf": 1.0,
+          "native": null
+        },
+        {
+          "text": "tum",
+          "lang": "HI",
+          "conf": 0.938,
+          "native": null
+        },
+        {
+          "text": "bhi",
+          "lang": "HI",
+          "conf": 0.815,
+          "native": null
+        },
+        {
+          "text": "aao",
+          "lang": "HI",
+          "conf": 0.571,
+          "native": null
+        },
+        {
+          "text": "na",
+          "lang": "HI",
+          "conf": 0.627,
+          "native": null
+        }
+      ],
+      "translation": "Nenu repu college ki vastanu: tum bhi aao na",
+      "glosses": {
+        "Nenu": "Nenu",
+        "repu": "Repu",
+        "ki": "ki",
+        "vastanu": "Vistana",
+        "tum": "तुम के लिए के लिए के लिए के लिए",
+        "bhi": "bhi",
+        "aao": "aao",
+        "na": "No"
+      },
+      "timings_ms": {
+        "normalize": 0.1,
+        "lid": 38.0,
+        "transliterate": 0.0,
+        "translate": 1457.2
+      }
+    },
+    "full": {
+      "original": "Nenu repu college ki vastanu, tum bhi aao na",
+      "normalized": "Nenu repu college ki vastanu, tum bhi aao na",
+      "dominant_lang": "TE",
+      "strategy": "full",
+      "tokens": [
+        {
+          "text": "Nenu",
+          "lang": "TE",
+          "conf": 0.954,
+          "native": "నేను"
+        },
+        {
+          "text": "repu",
+          "lang": "TE",
+          "conf": 0.912,
+          "native": "రేపు"
+        },
+        {
+          "text": "college",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "ki",
+          "lang": "TE",
+          "conf": 0.921,
+          "native": "కి"
+        },
+        {
+          "text": "vastanu",
+          "lang": "TE",
+          "conf": 0.916,
+          "native": "వస్తాను"
+        },
+        {
+          "text": ",",
+          "lang": "OTHER",
+          "conf": 1.0,
+          "native": null
+        },
+        {
+          "text": "tum",
+          "lang": "HI",
+          "conf": 0.938,
+          "native": "तुम"
+        },
+        {
+          "text": "bhi",
+          "lang": "HI",
+          "conf": 0.815,
+          "native": "भी"
+        },
+        {
+          "text": "aao",
+          "lang": "HI",
+          "conf": 0.571,
+          "native": "आओ"
+        },
+        {
+          "text": "na",
+          "lang": "HI",
+          "conf": 0.627,
+          "native": "ना"
+        }
+      ],
+      "translation": "I'm going to college tomorrow.",
+      "glosses": {
+        "Nenu": "I'm",
+        "repu": "Tomorrow",
+        "ki": "Ki",
+        "vastanu": "I'll come",
+        "tum": "You",
+        "bhi": "as well as",
+        "aao": "Come on",
+        "na": "No"
+      },
+      "timings_ms": {
+        "normalize": 0.1,
+        "lid": 36.6,
+        "transliterate": 0.1,
+        "translate": 936.9
+      }
+    },
+    "clause": {
+      "original": "Nenu repu college ki vastanu, tum bhi aao na",
+      "normalized": "Nenu repu college ki vastanu, tum bhi aao na",
+      "dominant_lang": "TE",
+      "strategy": "clause",
+      "tokens": [
+        {
+          "text": "Nenu",
+          "lang": "TE",
+          "conf": 0.954,
+          "native": "నేను"
+        },
+        {
+          "text": "repu",
+          "lang": "TE",
+          "conf": 0.912,
+          "native": "రేపు"
+        },
+        {
+          "text": "college",
+          "lang": "EN",
+          "conf": 0.985,
+          "native": null
+        },
+        {
+          "text": "ki",
+          "lang": "TE",
+          "conf": 0.921,
+          "native": "కి"
+        },
+        {
+          "text": "vastanu",
+          "lang": "TE",
+          "conf": 0.916,
+          "native": "వస్తాను"
+        },
+        {
+          "text": ",",
+          "lang": "OTHER",
+          "conf": 1.0,
+          "native": null
+        },
+        {
+          "text": "tum",
+          "lang": "HI",
+          "conf": 0.938,
+          "native": "तुम"
+        },
+        {
+          "text": "bhi",
+          "lang": "HI",
+          "conf": 0.815,
+          "native": "भी"
+        },
+        {
+          "text": "aao",
+          "lang": "HI",
+          "conf": 0.571,
+          "native": "आओ"
+        },
+        {
+          "text": "na",
+          "lang": "HI",
+          "conf": 0.627,
+          "native": "ना"
+        }
+      ],
+      "translation": "I'm going to college tomorrow. Don't you come too.",
+      "glosses": {
+        "Nenu": "I'm",
+        "repu": "Tomorrow",
+        "ki": "Ki",
+        "vastanu": "I'll come",
+        "tum": "You",
+        "bhi": "as well as",
+        "aao": "Come on",
+        "na": "No"
+      },
+      "timings_ms": {
+        "normalize": 0.1,
+        "lid": 87.0,
+        "transliterate": 0.1,
+        "translate": 1970.0
+      },
+      "clauses": [
+        {
+          "text": "నేను రేపు college కి వస్తాను,",
+          "lang": "TE",
+          "translation": "I'm going to college tomorrow."
+        },
+        {
+          "text": "तुम भी आओ ना",
+          "lang": "HI",
+          "translation": "Don't you come too."
+        }
+      ]
+    }
+  }
+}
