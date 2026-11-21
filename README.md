@@ -16,16 +16,8 @@
 * **Course:** Natural Language Processing (NLP)
 * **Student Name:** **T. Yogeswar**
 * **Roll Number:** **124AD0065**
-* **Project Guide / Course Instructor:** **Dr. Santha Babu Sir** (Assistant Professor, Dept. of CSE)
+* **Project Guide / Course Instructor:** **Prof. Korra Sathya Babu** (Department of CSE)
 * **Academic Year:** 2026–2027
-
----
-
-### 📚 Primary Academic Deliverables
-
-* 📄 **[Comprehensive Project Academic Report](PROJECT_REPORT_IIITDM_KURNOOL.md)** *(Detailed 30-page academic report covering sociolinguistics, mathematical formulation, model architectures, ablation benchmarks, and error taxonomies)*
-* 📊 **[Defense Presentation Slides](PRESENTATION_SLIDES_IIITDM.md)** *(18-slide presentation formatted for thesis defense and classroom evaluation)*
-* 📁 **[Mirror in `/docs` Directory](docs/)** *(Self-contained copies of all academic documentation)*
 
 ---
 
@@ -188,25 +180,12 @@ CodeMix-Intelligence/
 ├── data/                                # Data directories (gitignored datasets)
 │   ├── processed/                       # Tokenized and split datasets
 │   └── test_sanity.csv                  # 20 reference sentences for pipeline smoke tests
-├── docs/                                # Academic documentation and defense artifacts
-│   ├── PROJECT_REPORT_IIITDM_KURNOOL.md # Comprehensive 30-page academic report
-│   └── PRESENTATION_SLIDES_IIITDM.md    # 18-slide thesis defense presentation
-├── results/                             # Benchmark evaluation dumps and paired bootstrap CIs
-│   ├── final_phinc_all_outputs.csv      # 1,351 test sentences with all strategy outputs
-│   ├── mt5_vs_pipeline.csv              # sacreBLEU and chrF comparison table
-│   └── mt5_vs_pipeline_gain.json        # Paired bootstrap gain metrics ($B=2,000$)
-├── scripts/                             # Utility, training, and benchmarking scripts
-│   ├── smoke_mt.py                      # End-to-end live server smoke test
-│   ├── compare_mt5_vs_pipeline.py       # SacreBLEU evaluation & bootstrap calculator
-│   └── split_phinc_translation_dataset.py # Deterministic splitting script
 ├── tests/                               # Comprehensive automated test suites
 │   ├── test_pipeline.py                 # Pipeline unit tests (17 tests)
 │   ├── test_inference_and_api.py        # FastAPI endpoint integration tests (13 tests)
 │   ├── test_translation_api.py          # Translation REST API tests (12 tests)
 │   ├── test_translation_inference.py    # Beam search & model inference tests (15 tests)
 │   └── test_demo_mode.js                # Frontend offline demo acceptance tests
-├── PRESENTATION_SLIDES_IIITDM.md        # Defense Presentation Slides (Root Link)
-├── PROJECT_REPORT_IIITDM_KURNOOL.md     # Project Academic Report (Root Link)
 ├── requirements.txt                     # Pinned project dependencies
 └── README.md                            # Primary project documentation
 ```
@@ -305,7 +284,7 @@ If you use this project, models, benchmarks, or codebase in your academic resear
   title        = {CodeMix Intelligence: A Transformer-Based Trilingual Code-Mixed Language Understanding and Machine Translation System},
   year         = {2026},
   howpublished = {B.Tech Project Report, Department of Computer Science and Engineering, IIITDM Kurnool},
-  note         = {Supervised by Dr. Santha Babu Sir}
+  note         = {Supervised by Prof. Korra Sathya Babu}
 }
 ```
 

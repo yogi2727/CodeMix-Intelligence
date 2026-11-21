@@ -81,6 +81,12 @@ models/
 .cache/
 .claude/
 
+# Academic Reports and Slides (Private / Local only)
+PRESENTATION_SLIDES_IIITDM.md
+PROJECT_REPORT_IIITDM_KURNOOL.md
+PROJECT_REPORT_CONCISE_IIITDM.md
+docs/
+
 # Model 2: local extracted mT5 model artifacts
 /artifacts/models/mt5_hinglish_translation/
 
