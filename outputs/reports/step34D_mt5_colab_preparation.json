@@ -1,0 +1,143 @@
+{
+  "step": "STEP 34D",
+  "title": "Reproducible mT5-small Google Colab Training Preparation",
+  "timestamp_utc": "2026-11-02T13:02:19.063239+00:00",
+  "status": "COMPLETED",
+  "development_branch": "feature/mt5-translation-v2",
+  "v1_stable_release": {
+    "tag": "v1.0.0",
+    "commit": "c9509f0e9e10fe715c759edc09d1dacadb540f74",
+    "ancestry_intact": true,
+    "muril_safetensors_path": "artifacts/models/muril_lid_baseline/best_model/model.safetensors",
+    "muril_safetensors_sha256": "714defc6f90659ebc25e5e011a9101579d36cf9f3b4c57165c0614f1bc744bae",
+    "muril_safetensors_size_bytes": 947898192,
+    "muril_protected_status": "UNTOUCHED"
+  },
+  "dataset_verification": {
+    "train": {
+      "path": "data/processed/translation/phinc_hinglish_splits/phinc_train.jsonl",
+      "records": 10802,
+      "size_bytes": 9563198,
+      "sha256": "f9b9b4e5678c5ce628891d0fa9e53224d4723a8015828a95206ce2a3c34f7f41",
+      "status": "VERIFIED_EXACT"
+    },
+    "validation": {
+      "path": "data/processed/translation/phinc_hinglish_splits/phinc_validation.jsonl",
+      "records": 1350,
+      "size_bytes": 1199187,
+      "sha256": "b63971bbc05c692279f092c682d6c2bd1e184fe759009a3a52576c5e54500007",
+      "status": "VERIFIED_EXACT"
+    },
+    "locked_test": {
+      "path": "data/processed/translation/phinc_hinglish_splits/phinc_test.jsonl",
+      "records": 1351,
+      "size_bytes": 1193404,
+      "sha256": "7cd192e2d65b1cd7c3b8b725690cf9e0f0e948e3ace3650235f832ae8ca8bf20",
+      "status": "LOCKED_IMMUTABLE",
+      "isolation_verified": true
+    }
+  },
+  "training_bundle": {
+    "archive_path": "artifacts/colab/mt5_phinc_training_bundle.zip",
+    "archive_size_bytes": 1387072,
+    "archive_sha256": "d2af7d5a193b641878f34b19f1a0dab5dd1ff65cc7c78c87f76884e31b87ff60",
+    "members": [
+      "phinc_train.jsonl",
+      "phinc_validation.jsonl",
+      "training_bundle_manifest.json"
+    ],
+    "member_count": 3,
+    "nested_directories": false,
+    "test_split_present": false,
+    "git_ignored": true,
+    "sidecar_manifest_path": "artifacts/colab/mt5_phinc_training_bundle_manifest.json",
+    "sidecar_manifest_sha256": "c2285a67068555194662730f7de654ee59ad4d1308fc41cc8ddc9653fef53132"
+  },
+  "colab_notebook": {
+    "path": "training/colab/mt5_phinc_hinglish_baseline.ipynb",
+    "size_bytes": 57853,
+    "sha256": "58fc3d183283d12d9ebd56207acc99447f381d3e9f3c2828764f44c86782d905",
+    "total_cells": 37,
+    "code_cells": 19,
+    "markdown_cells": 18,
+    "python_syntax_valid": true,
+    "sections_present": [
+      "SECTION A \u2014 Introduction and safeguards",
+      "SECTION B \u2014 Runtime setup and hardware verification",
+      "SECTION C \u2014 Google Drive integration",
+      "SECTION D \u2014 Bundle extraction and verification",
+      "SECTION E \u2014 Load pretrained google/mt5-small and tokenizer",
+      "SECTION F \u2014 Translation task prefix and prompt formatting",
+      "SECTION G \u2014 Tokenization preflight audit and truncation safeguard",
+      "SECTION H \u2014 Dataset objects and data collator",
+      "SECTION I \u2014 Generation-based evaluation metrics (SacreBLEU & chrF)",
+      "SECTION J \u2014 Training configuration and hyperparameters",
+      "SECTION K \u2014 Checkpointing and Drive storage hierarchy",
+      "SECTION L \u2014 Seq2SeqTrainer initialization and execution",
+      "SECTION M \u2014 Save final best model to Google Drive",
+      "SECTION N \u2014 Training metrics, environment metadata, and model card",
+      "SECTION O \u2014 Test set protection notice",
+      "SECTION P \u2014 Best model archive export",
+      "SECTION Q \u2014 Interactive inference demonstration"
+    ],
+    "test_evaluation_code_present": false
+  },
+  "training_configuration": {
+    "config_path": "training/colab/mt5_phinc_training_config.json",
+    "config_sha256": "507eda0ef64002415372f3921c62ee60b724bc193954555e8265dabf96d4a214",
+    "base_model": "google/mt5-small",
+    "task_prefix": "translate Hinglish to English: ",
+    "seed": 42,
+    "epochs": 3,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.06,
+    "per_device_train_batch_size": 4,
+    "gradient_accumulation_steps": 4,
+    "effective_batch_size": 16,
+    "per_device_eval_batch_size": 4,
+    "max_grad_norm": 1.0,
+    "metric_for_best_model": "bleu",
+    "greater_is_better": true,
+    "save_total_limit": 2,
+    "early_stopping_patience": 2,
+    "generation_num_beams": 4,
+    "fp16": true,
+    "bf16": false
+  },
+  "google_drive_output_layout": {
+    "base_dir": "/content/drive/MyDrive/CodeMix_Intelligence/mt5_phinc_baseline",
+    "input_bundle": "/content/drive/MyDrive/CodeMix_Intelligence/mt5_phinc_training_bundle.zip",
+    "checkpoints": "/content/drive/MyDrive/CodeMix_Intelligence/mt5_phinc_baseline/checkpoints",
+    "best_model": "/content/drive/MyDrive/CodeMix_Intelligence/mt5_phinc_baseline/best_model",
+    "metrics": "/content/drive/MyDrive/CodeMix_Intelligence/mt5_phinc_baseline/metrics",
+    "logs": "/content/drive/MyDrive/CodeMix_Intelligence/mt5_phinc_baseline/logs",
+    "metadata": "/content/drive/MyDrive/CodeMix_Intelligence/mt5_phinc_baseline/metadata",
+    "final_model_zip": "/content/drive/MyDrive/CodeMix_Intelligence/mt5_phinc_baseline/mt5_phinc_baseline_best_model.zip"
+  },
+  "anti_leakage_guarantees": {
+    "test_split_in_bundle": false,
+    "test_split_in_notebook": false,
+    "test_evaluation_in_colab": false,
+    "checkpoint_selection_dataset": "validation_only",
+    "hyperparameter_decision_dataset": "validation_only"
+  },
+  "safeguards_and_scope_limits": {
+    "telugu_translation_claimed": false,
+    "devanagari_translation_claimed": false,
+    "script_scope": "Romanized Hinglish (Latin script) only",
+    "local_training_executed": false,
+    "local_weights_downloaded": false,
+    "colab_executed_locally": false
+  },
+  "files_created": [
+    "artifacts/colab/mt5_phinc_training_bundle.zip",
+    "artifacts/colab/mt5_phinc_training_bundle_manifest.json",
+    "training/colab/mt5_phinc_training_config.json",
+    "training/colab/mt5_phinc_hinglish_baseline.ipynb",
+    "training/colab/mt5_phinc_hinglish_baseline_README.md",
+    "outputs/reports/step34D_mt5_colab_preparation.md",
+    "outputs/reports/step34D_mt5_colab_preparation.json"
+  ],
+  "next_step": "STEP 34E \u2014 Upload train/validation bundle to Google Drive and execute mT5-small fine-tuning on Google Colab GPU"
+}

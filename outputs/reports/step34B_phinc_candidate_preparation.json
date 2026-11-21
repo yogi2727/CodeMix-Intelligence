@@ -1,0 +1,184 @@
+{
+  "step_id": "STEP_34B",
+  "step_title": "PHINC Dataset Cleaning, Normalization and Candidate Preparation",
+  "timestamp": "2026-11-01T18:51:49.913612",
+  "git_environment": {
+    "active_branch": "feature/mt5-translation-v2",
+    "stable_tag": "v1.0.0",
+    "v1_commit": "c9509f0e9e10fe715c759edc09d1dacadb540f74",
+    "v1_ancestor_verified": true,
+    "clean_tracked_working_tree": true
+  },
+  "original_raw_dataset": {
+    "dataset_name": "PHINC (Parallel Hinglish Social Media Code-Mixed Corpus)",
+    "file_path": "data/raw/translation/phinc/PHINC.csv",
+    "size_bytes": 2125039,
+    "sha256": "325ba383cd6d73e0c3128885e2a79133e612ec03d18c8b55506d0b4b12ec68ed",
+    "raw_record_count": 13738,
+    "columns": [
+      "Sentence",
+      "English_Translation"
+    ],
+    "declared_license": "CC BY 4.0",
+    "provenance": "human_translated"
+  },
+  "cleaning_and_normalization_summary": {
+    "raw_rows_input": 13738,
+    "target_no_unicode_letters_quarantined": 232,
+    "conflicting_source_rows_quarantined": 2,
+    "conflicting_source_groups_quarantined": 1,
+    "exact_duplicate_pair_rows_quarantined": 1,
+    "total_quarantined_records": 235,
+    "total_retained_candidate_records": 13503,
+    "accounting_reconciliation": "13503 (retained) + 235 (quarantined) == 13738 (raw)",
+    "zero_loss_verified": true
+  },
+  "candidate_pool_metrics": {
+    "script_distribution": {
+      "source_script_counts": {
+        "Latin": 13472,
+        "Mixed_Script": 29,
+        "Devanagari": 2,
+        "Telugu": 0,
+        "Other": 0,
+        "No_Alpha": 0
+      },
+      "source_script_percentages": {
+        "Latin": 99.77,
+        "Mixed_Script": 0.21,
+        "Devanagari": 0.01,
+        "Telugu": 0.0,
+        "Other": 0.0,
+        "No_Alpha": 0.0
+      },
+      "target_script_counts": {
+        "Latin": 13494,
+        "Mixed_Script": 9,
+        "Devanagari": 0,
+        "Telugu": 0,
+        "Other": 0,
+        "No_Alpha": 0
+      },
+      "target_script_percentages": {
+        "Latin": 99.93,
+        "Mixed_Script": 0.07,
+        "Devanagari": 0.0,
+        "Telugu": 0.0,
+        "Other": 0.0,
+        "No_Alpha": 0.0
+      }
+    },
+    "length_statistics": {
+      "source_normalized": {
+        "char_stats": {
+          "min": 3,
+          "median": 70.0,
+          "mean": 76.16,
+          "p95": 140.0,
+          "max": 273
+        },
+        "token_stats": {
+          "min": 1,
+          "median": 12.0,
+          "mean": 13.28,
+          "p95": 27.0,
+          "max": 40
+        }
+      },
+      "target_normalized": {
+        "char_stats": {
+          "min": 1,
+          "median": 68.0,
+          "mean": 75.06,
+          "p95": 142.0,
+          "max": 277
+        },
+        "token_stats": {
+          "min": 1,
+          "median": 11.0,
+          "mean": 12.5,
+          "p95": 25.0,
+          "max": 46
+        }
+      },
+      "source_original": {
+        "char_stats": {
+          "min": 3,
+          "median": 71.0,
+          "mean": 76.69,
+          "p95": 141.0,
+          "max": 274
+        },
+        "token_stats": {
+          "min": 1,
+          "median": 12.0,
+          "mean": 13.28,
+          "p95": 27.0,
+          "max": 40
+        }
+      },
+      "target_original": {
+        "char_stats": {
+          "min": 1,
+          "median": 68.0,
+          "mean": 75.29,
+          "p95": 143.0,
+          "max": 278
+        },
+        "token_stats": {
+          "min": 1,
+          "median": 11.0,
+          "mean": 12.5,
+          "p95": 25.0,
+          "max": 46
+        }
+      }
+    },
+    "integrity_checks": {
+      "unique_example_ids": true,
+      "unique_normalized_source_target_pairs": true,
+      "duplicate_source_sentences_retained": 0,
+      "conflicting_sources_remaining": 0,
+      "empty_retained_sources": 0,
+      "empty_retained_targets": 0,
+      "targets_with_no_letters_retained": 0
+    }
+  },
+  "prepared_candidate_artifacts": {
+    "candidate_jsonl": {
+      "path": "data/processed/translation/phinc_hinglish_candidate/phinc_pairs_candidate.jsonl",
+      "size_bytes": 10465060,
+      "sha256": "aa4fdf0c72183d3a3e3ca100798bdfe396cecd18c7515a7adac2396c0d6e4b5b",
+      "row_count": 13503
+    },
+    "excluded_jsonl": {
+      "path": "data/processed/translation/phinc_hinglish_candidate/phinc_excluded_records.jsonl",
+      "size_bytes": 84708,
+      "sha256": "88a99af16fe0ef5062dae746bb6348b68bdb62f7a55f1bb18c97bd282e2f489a",
+      "row_count": 235
+    },
+    "dataset_manifest": "data/processed/translation/phinc_hinglish_candidate/phinc_dataset_manifest.json",
+    "quality_summary": "data/processed/translation/phinc_hinglish_candidate/phinc_quality_summary.json",
+    "processing_config": "data/processed/translation/phinc_hinglish_candidate/phinc_processing_config.json",
+    "processing_script": "scripts/prepare_phinc_translation_candidate.py"
+  },
+  "comi_lingua_status": {
+    "status": "EXCLUDED_FROM_PRIMARY_BASELINE",
+    "decision_record": "outputs/reports/step34B_comi_lingua_track_decision.md",
+    "reason": "98.52% verbatim Llama 3.3 output in train; quarantined to secondary exploratory track"
+  },
+  "project_integrity": {
+    "v1_muril_baseline_untouched": true,
+    "v1_muril_eval_artifacts_untouched": true,
+    "v1_frontend_backend_untouched": true,
+    "v1_tag_pointer_untouched": true,
+    "zero_git_commits_created": true,
+    "zero_git_pushes_performed": true,
+    "no_train_val_test_splits_created": true,
+    "no_mt5_training_occurred": true
+  },
+  "readiness_for_step_34c": {
+    "status": "APPROVED",
+    "notes": "13,503 clean, non-conflicting, normalized Hinglish-English candidate pairs ready for Step 34C leakage-safe splitting."
+  }
+}

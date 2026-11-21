@@ -1,0 +1,11 @@
+{
+  "archive_filename": "CodeMix_Intelligence_v2.0.0_source.zip",
+  "archive_path": "outputs/releases/CodeMix_Intelligence_v2.0.0_source.zip",
+  "sha256": "d038e8d48f03db8a30a9e23bcfaf706d4aa10ed730baecc19686b47cafe5c263",
+  "size_bytes": 2067195,
+  "size_mb": 1.97,
+  "total_files": 178,
+  "created_at_utc": "2026-11-13T13:53:25.048250+00:00",
+  "crc_status": "PASS",
+  "allowlist_policy": "Source code, test suites, configs, notebooks, and release docs included. Weights, raw datasets, virtual environments, binaries, and caches strictly excluded."
+}

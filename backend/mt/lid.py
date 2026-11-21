@@ -43,10 +43,15 @@ class MurilLID:
         self.device = device or ("cuda" if torch.cuda.is_available() else "cpu")
         # The fine-tuned MuRIL tokenizer is BERT-style with vocab.txt
         # Use AutoTokenizer with use_fast=False and local_files_only=True to load the full vocabulary
-        best_model_dir = os.path.join(model_dir, "best_model")
+        # Support passing either the parent directory or the best_model folder directly
+        if os.path.exists(os.path.join(model_dir, "config.json")):
+            best_model_dir = model_dir
+        elif os.path.exists(os.path.join(model_dir, "best_model", "config.json")):
+            best_model_dir = os.path.join(model_dir, "best_model")
+        else:
+            best_model_dir = os.path.join(model_dir, "best_model")
         self.tok = AutoTokenizer.from_pretrained(
             best_model_dir,
-            use_fast=False,
             local_files_only=True
         )
         self.model = AutoModelForTokenClassification.from_pretrained(best_model_dir).to(self.device).eval()

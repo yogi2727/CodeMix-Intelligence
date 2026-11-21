@@ -1,0 +1,156 @@
+{
+  "release": {
+    "name": "CodeMix Intelligence V2.0.0 \u2014 Unified Dual-Model System",
+    "version": "2.0.0",
+    "status": "RELEASE_CANDIDATE_AUDITED",
+    "created_at_utc": "2026-11-03T17:50:00Z",
+    "git": {
+      "development_branch": "feature/mt5-translation-v2",
+      "v1_baseline_commit": "c9509f0e9e10fe715c759edc09d1dacadb540f74",
+      "v1_release_tag": "v1.0.0",
+      "v1_baseline_untouched": true
+    }
+  },
+  "runtime_environment": {
+    "os": "Windows 11 AMD64",
+    "python": "3.14.3",
+    "torch": "2.15.0+cpu",
+    "transformers": "5.22.1",
+    "sentencepiece": "0.2.2",
+    "safetensors": "0.8.0",
+    "fastapi": "0.162.0"
+  },
+  "models": {
+    "model_1_muril_lid": {
+      "model_identity": "google/muril-base-cased",
+      "task": "token_level_language_identification",
+      "parameters": "~237M",
+      "checkpoint": "checkpoint-5000",
+      "loading_strategy": "eager_lifespan_startup",
+      "api_endpoint": "POST /api/predict",
+      "label_schema": {
+        "EN": 0,
+        "HI": 1,
+        "TE": 2,
+        "OTHER": 3
+      },
+      "weights": {
+        "path": "artifacts/models/muril_lid_baseline/best_model/model.safetensors",
+        "size_bytes": 947898192,
+        "sha256": "714defc6f90659ebc25e5e011a9101579d36cf9f3b4c57165c0614f1bc744bae"
+      },
+      "evaluation_metrics": {
+        "benchmark": "Locked Test Set (199,219 tokens)",
+        "accuracy": 0.981744,
+        "macro_f1": 0.980092,
+        "per_class_f1": {
+          "EN": 0.975511,
+          "HI": 0.987405,
+          "TE": 0.987103,
+          "OTHER": 0.970349
+        }
+      }
+    },
+    "model_2_mt5_translation": {
+      "model_identity": "google/mt5-small",
+      "task": "romanized_hinglish_to_english_translation",
+      "parameters": "~300M",
+      "loading_strategy": "lazy_singleton_double_checked_lock",
+      "api_endpoint": "POST /api/translate",
+      "task_prefix": "translate Hinglish to English: ",
+      "generation_parameters": {
+        "prefix": "translate Hinglish to English: ",
+        "precision": "FP32 (torch.float32)",
+        "num_beams": 4,
+        "max_source_length": 128,
+        "max_length": 128,
+        "sequence_length_semantics": "max_source_length=128 limits the encoder input, while max_length=128 caps the generated decoder sequence (including decoder-start token).",
+        "do_sample": false,
+        "early_stopping": false,
+        "no_repeat_ngram_size": 0,
+        "length_penalty": 1.0,
+        "explicit_generate_kwargs": {
+          "max_length": 128,
+          "num_beams": 4,
+          "do_sample": false
+        }
+      },
+      "dataset": {
+        "name": "PHINC",
+        "license": "CC BY 4.0",
+        "train_records": 10802,
+        "validation_records": 1350,
+        "test_records": 1351,
+        "test_sha256": "7cd192e2d65b1cd7c3b8b725690cf9e0f0e948e3ace3650235f832ae8ca8bf20"
+      },
+      "evaluation_metrics": {
+        "held_out_test_set_records": 1351,
+        "BLEU": 25.3784,
+        "chrF": 43.2323,
+        "metric_interpretation": "Corpus-level evaluation metrics (NOT percentage accuracy rates)"
+      },
+      "scope_boundary": {
+        "supported_input": "Romanized Hinglish text",
+        "supported_output": "English text",
+        "telugu_support": false,
+        "note": "Model 2 is strictly evaluated on Romanized Hinglish to English. Not trained or evaluated for Telugu."
+      },
+      "weights": {
+        "path": "artifacts/models/mt5_hinglish_translation/model.safetensors",
+        "size_bytes": 1200729512,
+        "sha256": "c3bf828348b403bc5a08dc3cbb6a3fe839e52b7b233319d91da7020a9bcddbaa"
+      },
+      "tokenizer": {
+        "path": "artifacts/models/mt5_hinglish_translation/tokenizer.json",
+        "size_bytes": 16349862,
+        "sha256": "8e8a45a228185487df3948f28df0d128ae04b9d9fb8a64ccb148fbcd26a1bd37"
+      },
+      "release_archive": {
+        "path": "artifacts/releases/CodeMix_Intelligence_MT5_Hinglish_English_v1.0.0.zip",
+        "size_bytes": 1217095753,
+        "sha256": "0c3a1cd132d4ce7647bd206a81d72a674e08cdab7cad1a5158c542e6b09020e2"
+      }
+    }
+  },
+  "source_release_archive": {
+    "filename": "CodeMix_Intelligence_v2.0.0_source.zip",
+    "relative_path": "outputs/releases/CodeMix_Intelligence_v2.0.0_source.zip",
+    "total_files": 178,
+    "allowlist_policy": "Source code, test suites, configs, notebooks, and release docs included. Weights, raw datasets, virtual environments, binaries, and caches strictly excluded.",
+    "detached_checksum_file": "outputs/releases/CodeMix_Intelligence_v2.0.0_source.sha256",
+    "detached_metadata_file": "outputs/releases/CodeMix_Intelligence_v2.0.0_source_metadata.json",
+    "checksum_policy": "Archive SHA-256 and byte size are stored externally in detached files to eliminate self-referential checksum cycles."
+  },
+  "verification_audit": {
+    "total_tests": 40,
+    "passed": 40,
+    "failed": 0,
+    "errors": 0,
+    "suites": [
+      {
+        "file": "tests/test_inference_and_api.py",
+        "tests": 13,
+        "status": "PASS"
+      },
+      {
+        "file": "tests/test_translation_inference.py",
+        "tests": 15,
+        "status": "PASS"
+      },
+      {
+        "file": "tests/test_translation_api.py",
+        "tests": 12,
+        "status": "PASS"
+      }
+    ],
+    "static_code_checks": {
+      "bytecode_compilation": "PASS",
+      "frontend_node_syntax": "PASS",
+      "git_whitespace_diff": "PASS"
+    },
+    "visual_ui_audit": {
+      "dom_structure_and_aria": "PASS",
+      "graphical_browser_rendering": "NOT TESTED / PENDING (Headless environment without display server)"
+    }
+  }
+}

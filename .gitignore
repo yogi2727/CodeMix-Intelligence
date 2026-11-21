@@ -67,6 +67,7 @@ data/custom/*
 # Model Checkpoints & Pretrained Weights
 checkpoints/*
 !checkpoints/.gitkeep
+models/
 *.pt
 *.pth
 *.bin
@@ -74,6 +75,11 @@ checkpoints/*
 *.onnx
 *.h5
 *.model
+*.bundle
+
+# Cache & Local Assistant Dirs
+.cache/
+.claude/
 
 # Model 2: local extracted mT5 model artifacts
 /artifacts/models/mt5_hinglish_translation/

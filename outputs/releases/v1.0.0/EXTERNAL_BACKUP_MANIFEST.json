@@ -1,0 +1,103 @@
+{
+  "project": "CodeMix Intelligence",
+  "release_version": "1.0.0",
+  "created_at_utc": "2026-11-01T12:42:12.171168+00:00",
+  "github_repository": {
+    "url": "https://github.com/yogi2727/CodeMix-Intelligence.git",
+    "visibility": "Private",
+    "v1_commit": "c9509f0e9e10fe715c759edc09d1dacadb540f74",
+    "v1_tag": "v1.0.0",
+    "v2_development_branch": "feature/mt5-translation-v2",
+    "v2_current_commit": "e2902aac5ba1cdb3896e17a9ddeffb1bdb3ca893"
+  },
+  "core_backup_archives": {
+    "git_history_bundle": {
+      "path": "outputs/releases/CodeMix_Intelligence_v1.0.0_git_history.bundle",
+      "size_bytes": 1916877,
+      "sha256": "455aae0e6ad97b15b68320400722458ebd6b249c946538897219e8ec42d6f37e",
+      "verification_status": "VERIFIED_BITWISE"
+    },
+    "model_weights_zip": {
+      "path": "muril_lid_best_model.zip",
+      "size_bytes": 881225333,
+      "sha256": "a5439181f02fece996bf526629c70da20166a53450fb615a44f343d8cbf8a827",
+      "verification_status": "VERIFIED_BITWISE"
+    },
+    "evaluation_results_zip": {
+      "path": "muril_lid_evaluation_results.zip",
+      "size_bytes": 3823,
+      "sha256": "bbe1585281070b78baa98b0d4e6ae5e64ae9fe07c1c9ed31abb7cd08677cc876",
+      "verification_status": "VERIFIED_BITWISE"
+    },
+    "source_snapshot_zip": {
+      "path": "outputs/releases/CodeMix_Intelligence_v1.0.0_source.zip",
+      "size_bytes": 1680817,
+      "sha256": "1255f24192a1d0f1550ae5d8bf8036e4fbbf62526a0bb9dcae21278b4d338489",
+      "verification_status": "VERIFIED_BITWISE"
+    }
+  },
+  "v1_release_documentation": {
+    "original_backup_manifest": {
+      "path": "outputs/releases/v1.0.0/BACKUP_MANIFEST.json",
+      "size_bytes": 4015,
+      "sha256": "46cb896fffb6ad1b76b85021936f28e0f32e7fb435403d34c26d5243bef65676",
+      "verification_status": "VERIFIED_BITWISE"
+    },
+    "release_notes": {
+      "path": "outputs/releases/v1.0.0/RELEASE_NOTES.md",
+      "size_bytes": 6744,
+      "sha256": "647180366c2ea888e27f057331cb1e3306308efc2c6a80eddf66518c0b76e77a",
+      "verification_status": "VERIFIED_BITWISE"
+    },
+    "artifact_manifest": {
+      "path": "outputs/releases/v1.0.0/ARTIFACT_MANIFEST.json",
+      "size_bytes": 2490,
+      "sha256": "f432903dccc97035de0ae0f55ae82fa627a29a747e721376744587a2e39515b8",
+      "verification_status": "VERIFIED_BITWISE"
+    },
+    "restore_guide": {
+      "path": "outputs/releases/v1.0.0/RESTORE_V1.md",
+      "size_bytes": 2938,
+      "sha256": "a3faa5b96bd2d534b4acd837035d762f2ea55ef0d52ce8585f2fccb979e5319b",
+      "verification_status": "VERIFIED_BITWISE"
+    }
+  },
+  "supplementary_audit_reports": {
+    "step33A_checksum_correction": {
+      "path": "outputs/releases/v1.0.0/audit_reports/step33A_checksum_correction.md",
+      "size_bytes": 5225,
+      "sha256": "ad661bb831e5d7ccf20e3e7c18ec8aebb8c223aff8ea5a97d4ca7d3f4392cac6",
+      "verification_status": "VERIFIED_BITWISE"
+    },
+    "step33E_git_release_content_audit": {
+      "path": "outputs/releases/v1.0.0/audit_reports/step33E_git_release_content_audit.md",
+      "size_bytes": 9662,
+      "sha256": "024509e3cb2742ec5872b101f5789886f24ad1dbde349384b0d705bccc87636c",
+      "verification_status": "VERIFIED_BITWISE"
+    },
+    "step34A_preflight_git_verification": {
+      "path": "outputs/releases/v1.0.0/audit_reports/step34A_preflight_git_verification.md",
+      "size_bytes": 5005,
+      "sha256": "c10fafcc375f712a4d0ba04181c871187f60e44c835463555046570c4e84310c",
+      "verification_status": "VERIFIED_BITWISE"
+    },
+    "step34_github_initial_publish": {
+      "path": "outputs/releases/v1.0.0/audit_reports/step34_github_initial_publish.md",
+      "size_bytes": 4184,
+      "sha256": "a45b230a59d733e576e9fccbe14b7f1fc270993b828c1c506ee2ad209225d87f",
+      "verification_status": "VERIFIED_BITWISE"
+    },
+    "step33B_backend_inference_implementation": {
+      "path": "outputs/releases/v1.0.0/audit_reports/step33B_backend_inference_implementation.md",
+      "size_bytes": 6658,
+      "sha256": "fce2ffe1a045f7b198c9edbac0e6aabb30a742dacf761e28523f5679323ba6be",
+      "verification_status": "VERIFIED_BITWISE"
+    },
+    "step33C_frontend_implementation": {
+      "path": "outputs/releases/v1.0.0/audit_reports/step33C_frontend_implementation.md",
+      "size_bytes": 9924,
+      "sha256": "239c06da9f591a6e4a3fee058b992d2c024ee027520d9a274e9e757e099243a6",
+      "verification_status": "VERIFIED_BITWISE"
+    }
+  }
+}

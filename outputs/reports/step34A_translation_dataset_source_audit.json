@@ -1,0 +1,651 @@
+{
+  "step_id": "STEP_34A",
+  "step_title": "Translation Dataset Acquisition & Forensic Audit (V2: mT5-small)",
+  "execution_timestamp": "2026-11-01T18:39:39.763394",
+  "git_environment": {
+    "active_branch": "feature/mt5-translation-v2",
+    "stable_release_tag": "v1.0.0",
+    "v1_commit": "c9509f0e9e10fe715c759edc09d1dacadb540f74",
+    "remote_url": "https://github.com/yogi2727/CodeMix-Intelligence.git",
+    "merge_base_with_v1": "c9509f0e9e10fe715c759edc09d1dacadb540f74",
+    "working_tree_clean_tracked": true,
+    "new_commits_created": 0,
+    "remote_pushes": 0
+  },
+  "acquired_datasets": {
+    "phinc": {
+      "source_manifest": {
+        "dataset_name": "PHINC (Parallel Hinglish Social Media Code-Mixed Corpus for Machine Translation)",
+        "publisher": "Lingo Research Group at IIT Gandhinagar",
+        "official_source_url": "https://huggingface.co/datasets/LingoIITGN/PHINC/resolve/main/PHINC.csv",
+        "dataset_card_url": "https://huggingface.co/datasets/LingoIITGN/PHINC",
+        "paper_url": "https://aclanthology.org/2020.wnut-1.7/",
+        "declared_license": "CC-BY-4.0",
+        "license_evidence_url": "https://huggingface.co/datasets/LingoIITGN/PHINC/blob/main/README.md",
+        "download_date": "2026-11-01",
+        "raw_filename": "PHINC.csv",
+        "file_size_bytes": 2125039,
+        "sha256": "325ba383cd6d73e0c3128885e2a79133e612ec03d18c8b55506d0b4b12ec68ed",
+        "row_count": 13738,
+        "columns": [
+          "Sentence",
+          "English_Translation"
+        ],
+        "source_text_column": "Sentence",
+        "target_text_column": "English_Translation",
+        "input_language_characteristics": [
+          "Hindi-English code-mixing",
+          "informal social media text",
+          "Twitter source"
+        ],
+        "input_script_characteristics": [
+          "predominantly Latin script (Romanized Hindi)",
+          "minimal Devanagari"
+        ],
+        "target_language": "English",
+        "translation_provenance": "human_translated",
+        "official_split": "train (single monolithic release)",
+        "known_limitations": [
+          "Single monolithic file without official train/dev/test splits",
+          "Contains noisy social media informal grammar, spelling variants, and hashtags",
+          "Dataset card warns of potentially offensive/biased social media content",
+          "1 duplicate source-target pair and 1 source sentence with multiple distinct target translations"
+        ],
+        "redistribution_status": "Permitted under CC-BY-4.0 with attribution",
+        "inclusion_status": "PRIMARY_CANDIDATE_PENDING_AUDIT"
+      },
+      "metrics": {
+        "split_name": "PHINC_full",
+        "file_path": "data/raw/translation/phinc/PHINC.csv",
+        "file_size_bytes": 2125039,
+        "sha256": "325ba383cd6d73e0c3128885e2a79133e612ec03d18c8b55506d0b4b12ec68ed",
+        "total_rows": 13738,
+        "expected_rows": 13738,
+        "columns": [
+          "Sentence",
+          "English_Translation"
+        ],
+        "source_column": "Sentence",
+        "target_column": "English_Translation",
+        "completeness": {
+          "missing_source": 0,
+          "missing_target": 0,
+          "empty_source": 0,
+          "empty_target": 0,
+          "whitespace_only_source": 0,
+          "whitespace_only_target": 0,
+          "malformed_rows": 0
+        },
+        "duplication": {
+          "exact_duplicate_pairs": 1,
+          "unique_pairs": 13737,
+          "unique_source_sentences": 13736,
+          "duplicate_source_sentences": 2,
+          "source_sentences_with_conflicting_targets": 1
+        },
+        "length_analysis": {
+          "source": {
+            "char_stats": {
+              "min": 3,
+              "mean": 76.58,
+              "median": 70.0,
+              "p95": 141.0,
+              "max": 274
+            },
+            "token_stats": {
+              "min": 1,
+              "mean": 13.28,
+              "median": 12.0,
+              "p95": 27.0,
+              "max": 40
+            }
+          },
+          "target": {
+            "char_stats": {
+              "min": 1,
+              "mean": 73.98,
+              "median": 67.0,
+              "p95": 142.0,
+              "max": 278
+            },
+            "token_stats": {
+              "min": 1,
+              "mean": 12.31,
+              "median": 11.0,
+              "p95": 25.0,
+              "max": 46
+            }
+          }
+        },
+        "script_distribution": {
+          "source_counts": {
+            "latin": 13707,
+            "devanagari": 2,
+            "telugu": 0,
+            "mixed_script": 29,
+            "other": 0,
+            "empty_or_no_alpha": 0
+          },
+          "source_percentages": {
+            "latin": 99.77,
+            "devanagari": 0.01,
+            "telugu": 0.0,
+            "mixed_script": 0.21,
+            "other": 0.0,
+            "empty_or_no_alpha": 0.0
+          },
+          "target_counts": {
+            "latin": 13497,
+            "devanagari": 0,
+            "telugu": 0,
+            "mixed_script": 9,
+            "other": 0,
+            "empty_or_no_alpha": 232
+          },
+          "target_percentages": {
+            "latin": 98.25,
+            "devanagari": 0.0,
+            "telugu": 0.0,
+            "mixed_script": 0.07,
+            "other": 0.0,
+            "empty_or_no_alpha": 1.69
+          }
+        },
+        "target_validation": {
+          "predominantly_latin_english_count": 13497,
+          "predominantly_latin_english_pct": 98.25,
+          "targets_with_non_latin_scripts_count": 9,
+          "targets_with_non_latin_scripts_pct": 0.07
+        }
+      }
+    },
+    "comi_lingua_mt": {
+      "source_manifest": {
+        "dataset_name": "COMI-LINGUA MT (COde-MIxing and LINGuistic Insights on Natural Hinglish Usage and Annotation - Machine Translation)",
+        "publisher": "Lingo Research Group at IIT Gandhinagar",
+        "official_source_url": "https://huggingface.co/datasets/LingoIITGN/COMI-LINGUA",
+        "dataset_card_url": "https://huggingface.co/datasets/LingoIITGN/COMI-LINGUA",
+        "paper_url": "https://aclanthology.org/2025.findings-emnlp.422/",
+        "declared_license": "CC-BY-4.0",
+        "license_evidence_url": "https://huggingface.co/datasets/LingoIITGN/COMI-LINGUA/blob/main/README.md",
+        "download_date": "2026-11-01",
+        "raw_filename": "MT_train.csv, MT_test.csv",
+        "file_size_bytes": 72582212,
+        "sha256": "MT_train:9a9bf88ced2cd94925549cce0b3f361eb4ae1f70b1d4abf9fbeec22deae1a2cc, MT_test:4160eb08b8db47fcc8925791c523746a73ea645b4b6c2f04f1fc0593f9e3c3e8",
+        "row_count": 29692,
+        "columns": [
+          "Sentences",
+          "Predicted_en_translation",
+          "Predicted_RH_translation",
+          "Predicted_DH_translation",
+          "Annotator_1_en_translation",
+          "Annotator_1_RH_translation",
+          "Annotator_1_DH_translation",
+          "Annotator_2_en_translation",
+          "annotator2_RH_translation",
+          "Annotator_2_DH_translation",
+          "Annotator_3_en_translation",
+          "annotator3_RH_translation",
+          "Annotator_3_DH_translation"
+        ],
+        "source_text_column": "Sentences",
+        "target_text_column": "Annotator_1_en_translation (with Annotator 2, 3 and Llama 3.3 Predicted_en_translation variants available)",
+        "input_language_characteristics": [
+          "Hindi-English code-mixing",
+          "mixed Romanized and Devanagari Hindi"
+        ],
+        "input_script_characteristics": [
+          "Devanagari script (~59%)",
+          "mixed script (~36%)",
+          "Latin script (~5%)"
+        ],
+        "target_language": "English",
+        "translation_provenance": "human_corrected_machine_draft",
+        "official_split": "MT_train.csv (train), MT_test.csv (test)",
+        "known_limitations": [
+          "Translations originated as LLM predictions (Llama-3.3-70B-Instruct) with annotator verification",
+          "Forensic audit reveals ~98.5% of translations are verbatim unchanged from the initial Llama 3.3 generation",
+          "Must NOT be represented as gold human translations from scratch",
+          "Distinct official test split must remain isolated to prevent test leakage"
+        ],
+        "redistribution_status": "Permitted under CC-BY-4.0 with attribution",
+        "inclusion_status": "PENDING_PROVENANCE_REVIEW"
+      },
+      "train_metrics": {
+        "split_name": "COMI_MT_train",
+        "file_path": "data/raw/translation/comi_lingua_mt/MT_train.csv",
+        "file_size_bytes": 60989602,
+        "sha256": "9a9bf88ced2cd94925549cce0b3f361eb4ae1f70b1d4abf9fbeec22deae1a2cc",
+        "total_rows": 24692,
+        "expected_rows": 24692,
+        "columns": [
+          "Sentences",
+          "Predicted_en_translation",
+          "Predicted_RH_translation",
+          "Predicted_DH_translation",
+          "Annotator_1_en_translation",
+          "Annotator_1_RH_translation",
+          "Annotator_1_DH_translation",
+          "Annotator_2_en_translation",
+          "annotator2_RH_translation",
+          "Annotator_2_DH_translation",
+          "Annotator_3_en_translation",
+          "annotator3_RH_translation",
+          "Annotator_3_DH_translation"
+        ],
+        "source_column": "Sentences",
+        "target_column": "Annotator_1_en_translation",
+        "completeness": {
+          "missing_source": 0,
+          "missing_target": 0,
+          "empty_source": 0,
+          "empty_target": 0,
+          "whitespace_only_source": 0,
+          "whitespace_only_target": 0,
+          "malformed_rows": 0
+        },
+        "duplication": {
+          "exact_duplicate_pairs": 0,
+          "unique_pairs": 24692,
+          "unique_source_sentences": 24692,
+          "duplicate_source_sentences": 0,
+          "source_sentences_with_conflicting_targets": 0
+        },
+        "length_analysis": {
+          "source": {
+            "char_stats": {
+              "min": 45,
+              "mean": 121.23,
+              "median": 119.0,
+              "p95": 168.0,
+              "max": 485
+            },
+            "token_stats": {
+              "min": 7,
+              "mean": 21.91,
+              "median": 22.0,
+              "p95": 29.0,
+              "max": 71
+            }
+          },
+          "target": {
+            "char_stats": {
+              "min": 12,
+              "mean": 119.18,
+              "median": 116.0,
+              "p95": 174.0,
+              "max": 475
+            },
+            "token_stats": {
+              "min": 2,
+              "mean": 19.34,
+              "median": 19.0,
+              "p95": 28.0,
+              "max": 64
+            }
+          }
+        },
+        "script_distribution": {
+          "source_counts": {
+            "latin": 0,
+            "devanagari": 3165,
+            "telugu": 0,
+            "mixed_script": 21527,
+            "other": 0,
+            "empty_or_no_alpha": 0
+          },
+          "source_percentages": {
+            "latin": 0.0,
+            "devanagari": 12.82,
+            "telugu": 0.0,
+            "mixed_script": 87.18,
+            "other": 0.0,
+            "empty_or_no_alpha": 0.0
+          },
+          "target_counts": {
+            "latin": 24677,
+            "devanagari": 0,
+            "telugu": 0,
+            "mixed_script": 15,
+            "other": 0,
+            "empty_or_no_alpha": 0
+          },
+          "target_percentages": {
+            "latin": 99.94,
+            "devanagari": 0.0,
+            "telugu": 0.0,
+            "mixed_script": 0.06,
+            "other": 0.0,
+            "empty_or_no_alpha": 0.0
+          }
+        },
+        "target_validation": {
+          "predominantly_latin_english_count": 24677,
+          "predominantly_latin_english_pct": 99.94,
+          "targets_with_non_latin_scripts_count": 15,
+          "targets_with_non_latin_scripts_pct": 0.06
+        }
+      },
+      "test_metrics": {
+        "split_name": "COMI_MT_test",
+        "file_path": "data/raw/translation/comi_lingua_mt/MT_test.csv",
+        "file_size_bytes": 11592610,
+        "sha256": "4160eb08b8db47fcc8925791c523746a73ea645b4b6c2f04f1fc0593f9e3c3e8",
+        "total_rows": 5000,
+        "expected_rows": 5000,
+        "columns": [
+          "Sentences",
+          "Predicted_en_translation",
+          "Predicted_RH_translation",
+          "Predicted_DH_translation",
+          "Annotator_1_en_translation",
+          "Annotator_1_RH_translation",
+          "Annotator_1_DH_translation",
+          "Annotator_2_en_translation",
+          "annotator2_RH_translation",
+          "Annotator_2_DH_translation",
+          "Annotator_3_en_translation",
+          "annotator3_RH_translation",
+          "Annotator_3_DH_translation"
+        ],
+        "source_column": "Sentences",
+        "target_column": "Annotator_1_en_translation",
+        "completeness": {
+          "missing_source": 0,
+          "missing_target": 0,
+          "empty_source": 0,
+          "empty_target": 0,
+          "whitespace_only_source": 0,
+          "whitespace_only_target": 0,
+          "malformed_rows": 0
+        },
+        "duplication": {
+          "exact_duplicate_pairs": 0,
+          "unique_pairs": 5000,
+          "unique_source_sentences": 5000,
+          "duplicate_source_sentences": 0,
+          "source_sentences_with_conflicting_targets": 0
+        },
+        "length_analysis": {
+          "source": {
+            "char_stats": {
+              "min": 49,
+              "mean": 118.26,
+              "median": 119.0,
+              "p95": 161.0,
+              "max": 206
+            },
+            "token_stats": {
+              "min": 11,
+              "mean": 21.21,
+              "median": 21.0,
+              "p95": 28.0,
+              "max": 32
+            }
+          },
+          "target": {
+            "char_stats": {
+              "min": 27,
+              "mean": 110.8,
+              "median": 109.0,
+              "p95": 160.0,
+              "max": 264
+            },
+            "token_stats": {
+              "min": 4,
+              "mean": 18.22,
+              "median": 18.0,
+              "p95": 26.0,
+              "max": 38
+            }
+          }
+        },
+        "script_distribution": {
+          "source_counts": {
+            "latin": 0,
+            "devanagari": 0,
+            "telugu": 0,
+            "mixed_script": 5000,
+            "other": 0,
+            "empty_or_no_alpha": 0
+          },
+          "source_percentages": {
+            "latin": 0.0,
+            "devanagari": 0.0,
+            "telugu": 0.0,
+            "mixed_script": 100.0,
+            "other": 0.0,
+            "empty_or_no_alpha": 0.0
+          },
+          "target_counts": {
+            "latin": 4997,
+            "devanagari": 0,
+            "telugu": 0,
+            "mixed_script": 3,
+            "other": 0,
+            "empty_or_no_alpha": 0
+          },
+          "target_percentages": {
+            "latin": 99.94,
+            "devanagari": 0.0,
+            "telugu": 0.0,
+            "mixed_script": 0.06,
+            "other": 0.0,
+            "empty_or_no_alpha": 0.0
+          }
+        },
+        "target_validation": {
+          "predominantly_latin_english_count": 4997,
+          "predominantly_latin_english_pct": 99.94,
+          "targets_with_non_latin_scripts_count": 3,
+          "targets_with_non_latin_scripts_pct": 0.06
+        }
+      }
+    }
+  },
+  "cross_source_overlap": {
+    "audit_timestamp": "2026-11-01T18:37:40.199825",
+    "comparisons": {
+      "phinc_vs_comi_mt_train": {
+        "dataset_a": "PHINC",
+        "dataset_b": "COMI_MT_train",
+        "exact_source_overlap_count": 0,
+        "exact_pair_overlap_count": 0,
+        "normalized_source_overlap_count": 0,
+        "normalized_overlap_conflicting_targets": 0,
+        "normalized_overlap_matching_targets": 0,
+        "sample_exact_overlapping_sources": [],
+        "sample_normalized_overlapping_sources": []
+      },
+      "phinc_vs_comi_mt_test": {
+        "dataset_a": "PHINC",
+        "dataset_b": "COMI_MT_test",
+        "exact_source_overlap_count": 0,
+        "exact_pair_overlap_count": 0,
+        "normalized_source_overlap_count": 0,
+        "normalized_overlap_conflicting_targets": 0,
+        "normalized_overlap_matching_targets": 0,
+        "sample_exact_overlapping_sources": [],
+        "sample_normalized_overlapping_sources": []
+      },
+      "comi_mt_train_vs_comi_mt_test": {
+        "dataset_a": "COMI_MT_train",
+        "dataset_b": "COMI_MT_test",
+        "exact_source_overlap_count": 0,
+        "exact_pair_overlap_count": 0,
+        "normalized_source_overlap_count": 0,
+        "normalized_overlap_conflicting_targets": 0,
+        "normalized_overlap_matching_targets": 0,
+        "sample_exact_overlapping_sources": [],
+        "sample_normalized_overlapping_sources": []
+      }
+    },
+    "summary": {
+      "phinc_exact_overlap_comi_train": 0,
+      "phinc_exact_overlap_comi_test": 0,
+      "comi_train_test_leakage_exact": 0,
+      "comi_train_test_leakage_normalized": 0
+    }
+  },
+  "source_registry": [
+    {
+      "dataset_name": "PHINC",
+      "official_url": "https://huggingface.co/datasets/LingoIITGN/PHINC",
+      "license": "CC-BY-4.0",
+      "dataset_type": "Parallel Code-Mixed Social Media Corpus",
+      "language_combinations": [
+        "Hinglish (Hindi-English)",
+        "English"
+      ],
+      "source_target_alignment": "Sentence-level parallel",
+      "translation_provenance": "human_translated",
+      "acquisition_status": "ACQUIRED_AND_VERIFIED",
+      "inclusion_status": "PRIMARY_CANDIDATE_PENDING_AUDIT",
+      "outstanding_questions": [
+        "Single split requires principled train/val/test splitting in Step 34B",
+        "Normalization strategy for noisy social media artifacts (handles, emojis, URLs)"
+      ]
+    },
+    {
+      "dataset_name": "COMI-LINGUA MT",
+      "official_url": "https://huggingface.co/datasets/LingoIITGN/COMI-LINGUA",
+      "license": "CC-BY-4.0",
+      "dataset_type": "Multitask Code-Mixed Corpus (MT Component)",
+      "language_combinations": [
+        "Hindi-English (Devanagari & Romanized)",
+        "English"
+      ],
+      "source_target_alignment": "Sentence-level parallel with multiple annotator references",
+      "translation_provenance": "human_corrected_machine_draft",
+      "acquisition_status": "ACQUIRED_AND_VERIFIED",
+      "inclusion_status": "PENDING_PROVENANCE_REVIEW",
+      "outstanding_questions": [
+        "98.5% Llama-3.3 verbatim rate necessitates provenance transparency in training",
+        "Official test split MT_test.csv must be quarantined from training to preserve benchmark integrity",
+        "High Devanagari script prevalence contrasts with Romanized PHINC input"
+      ]
+    },
+    {
+      "dataset_name": "ReDial-Indic (Telugu-English)",
+      "official_url": "https://github.com/darshna001/ReDial-Indic",
+      "license": "UNLICENSED (HTTP 404 on LICENSE file)",
+      "dataset_type": "Conversational Recommendation Dialogue Dataset",
+      "language_combinations": [
+        "Telugu-English",
+        "English"
+      ],
+      "source_target_alignment": "Turn-level dialogue utterances with movie entity placeholders",
+      "translation_provenance": "machine_translated (Helsinki-NLP, mBART, NLLB translations of English ReDial)",
+      "acquisition_status": "NOT_ACQUIRED",
+      "inclusion_status": "QUARANTINED_PENDING_LICENSE_REVIEW",
+      "outstanding_questions": [
+        "Repository has no declared open license (all rights reserved)",
+        "Underlying ReDial dataset redistribution permissions unverified",
+        "Domain-specific dialogue context and entity placeholders not aligned with general sentence translation"
+      ]
+    },
+    {
+      "dataset_name": "Sravani & Mamidi CoNLL 2023",
+      "official_url": "https://aclanthology.org/2023.conll-1.15/",
+      "license": "Unpublished data / Academic paper only",
+      "dataset_type": "Synthetic Filtered Parallel Corpus Research",
+      "language_combinations": [
+        "English",
+        "Telugu-English code-mixed"
+      ],
+      "source_target_alignment": "Synthetic silver parallel corpus",
+      "translation_provenance": "machine_generated_human_filtered",
+      "acquisition_status": "NOT_ACQUIRED",
+      "inclusion_status": "RELATED_WORK_ONLY_PENDING_DATA_AND_LICENSE_VERIFICATION",
+      "outstanding_questions": [
+        "Paper focuses on generating code-mixed text from English (reverse direction)",
+        "No public download repository or dataset card published with permissive license",
+        "Corpus is synthetic silver data, not naturally occurring human code-mixed data"
+      ]
+    },
+    {
+      "dataset_name": "Trilingual Hinglish Corpus",
+      "official_url": "https://huggingface.co/datasets/debajyotimaz/trilingual-hinglish-corpus",
+      "license": "CC-BY-NC-SA-4.0",
+      "dataset_type": "Trilingual Parallel Corpus (English/Hindi/Romanized Hinglish)",
+      "language_combinations": [
+        "English",
+        "Hindi Devanagari",
+        "Romanized Hinglish"
+      ],
+      "source_target_alignment": "Triple-aligned sentence pairs",
+      "translation_provenance": "mixed (includes PHINC data + machine-generated/checked components)",
+      "acquisition_status": "NOT_ACQUIRED",
+      "inclusion_status": "CONDITIONAL_REFERENCE_NOT_ACQUIRED",
+      "outstanding_questions": [
+        "Restricted by Non-Commercial (NC) and Share-Alike (SA) license clauses",
+        "Significant overlap with PHINC (PHINC is an acknowledged constituent component)",
+        "License contamination risk if combined with CC BY 4.0 pipeline"
+      ]
+    },
+    {
+      "dataset_name": "Samanantar",
+      "official_url": "https://huggingface.co/datasets/ai4bharat/samanantar",
+      "license": "CC-BY-NC-4.0",
+      "dataset_type": "Monolingual English-Indic Parallel Translation Corpus",
+      "language_combinations": [
+        "English",
+        "11 Indic languages (including Hindi, Telugu)"
+      ],
+      "source_target_alignment": "Sentence-level parallel",
+      "translation_provenance": "parallel_reference (crawled and aligned)",
+      "acquisition_status": "NOT_ACQUIRED",
+      "inclusion_status": "AUXILIARY_REFERENCE_NOT_ACQUIRED",
+      "outstanding_questions": [
+        "Monolingual Indic translation only (no naturally occurring code-mixing)",
+        "CC-BY-NC-4.0 license carries non-commercial restrictions",
+        "Massive scale (49.7M pairs) out of scope for code-mixed baseline"
+      ]
+    },
+    {
+      "dataset_name": "MultiIndicMT",
+      "official_url": "https://lotus.kuee.kyoto-u.ac.jp/WAT/indic-multilingual/",
+      "license": "Research evaluation dataset (WAT shared task)",
+      "dataset_type": "Multi-way Indic Parallel Translation Benchmark",
+      "language_combinations": [
+        "English",
+        "10 Indic languages"
+      ],
+      "source_target_alignment": "Sentence-level parallel",
+      "translation_provenance": "parallel_reference",
+      "acquisition_status": "NOT_ACQUIRED",
+      "inclusion_status": "AUXILIARY_REFERENCE_NOT_ACQUIRED",
+      "outstanding_questions": [
+        "Monolingual Indic benchmark (no code-mixed sentences)",
+        "Auxiliary evaluation reference only"
+      ]
+    }
+  ],
+  "research_gap_findings": {
+    "telugu_english_translation": {
+      "status": "NO_VERIFIED_TRAINING_SOURCE_ESTABLISHED",
+      "findings": "Extensive literature and repository investigation confirmed that naturally occurring sentence-level code-mixed Telugu-English to English parallel corpora with clear open licensing do not currently exist in public NLP repositories. ReDial-Indic is unlicensed and synthetic/conversational; Sravani & Mamidi CoNLL 2023 is synthetic silver parallel data for the reverse direction without public data release; other candidates are monolingual or classification-only."
+    }
+  },
+  "training_readiness_assessment": {
+    "phinc_readiness": "SUFFICIENT_FOR_INITIAL_HINGLISH_BASELINE",
+    "phinc_notes": "13,738 pairs of Romanized Hinglish-to-English translation. Needs filtering of 232 garbage punctuation targets and principled 80/10/10 train/val/test splitting in Step 34B.",
+    "comi_lingua_mt_readiness": "SUFFICIENT_FOR_DEVANAGARI_AUGMENTATION_PENDING_PROVENANCE_DISCLOSURE",
+    "comi_lingua_mt_notes": "24,692 train pairs provide Devanagari script code-mixed coverage. Must be cataloged as human_corrected_machine_draft due to 98.52% verbatim Llama 3.3 output. Official test split (5,000 pairs) must remain strictly quarantined.",
+    "trilingual_claim_assessment": "HONEST_NEGATIVE_FOR_TELUGU",
+    "trilingual_claim_notes": "CodeMix Intelligence cannot claim trilingual translation support in V2 without fabricating or using unlicensed synthetic data. The model can be honestly positioned as a Hindi-English code-mixed translation engine (covering Romanized and Devanagari scripts), with Telugu translation explicitly documented as an industry-wide open research gap."
+  },
+  "project_integrity": {
+    "muril_model_files_unchanged": true,
+    "muril_evaluation_artifacts_unchanged": true,
+    "existing_lid_datasets_unchanged": true,
+    "v1_frontend_unchanged": true,
+    "v1_backend_unchanged": true,
+    "v1_tag_pointer_unchanged": true,
+    "no_mt5_training_occurred": true,
+    "no_model_inference_occurred": true,
+    "no_final_splits_created": true,
+    "no_git_commits_created": true,
+    "no_git_pushes_occurred": true
+  }
+}
