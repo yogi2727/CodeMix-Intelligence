@@ -7,16 +7,16 @@
 import time
 from .lid import is_native_script
 from .normalizer import detokenize, normalize_tokens
-from .transliterate import NoTransliterator, HI_LEXICON
+from .transliterate import NoTransliterator, HI_LEXICON, load_lexicon, TE_LEXICON_PATH
 
 STRATEGIES = ("direct", "lid_only", "full", "clause")
 INDIC = ("HI", "TE")
 BREAK = {",", ";", ".", "!", "?", ":"}
 
-# Lexicon overrides LID for words that appear in the curated Hindi lexicon.
-# The MuRIL model sometimes misclassifies common Hinglish words (mai, kal, karta, huu)
-# as Telugu when they appear in mixed sentences. The lexicon is authoritative for these.
+# Lexicons override LID for high-frequency words in mixed Hindi+Telugu sentences.
 _HI_LEX_KEYS = set(HI_LEXICON.keys())
+_TE_LEX = load_lexicon(TE_LEXICON_PATH)
+_TE_LEX_KEYS = set(_TE_LEX.keys())
 
 
 def split_clauses(tokens):
@@ -70,13 +70,16 @@ class CodeMixPipeline:
         labels, confs = lid.predict(tokens)
         tm["lid"] = _ms(t0); t0 = time.perf_counter()
 
-        # Authority Check: The Hindi lexicon is more reliable for common Hinglish words
-        # than the MuRIL model when appearing in mixed Hindi+Telugu sentences.
+        # Authority Check: Curated lexicons prevent cross-language misclassifications
+        # in mixed sentences with ambiguous orthography.
         for i, tok in enumerate(tokens):
             low = tok.lower()
-            if low in _HI_LEX_KEYS and labels[i] == "TE":
+            if low in _TE_LEX_KEYS and labels[i] == "HI":
+                labels[i] = "TE"
+                confs[i] = 1.0
+            elif low in _HI_LEX_KEYS and labels[i] == "TE":
                 labels[i] = "HI"
-                confs[i] = 1.0  # boost confidence to override dominant language if needed
+                confs[i] = 1.0
 
         # Token-level native script mapping
         natives = list(tokens)
