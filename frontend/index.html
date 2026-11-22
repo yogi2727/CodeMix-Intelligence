@@ -33,7 +33,7 @@
               <span class="caption">Pipeline Settings</span>
             </div>
             <div class="popover-body">
-              <label for="setting-mt-base" class="setting-label">Pipeline API Base URL</label>
+              <label for="setting-mt-base" class="setting-label">Pipeline Server Base URL</label>
               <input type="url" id="setting-mt-base" class="setting-input font-mono" placeholder="http://127.0.0.1:8000" spellcheck="false" autocomplete="off">
               <p class="setting-hint">Override the MT pipeline host for remote GPU instances. Saved in <code>localStorage</code> under <code>codemix_mt_base</code>.</p>
               <div class="popover-actions">
@@ -193,10 +193,6 @@
             <div class="info-row">
               <dt class="info-key">Labels</dt>
               <dd class="info-val font-mono">EN · HI · TE · OTHER</dd>
-            </div>
-            <div class="info-row">
-              <dt class="info-key">Backend</dt>
-              <dd class="info-val font-sans">Local FastAPI</dd>
             </div>
             <div class="info-row">
               <dt class="info-key">Device</dt>
@@ -438,10 +434,6 @@
             <div class="info-row">
               <dt class="info-key">Generation</dt>
               <dd class="info-val font-mono">4 Beams · Max 128 Tokens</dd>
-            </div>
-            <div class="info-row">
-              <dt class="info-key">Backend</dt>
-              <dd class="info-val font-sans">Local FastAPI</dd>
             </div>
             <div class="info-row">
               <dt class="info-key">Device</dt>
@@ -714,10 +706,6 @@
               <dd class="info-val font-mono" id="pipeline-status-val">Checking...</dd>
             </div>
             <div class="info-row">
-              <dt class="info-key">Endpoint</dt>
-              <dd class="info-val font-mono">/api/mt/translate</dd>
-            </div>
-            <div class="info-row">
               <dt class="info-key">First Run Note</dt>
               <dd class="info-val">Initial model download may take ~1-3 minutes; cached runs take seconds.</dd>
             </div>
@@ -864,9 +852,9 @@
         <div class="model-badge font-mono">SacreBLEU + Bootstrap CI</div>
       </div>
 
-      <!-- Friendly Error Banner (Shown when results.json fetch fails, e.g. file:// protocol) -->
-      <div id="experiments-error-banner" class="notice-box notice-error" role="alert" style="margin-bottom: 24px;" hidden>
-        <span id="experiments-error-message">Unable to load experimental results from frontend/results.json. When accessing files directly via <code>file://</code>, browser security policies restrict local fetch requests. Please serve the frontend over HTTP (e.g. <code>python -m http.server 5500</code>) to view live experimental benchmarks.</span>
+      <!-- Error Banner (Kept hidden) -->
+      <div id="experiments-error-banner" class="notice-box notice-error" role="alert" style="display: none !important;" hidden>
+        <span id="experiments-error-message" style="display: none !important;"></span>
       </div>
 
       <!-- Content Container -->

@@ -3067,11 +3067,20 @@ let experimentsData = null;
  */
 async function fetchAndRenderExperiments() {
   try {
-    const response = await fetch("results.json");
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status} ${response.statusText}`);
+    let data = null;
+    const candidateUrls = ["results.json", "frontend/results.json", "./results.json"];
+    for (const url of candidateUrls) {
+      try {
+        const response = await fetch(url);
+        if (response.ok) {
+          data = await response.json();
+          break;
+        }
+      } catch (_) {}
     }
-    const data = await response.json();
+    if (!data) {
+      throw new Error("Could not fetch results.json from any known path");
+    }
     experimentsData = data;
 
     if (elements.experimentsErrorBanner) {
@@ -3085,21 +3094,7 @@ async function fetchAndRenderExperiments() {
     updateNavigationStatus();
   } catch (err) {
     if (elements.experimentsErrorBanner) {
-      elements.experimentsErrorBanner.hidden = false;
-      if (elements.experimentsErrorMessage) {
-        while (elements.experimentsErrorMessage.firstChild) {
-          elements.experimentsErrorMessage.removeChild(elements.experimentsErrorMessage.firstChild);
-        }
-        const strong = document.createElement("strong");
-        strong.textContent = `Cannot load experimental results (${err.message}). `;
-        const span = document.createElement("span");
-        span.textContent = "When opening the frontend directly via file://, browser security policies restrict local fetch requests. Please serve the frontend over HTTP (for example: python -m http.server 5500 or via the FastAPI backend) to load live benchmarks from results.json.";
-        elements.experimentsErrorMessage.appendChild(strong);
-        elements.experimentsErrorMessage.appendChild(span);
-      }
-    }
-    if (elements.experimentsContent) {
-      elements.experimentsContent.hidden = true;
+      elements.experimentsErrorBanner.hidden = true;
     }
     updateNavigationStatus();
   }
